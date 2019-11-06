@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../InnerHeader';
 import Footer from '../Footer';
 import ImageSlider from '../Elements/ImageSlider';
-class Destination extends React.Component {
+class ItineraryDetail extends React.Component {
   constructor() {
         super();
         this.state={
@@ -300,4 +300,4 @@ class Destination extends React.Component {
   }
 }
 
-export default Destination;
+export default ItineraryDetail;

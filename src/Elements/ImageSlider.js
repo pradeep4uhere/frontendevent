@@ -28,9 +28,6 @@ class ImageSlider extends React.Component {
 
 
   render() {
-    console.log('gall:')
-    console.log(this.props.galleryJson)
-
     const images = [
       {
         original: 'https://picsum.photos/id/1018/1000/600/',
