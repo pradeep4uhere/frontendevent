@@ -27,8 +27,41 @@ const GET_DESTINATION_LIST_URL  = urlConstant.GET_DESTINATION_LIST_URL;
 const GET_BANNER_LIST_URL		= urlConstant.GET_BANNER_LIST_URL;
 const GET_ALL_EVENT_LIST_URL	= urlConstant.GET_ALL_EVENT_LIST_URL;
 const GET_DESTINATION_EXP_LIST_URL	= urlConstant.GET_DESTINATION_EXP_LIST_URL;
+const GET_LAST_ORDER_LIST		= urlConstant.GET_LAST_ORADER_LIST;
 
-/**************Login API Start Here**********************************/
+
+GeneralPortRouter.route('/lastorderlist').post(function (req, res) {
+    var sess = {token: '',user: {}};
+	var token        	= req.body.token;
+	var oid        	= req.body.oid;
+    var postData 		={
+		token		 : token,
+		oid			 : oid
+    }
+    console.log(postData);
+    const options = {
+					    method: 'POST',
+					    uri: GET_LAST_ORDER_LIST,
+					    body: postData,
+						json: true,
+				        headers: {
+			            'Authorization': 'Bearer ' + token,
+				        },
+				    }
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
+
+
+
+
 GeneralPortRouter.route('/popularlist').post(function (req, res) {
     var sess = {token: '',user: {}};
     var token        	= req.body.token;

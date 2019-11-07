@@ -9,13 +9,14 @@ const token     = localStorage.getItem('token');
 const getLastOrderList = Constants.GET_LAST_ORDER_LIST;
 var serialize = require('form-serialize');
 var ip = require('ip');
-class Thankyou extends React.Component {
+class ThankExpyou extends React.Component {
   constructor() {
         super();
         this.state={
           oid:'',
           ipAdress : ip.address(),
           orderDetails: [],
+          titleName: '',
           orderName: '',
           amount: '0.00',
           settingPriceType: 'INR'
@@ -39,14 +40,24 @@ class Thankyou extends React.Component {
     axios.post(getLastOrderList, formData)
     .then((response) => {
       if(response.data.code==200) {
-        console.log(response.data.order)
-        alert(545454);
-          this.setState({
-            orderDetails    :response.data.order,
+        if(response.data.order.order_type==2){
+            this.setState({
+            orderDetails    : response.data.order,
+            titleName       : response.data.order.itinerary_booking[0].itinerary.title,
             orderNo         : response.data.order.orderID,
             amount          : response.data.order.total_amount,
             settingPriceType: response.data.setting[14].options_value,
-          });
+            });
+        }
+
+        if(response.data.order.order_type==1){
+            this.setState({
+            orderDetails    : response.data.order,
+            orderNo         : response.data.order.orderID,
+            amount          : response.data.order.total_amount,
+            settingPriceType: response.data.setting[14].options_value,
+            });
+        }
 
       }else{
         console.log("Response Error");
@@ -60,6 +71,7 @@ class Thankyou extends React.Component {
 
   render() {
     const { orderDetails } = this.state;
+    const { titleName }    = this.state;
     const { orderNo }      = this.state;
     const { amount }       = this.state;
     const { settingPriceType } = this.state;
@@ -71,12 +83,13 @@ class Thankyou extends React.Component {
             <div className="container">
               <div className="jumbotron text-xs-center white-text p-t100">
                 <h1 className="display-3">Thank You!</h1>
-                <p className="lead">Your Order Payment Status is <strong>Pending</strong>.</p>
+                <p className="lead">Your Order Payment Status is <strong>Pendinng</strong>.</p>
                 <p className="lead">Total Payment : <strong>{settingPriceType}&nbsp;{amount}</strong>.</p>
-                <p className="lead">Your Order is confirm with Order No: "<strong>{orderNo}</strong>" <br/>Please check your email for more details.</p>
+                <p className="lead">Your Order is confirm with Order No: "<strong>{orderNo}</strong>" {(titleName!='')?('For'):''} <b>{titleName}</b> </p>
+                <p>Please check your email for more details.</p>
                 <hr className="hr-light" />
                 <p>
-                  Having trouble? <Link to="contactus">Contact us</Link>
+                  Having trouble? <Link to="/contactus">Contact us</Link>
                 </p>
                 <a href="/" className="btn btn-red btn-lg btn-red-border1">CONTINUE SHOPPING</a>
               </div>
@@ -88,4 +101,4 @@ class Thankyou extends React.Component {
   }
 }
 
-export default Thankyou;
+export default ThankExpyou;

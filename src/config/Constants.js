@@ -24,6 +24,7 @@ export const Constants = {
 	GET_BANNER_LIST				: AppUrl+'/generalport/getbannerlist',
 	GET_ALL_EVENT_LIST			: AppUrl+'/generalport/getalleventlist',
 	DESTINATION_EXP_LIST		: AppUrl+'/generalport/destinationexplist',
+	GET_LAST_ORDER_LIST			: AppUrl+'/generalport/lastorderlist',
     IMG							: {
     								USER_PROFILE: '../theme/dist/img/user2-160x160.jpg',	
     			  				}

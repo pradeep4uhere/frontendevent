@@ -157,8 +157,9 @@ class ExpCheckout extends React.Component {
     axios.post(bookingPayment, formData)
     .then((response) => {
       if(response.data.code==200) {
+        var orderId = response.data.oid;
         console.log("Response Success");
-        window.location.href="process";
+         window.location.href="process/oid="+orderId;
 
       }else{
         console.log("Response Error");

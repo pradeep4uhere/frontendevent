@@ -5,21 +5,25 @@ class Proccessing extends React.Component {
         super();
         this.state={
           redirect: false,
+          oid:''
           
         }
         
   }
   componentDidMount() {
+    var oid = this.props.match.params.oid;
     setTimeout(() => {
         this.setState({
             redirect: true,
+            oid: oid
         })
     }, 2000)
   }
   render() {
+    const { oid }  = this.state;
     if (this.state.redirect) {
       return (
-          <Redirect to={'/thankyou'} />
+          <Redirect to={'/thankyou/'+oid} />
       )
     }
     return (

@@ -26,6 +26,8 @@ import Checkout from '../Page/Checkout';
 import ExpCheckout  from '../Page/ExpCheckout';
 import Proccessing from '../Page/Proccessing';
 import Thankyou from '../Page/Thankyou';
+import ThankExpyou from '../Page/ThankExpyou';
+
 
 
 import $ from 'jquery';
@@ -81,11 +83,11 @@ render() {
               <Route path="/review" component={Review} exact/>
               <Route path="/cart" component={Cart} exact/>
               <Route path="/expcart" component={ExpCart} exact/>
-              
               <Route path="/checkout" component={Checkout} exact/>
               <Route path="/expcheckout" component={ExpCheckout} exact/>
+              <Route path="/thankyou/:oid" component={ThankExpyou} exact/>
               <Route path="/thankyou" component={Thankyou} exact/>
-              <Route path="/process" component={Proccessing} exact/>
+              <Route path="/process/:oid" component={Proccessing} exact/>
               <Route path="/destinationdetails" component={Destination} exact/>
               <Route path="/destination" component={Itinerary} exact/>
               <Route path="/destinationdetails/:id" component={Destination} exact/>
