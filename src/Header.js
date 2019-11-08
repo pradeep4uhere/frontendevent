@@ -96,17 +96,23 @@ class Header extends React.Component {
     let ins = '';
     let youtube = '';
     let linkedin = '';
+    let phone = '';
+    let email = '';
+    let copyrights = '';
     if(this.state.settingDetails.length>0){
       fb = this.state.settingDetails[6].options_value;
       ins = this.state.settingDetails[5].options_value;
       youtube = this.state.settingDetails[4].options_value;
       linkedin = this.state.settingDetails[7].options_value;
+      phone = this.state.settingDetails[3].options_value;
+      email = this.state.settingDetails[1].options_value;
+      copyrights = this.state.settingDetails[10].options_value;
       
     }
     let destinationStr ='';
     if(this.state.destinationList.length>0){
       destinationStr = this.state.destinationList.map((val,i) =>
-          <li><Link to={"destinationdetails/"+val.id}>{val.title}</Link></li>
+          <li><Link to={"destinationdetails/"+val.id}><span style={{"color":"#000000","display":"block"}}>{val.title}</span></Link></li>
       );
     
     }
@@ -114,7 +120,7 @@ class Header extends React.Component {
     let eventFinalStr = "";
     if(this.state.eventFinalArr.length>0){
       eventFinalStr = this.state.eventFinalArr.map((val,i) =>
-          <li><Link to={"/day-exp-detail/"+val.event_id+"-"+val.id}>{val.title}</Link></li>
+          <li ><Link to={"/day-exp-detail/"+val.event_id+"-"+val.id} ><span style={{"color":"#000000","display":"block"}}>{val.title}</span></Link></li>
       );
     
     }
@@ -123,45 +129,57 @@ class Header extends React.Component {
    
     return (
         <div>
-        <div id="mySidenav" className="sidenav">
+        <div id="mySidenav" className="sidenav" style={{"paddingTop":"0%"}}>
+          <div id="rightSide" style={{"width":"75%","float":"right","backgroundColor":"#FFF","height":"100%","color":"#000"}}>
           <a href="javascript:void(0)" class="closebtn" onClick={this.closeNav.bind(this)}>&times;</a>
-          <div className="wrap">
-            <ul className="wrap-nav">
-              <li><Link to="#">Day Experiences</Link>
+          <div className="wrap" style={{"fontSize":"24px","textAlign":"right","paddingRight":"0px"}}>
+            <ul className="wrap-nav" style={{"color":"#000000 !important"}}>
+            <li >
+                <div style={{"textAlign":"left","marginTop":"90%"}}>
+                  <p><span style={{"color":"#EF4136","display":"tomato","fontSize":"16px"}}>Phone:</span><br/><span style={{"color":"#000000","display":"#ccc","fontSize":"13px"}}>{phone}</span><br/>
+                  <span style={{"color":"#EF4136","display":"tomato","fontSize":"16px"}}>Write Us:</span><br/><span style={{"color":"#000000","display":"#ccc","fontSize":"13px"}}>{email}</span></p>
+
+                </div>
+              </li>
+               <li ><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 2px #EF4136"}}>Destination Experiences</span></Link>
                 <ul>
                   {destinationStr}
-                  <li><Link to={"/destination"}>and much more...</Link></li>
+                  <li><Link to={"/destination"} ><span style={{"color":"#000000","display":"block"}}>{'and much more...'}</span></Link></li>
                 </ul>
               </li>
-              <li><Link to={"/destination"}>Travel Experiences</Link>
+              <li style={{"marginLeft":"5px"}}><Link to={"/destination"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 2px #EF4136"}}>Event Experiences</span></Link>
                 <ul>
                   {eventFinalStr}
                   <li><Link to="#">and much more...</Link></li>
                 </ul>
               </li>
-              <li><Link to="#">Destinations</Link>
+              <li style={{"marginLeft":"40px"}}>
+              <Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 2px #EF4136"}}>Home</span></Link>
                 <ul>
-                  <li><Link to="#">Travel Experiences</Link></li>
-                  <li><Link to={"/aboutus"}>About Us</Link></li>
-                  <li><Link to={"/termsandconditions"}>Terms and Conditions</Link></li>
-                  <li><Link to={"/contactus"}>Contact Us</Link></li>
+                    
+                    <li><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Day Experiences</span></Link></li>
+                    <li><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Destination</span></Link></li>
+                    <li><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Travel Experiences</span></Link></li>
+                    <li><Link to={"/aboutus"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>About Us</span></Link></li>
+                    <li><Link to={"/termsandconditions"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Terms and Conditions</span></Link></li>
+                    <li><Link to={"/contactus"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Contact Us</span></Link></li>
                 </ul>
               </li>
             </ul>
-            <div className="container">
-            <div className="row">
-            <center>
-              <div>
+            <div className="row" style={{"width":"100%","marginLeft":"-55px"}}>
+              <div className="col-md-4" style={{"textAlign":"left"}}>
                 <ul className="social-network social-circle">
-                <li><a href={fb} className="icoFacebooks" title="Facebook"><i className="fa fa-facebook" /></a></li>
-                  <li><a href={ins} className="icoTwitters" title="Instagram"><i className="fa fa-instagram" /></a></li>
-                  <li><a href={linkedin} className="icoLinkedins" title="Linkedin"><i className="fa fa-linkedin" /></a></li>
-                  <li><a href={youtube} className="icoTwitters" title="YouTube"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                <li><a href={fb}  title="Facebook" style={{"color":"#3b5998"}}><i className="fab  fa-facebook-square" /></a></li>
+                  <li><a href={ins}  title="Instagram" style={{"color":"#3f729b"}}><i className="fab fa-instagram" /></a></li>
+                  <li><a href={linkedin}  title="Linkedin" style={{"color":"#0e76a8"}}><i className="fab fa-linkedin" /></a></li>
+                  <li><a href={youtube}  title="YouTube" style={{"color":"#c4302b"}}><i class="fab fa-youtube-square" aria-hidden="true"></i></a></li>
                 </ul>
                 
               </div>
-              </center>
-            </div>
+              <div className="col-md-8" style={{"textAlign":"right","fontSize":"14px","color":"#000000","paddingTop":"2%","marginRight":"0px"}}>
+                {copyrights}
+              </div>
+          </div>
           </div>
           </div>
         </div>  
