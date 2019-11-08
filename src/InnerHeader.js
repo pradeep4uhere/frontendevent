@@ -113,7 +113,7 @@ return <Link className="nav-link" to="login"><img src="../rudra/images/ico_user.
       let destinationStr ='';
       if(this.state.destinationList.length>0){
         destinationStr = this.state.destinationList.map((val,i) =>
-        <li><Link to={"destinationdetails/"+val.id}><span style={{"color":"#000000","display":"block"}}>{val.title}</span></Link></li>
+        <li><a href={"/destinationdetails/"+val.id}><span style={{"color":"#000000","display":"block"}}>{val.title}</span></a></li>
         );
       
       }
@@ -122,7 +122,7 @@ return <Link className="nav-link" to="login"><img src="../rudra/images/ico_user.
       let eventFinalStr = "";
        if(this.state.eventFinalArr.length>0){
       eventFinalStr = this.state.eventFinalArr.map((val,i) =>
-      <li ><Link to={"/day-exp-detail/"+val.event_id+"-"+val.id} ><span style={{"color":"#000000","display":"block"}}>{val.title}</span></Link></li>
+      <li ><a href={"/day-exp-detail/"+val.event_id+"-"+val.id} ><span style={{"color":"#000000","display":"block"}}>{val.title}</span></a></li>
       );
     }
 
@@ -151,13 +151,13 @@ return <Link className="nav-link" to="login"><img src="../rudra/images/ico_user.
                <li ><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 2px #EF4136"}}>Destination Experiences</span></Link>
                 <ul>
                   {destinationStr}
-                  <li><Link to={"/destination"} ><span style={{"color":"#000000","display":"block"}}>{'and much more...'}</span></Link></li>
+                  <li><a href={"/destination"} ><span style={{"color":"#000000","display":"block"}}>{'and much more...'}</span></a></li>
                 </ul>
               </li>
               <li style={{"marginLeft":"5px"}}><Link to={"/destination"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 2px #EF4136"}}>Event Experiences</span></Link>
                 <ul>
                   {eventFinalStr}
-                  <li><Link to="#">and much more...</Link></li>
+                  <li><a href={"/exp-list"} ><span style={{"color":"#000000","display":"block"}}>{'and much more...'}</span></a></li>
                 </ul>
               </li>
               <li style={{"marginLeft":"40px"}}>

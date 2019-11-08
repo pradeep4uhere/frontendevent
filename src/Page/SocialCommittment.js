@@ -1,26 +1,23 @@
 import React from 'react';
 import Header from '../InnerHeader';
 import Footer from '../Footer';
-class Termsandconditions extends React.Component {
+class SocialCommittment extends React.Component {
   constructor() {
         super();
         this.state={
           
         }
-        
   }
   componentDidMount() {
     window.scrollTo(0, 0);
   }
-  
-
   render() {
     return (
         <div>
           <Header/>
           <div className="container-fluid bg-maroon p-tb50">
             <div className="container">
-            <h1 className="text-center white-text mt-85">Terms & Conditions
+            <h1 className="text-center white-text mt-85">Social Commitment
             </h1>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
             <h2 className="text-center p-b50 white-text">
@@ -49,8 +46,6 @@ There are many variations of passages of Lorem Ipsum available, but the majority
           </div>
         </div>
       </div>
-      <br/><br/><br/>
-       
         
       <Footer/>
         </div>
@@ -58,4 +53,4 @@ There are many variations of passages of Lorem Ipsum available, but the majority
   }
 }
 
-export default Termsandconditions;
+export default SocialCommittment;

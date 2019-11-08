@@ -25,6 +25,7 @@ export const Constants = {
 	GET_ALL_EVENT_LIST			: AppUrl+'/generalport/getalleventlist',
 	DESTINATION_EXP_LIST		: AppUrl+'/generalport/destinationexplist',
 	GET_LAST_ORDER_LIST			: AppUrl+'/generalport/lastorderlist',
+	GET_CITY_NAME_URL			: AppUrl+'/generalport/getcityname',
     IMG							: {
     								USER_PROFILE: '../theme/dist/img/user2-160x160.jpg',	
     			  				}

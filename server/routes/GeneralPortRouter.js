@@ -28,6 +28,7 @@ const GET_BANNER_LIST_URL		= urlConstant.GET_BANNER_LIST_URL;
 const GET_ALL_EVENT_LIST_URL	= urlConstant.GET_ALL_EVENT_LIST_URL;
 const GET_DESTINATION_EXP_LIST_URL	= urlConstant.GET_DESTINATION_EXP_LIST_URL;
 const GET_LAST_ORDER_LIST		= urlConstant.GET_LAST_ORADER_LIST;
+const GET_CITY_NAME_URL			= urlConstant.GET_CITY_NAME_URL;
 
 
 GeneralPortRouter.route('/lastorderlist').post(function (req, res) {
@@ -115,6 +116,37 @@ GeneralPortRouter.route('/generalsetting').post(function (req, res) {
 	        console.log(err)
 	})
 });
+
+
+
+GeneralPortRouter.route('/getcityname').post(function (req, res) {
+    var sess = {token: '',user: {}};
+	var token        	= req.body.token;
+	var id        		= req.body.id;
+    var postData 		={
+		token		 : token,
+		id 			 : id
+	}
+	console.log(postData);
+    const options = {
+					    method: 'POST',
+					    uri: GET_CITY_NAME_URL,
+					    body: postData,
+						json: true,
+				        headers: {
+			            'Authorization': 'Bearer ' + token,
+				        },
+				    }
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
 
 
 
@@ -567,10 +599,12 @@ GeneralPortRouter.route('/destinationexplist').post(function (req, res) {
 	var token        	= req.body.token;
 	var uid        		= req.body.uid;
 	var id				= req.body.id;
+	var type			= req.body.type;
     var postData 		={
 		token		 : token,
 		user_id		 : uid,
-		id			 : id
+		id			 : id,
+		type		 : type
 	}
 	console.log(postData);
     const options = {
@@ -600,10 +634,12 @@ GeneralPortRouter.route('/destinationlist').post(function (req, res) {
 	var token        	= req.body.token;
 	var uid        		= req.body.uid;
 	var id				= req.body.id;
+	var type			= req.body.type;
     var postData 		={
 		token		 : token,
 		user_id		 : uid,
-		id			 : id
+		id			 : id,
+		type		 : type
 	}
 	console.log(postData);
     const options = {

@@ -75,12 +75,12 @@ componentDidMount(){
                         <li><Link to="/dayexperiences" className="footer-link">Travell Experiences</Link></li>
                         {/* <li><Link to="itinerary_detail" className="footer-link">Itinerary Detail</Link> </li> */}
                         
-                        <li><Link to="aboutus" className="footer-link">About Us</Link> </li>
-                        <li><Link to="#" className="footer-link">Social Commitment</Link> </li>
-                        <li><Link to="review" className="footer-link">Reviews</Link> </li>
-                        <li><Link to="membership" className="footer-link">Membership</Link> </li>
+                        <li><Link to="/aboutus" className="footer-link">About Us</Link> </li>
+                        <li><Link to="/socialcommitment" className="footer-link">Social Commitment</Link> </li>
+                        <li><Link to="/review" className="footer-link">Reviews</Link> </li>
+                        <li><Link to="/membership" className="footer-link">Membership</Link> </li>
                         <li><Link to={"/contactus"} className="footer-link">Contact Us</Link> </li> 
-                        <li><Link to="termsandconditions" className="footer-link">Terms of Use</Link> </li>
+                        <li><Link to="/termsandconditions" className="footer-link">Terms of Use</Link> </li>
                       </ul>
                     </div>
                     <div className="col-xl-3 col-lg-3 col-md-4 col-sm-5">

@@ -218,11 +218,11 @@ selectDeparture(val,e){
                 </p>
                 <p className="text-center small bold">Share</p>
                 {/* Add font awesome icons */}
-                <a href="#" className="fa fa-facebook" style={{fontSize: '27px', width: '37px', padding: '5px'}} />
-                <a href="#" className="fa fa-twitter" style={{fontSize: '27px', width: '37px', padding: '5px'}}/>
-                <a href="#" className="fa fa-google" style={{fontSize: '27px', width: '37px', padding: '5px'}}/>
-                <a href="#" className="fa fa-linkedin" style={{fontSize: '27px', width: '37px', padding: '5px'}}/>
-                <a href="#" className="fa fa-pinterest" style={{fontSize: '27px', width: '37px', padding: '5px'}}/>
+                <a href="#" className="fab fa-facebook" style={{fontSize: '37px', width: '37px', padding: '5px'}} />
+                <a href="#" className="fab fa-twitter" style={{fontSize: '37px', width: '37px', padding: '5px'}}/>
+                <a href="#" className="fab fa-google" style={{fontSize: '37px', width: '37px', padding: '5px'}}/>
+                <a href="#" className="fab fa-linkedin" style={{fontSize: '37px', width: '37px', padding: '5px'}}/>
+                <a href="#" className="fab fa-pinterest" style={{fontSize: '37px', width: '37px', padding: '5px'}}/>
               </div>
               <br />
               

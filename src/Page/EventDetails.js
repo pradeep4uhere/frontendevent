@@ -9,6 +9,7 @@ var ip = require('ip');
 const urlSettingStr = Constants.GENERAL_SETTING_URL;
 const urlStr = Constants.EVENT_DETAILS_URL;
 const addToCartUrl  = Constants.ADD_TO_CART_URL;
+const getCityName   = Constants.GET_CITY_NAME_URL;
 const token     = localStorage.getItem('token');
 class EventDetails extends React.Component {
   constructor() {
@@ -20,7 +21,8 @@ class EventDetails extends React.Component {
           eventgallery:[],
           seatprice:'',
           ipAdress : ip.address(),
-          user_id: sessionStorage.getItem('userid')
+          user_id: sessionStorage.getItem('userid'),
+          cityName:'-'
         }
         
         this.getSettingList       = this.getSettingList.bind(this);
@@ -28,6 +30,7 @@ class EventDetails extends React.Component {
         this.change               = this.change.bind(this);
         this.handleSubmit         = this.handleSubmit.bind(this);
         this.getSiteSettingList   = this.getSiteSettingList.bind(this);
+        this.getCityName          = this.getCityName.bind(this);
       }
 
 
@@ -75,9 +78,10 @@ class EventDetails extends React.Component {
                 this.setState({
                   eventDetails    : response.data.data.event,
                   eventTiming     : response.data.data.event_time,
-                  eventgallery     : response.data.data.gallery,
+                  eventgallery    : response.data.data.gallery,
                 });
-                // console.log(this.state.eventTiming.price[0].price);
+                this.getCityName(this.state.eventTiming.theatre.city_id);
+                //alert(this.state.eventTiming.theatre.city_id);
                 if(this.state.eventTiming.price){
                   this.setState({seatprice:this.state.eventTiming.price[0].price});
                 }
@@ -100,6 +104,8 @@ class EventDetails extends React.Component {
     this.getSiteSettingList();
 
   }
+
+
 
   stripHtml(html){
     // Create a new div element
@@ -158,6 +164,32 @@ class EventDetails extends React.Component {
   };
 
 
+  getCityName(city_id){
+    var tokenStr = token;
+    const formData = {
+      token           : tokenStr,
+      id              : city_id,
+    }
+    axios.post(getCityName, formData)
+    .then((response) => {
+      response = response.data;
+      console.log(response);
+      if(response.code==200) {
+          //window.location.href = '/cart'; 
+          this.setState({
+            cityName: response.data.city_name
+          });
+      }else{
+          console.log("Failed");
+          return false;
+      }
+    })
+    .catch((err) => {
+      console.log("Failed Catch");
+    })
+  }
+
+
   render() {
     const {eventDetails}  = this.state;
     const {galleryJson}   = this.state.eventgallery;
@@ -166,7 +198,7 @@ class EventDetails extends React.Component {
     let data = this.state.settingDetails;
     let price = (data.length>0) ? data[14].options_value : '';
 
-   
+    console.log(eventTiming);
     const priceData = this.state.eventTiming.price;
     let priceListOption ='';
     if(priceData){
@@ -180,7 +212,7 @@ class EventDetails extends React.Component {
           <div className="container-fluid bg-maroon p-tb50">
           <div className="container">
             <h1 className="text-center white-text mt-85">{this.state.eventDetails.title}
-            </h1><p className="text-white small text-center">AGRA</p>
+            </h1><p className="text-white small text-center">{this.state.cityName}</p>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
             <h2 className="text-center p-b50 white-text">{this.stripHtml(this.state.eventDetails.description)}</h2>
           </div>
@@ -209,16 +241,16 @@ class EventDetails extends React.Component {
         {/* Tab panes */}
         <div className="tab-content">
           <div id="home" className="container tab-pane active"><br />
-          {this.state.eventTiming.itinerary}
+          {this.stripHtml(this.state.eventTiming.itinerary)}
           </div>
           <div id="menu1" className="container tab-pane fade"><br />
-          {this.state.eventTiming.includes}
+          {this.stripHtml(this.state.eventTiming.includes)}
           </div>
           <div id="menu2" className="container tab-pane fade"><br />
-          {this.state.eventTiming.dincludes}
+          {this.stripHtml(this.state.eventTiming.dincludes)}
           </div>
           <div id="menu21" className="container tab-pane fade"><br />
-          {this.state.eventTiming.other}
+          {this.stripHtml(this.state.eventTiming.other)}
           </div>
         </div>
 
@@ -227,7 +259,10 @@ class EventDetails extends React.Component {
           </div>
           <form role="form" onSubmit={this.handleSubmit}  id="form-event">
           <div className="col-xl-12">
-            <div className="shadow-block text-center"><span className="price-red-large">{price}{seatprice}</span><br />
+            
+            <div className="shadow-block text-center">
+            <p><span className="price-red-large" style={{"fontSize":"24px","fontWeight":"bold"}}>{this.state.eventDetails.title}</span><hr/></p>
+            <span className="price-red-large">{price}{seatprice}</span><br />
             <span className="text-black-small">Price Per Adult </span>
             <p>              </p>
             <p><span className="text-black-medium">Sitting Type</span></p>

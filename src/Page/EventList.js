@@ -12,7 +12,9 @@ class EventList extends React.Component {
         this.state={
                     eventFinalArr : [],
                     nextUrl : '',
-                    eventDetails:[]
+                    eventDetails:[],
+                    total:0,
+                    setting:[]
                   }
           this.handleClick  = this.handleClick.bind(this);
   }
@@ -31,8 +33,10 @@ getBannerList(){
   .then((response) => {
     if(response.data.code==200) {
           this.setState({
-            eventFinalArr   : response.data.eventFinalArr,
-            nextUrl         : response.data.eventPaginationData.next_page_url
+            eventFinalArr     : response.data.eventFinalArr,
+            nextUrl           : response.data.eventPaginationData.next_page_url,
+            total             : response.data.eventPaginationData.total,
+            experiencesTag    : response.data.setting[21].options_value
           });
           console.log(response.data.eventPaginationData);
 
@@ -197,18 +201,17 @@ getBannerList(){
           <Header/>
           <div className="container-fluid bg-maroon p-tb50">
             <div className="container">
-            <h1 className="text-center white-text mt-85">Day Experiences
+            <h1 className="text-center white-text mt-85">Event Experiences
             </h1>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
-            <h2 className="text-center p-b50 white-text">The effort is to open the window of the mind so that all your five senses are alive and in harmony with the universe around you, so you can have that 
-                ultimate experience.</h2>
+            <h2 className="text-center p-b50 white-text">{this.state.experiencesTag}</h2>
             </div>
         </div>
 
         <div className="container">
          <div className="col-xl-12 m-ft66 text-center"><img src="../rudra/images/ticket-combo.png" alt="" className="img-fluid" /></div>
         </div>
-        <div className="container-fluid bg-dmaroon p-t100 p-b50 white-text text-center m-ft80">Total 8 RudraXp experiences are listed below: </div>
+        <div className="container-fluid bg-dmaroon p-t100 p-b50 white-text text-center m-ft80">Total {this.state.total-3} RudraXp experiences are listed below: </div>
         <div className="container bg-grey">
         {eventFinalStr}
         </div>

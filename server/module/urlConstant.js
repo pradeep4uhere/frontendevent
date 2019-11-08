@@ -21,5 +21,6 @@ urlConstant = {
 	GET_ALL_EVENT_LIST_URL				:	config.API_HOST_URL+'/getalleventlist',
 	GET_DESTINATION_EXP_LIST_URL		:   config.API_HOST_URL+'/getdestinationexplist',
 	GET_LAST_ORADER_LIST				:   config.API_HOST_URL+'/lastorderlist',
+	GET_CITY_NAME_URL					:	config.API_HOST_URL+'/getcityname',
 }
 module.exports = urlConstant;

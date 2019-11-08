@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../InnerHeader';
 import Footer from '../Footer';
+import { Link } from 'react-router-dom';
 import axios from 'axios'
 import $ from 'jquery'
 import Constants  from '../config/Constants'
@@ -14,10 +15,14 @@ class DayExperiences extends React.Component {
         this.state={
           ipAdress : ip.address(),
           user_id: sessionStorage.getItem('userid'),
-          destinationDetails:[]
+          destinationDetails:[],
+          type: 'short',
+          setting:[],
+          DayExperiencesTag:''
         }
         this.stripHtml            = this.stripHtml.bind(this);
         this.getDestinationList   = this.getDestinationList.bind(this);
+        this.handleSort           = this.handleSort.bind(this);
         
   }
 
@@ -31,11 +36,12 @@ class DayExperiences extends React.Component {
   }
 
      /******Get all the user list here********/   
-     getDestinationList(){
+     getDestinationList(type){
       var tokenStr = token;
       const formData = {
           token    : tokenStr,
-          id       : ''
+          id       : '',
+          type     : type
       }
       axios.post(urlStr, formData)
       .then((response) => {
@@ -43,6 +49,8 @@ class DayExperiences extends React.Component {
           
               this.setState({
                 destinationDetails    : response.data.data,
+                setting               : response.data.setting,
+                DayExperiencesTag     : response.data.setting[19].options_value
               });
         }
         else
@@ -59,15 +67,32 @@ class DayExperiences extends React.Component {
 
 
 componentDidMount(){
-  this.getDestinationList();
+  window.scrollTo(0, 0);
+  this.getDestinationList('short');
 
 }
+
+handleSort(e,val){
+  e.preventDefault()
+  this.setState({type:val});
+  if(val=='short'){
+    $("#short").css("background-color","#36ca2624");
+    $("#long").css("background-color","#FFF");
+  }
+  if(val=='long'){
+    $("#short").css("background-color","#FFF");
+    $("#long").css("background-color","#36ca2624");
+  }
+  this.getDestinationList(val);
+}
+
 
   
 
   render() {
     const { destinationDetails } =  this.state;
-    console.log(destinationDetails);
+    const { DayExperiencesTag } =  this.state;
+    console.log(DayExperiencesTag);
     let destinationStr ='';
     if(destinationDetails){
       destinationStr = destinationDetails.map((val,i) =>
@@ -100,7 +125,7 @@ componentDidMount(){
             <h1 className="text-center white-text mt-85">Day Experiences
             </h1>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
-            <h2 className="text-center p-b50 white-text">Day Experiences, unless you take home some exceptional thought, a rare pearl of wisdom, a changed consciousness or a haunting memory of something bewitching.</h2>
+            <h2 className="text-center p-b50 white-text">{this.state.DayExperiencesTag}</h2>
           </div>
         </div>
         <div className="container">
@@ -109,8 +134,8 @@ componentDidMount(){
         <div className="container">
           <div className="row p-tb20">
             <div className="col-xl-8 col-md-8 col-sm-12 col-12"><button type="button" className="btn btn-grey-border">Sort by</button></div>
-            <div className="col-xl-2 col-md-2 col-sm-12 col-12"><button type="button" className="btn btn-grey-border">Short Trips</button></div>
-            <div className="col-xl-2 col-md-2 col-sm-12 col-12"><button type="button" className="btn btn-grey-border">Long Trips</button></div>
+            <div className="col-xl-2 col-md-2 col-sm-12 col-12"><button type="button" className="btn btn-grey-border" id="short" style={{"backgroundColor":"#36ca2624"}}><Link to="/destination#short" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'short'))}>Short Trips</Link></button></div>
+            <div className="col-xl-2 col-md-2 col-sm-12 col-12"><button type="button" className="btn btn-grey-border" id="long"><Link href="/destination#long" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'long'))}>Long Trips</Link></button></div>
           </div>
         </div>
         <div className="container">

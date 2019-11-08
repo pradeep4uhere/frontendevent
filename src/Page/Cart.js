@@ -34,6 +34,8 @@ class Cart extends React.Component {
           subTotalAfterGst:"0.00",
           user_id: sessionStorage.getItem('userid'),
           settingDetails:{},
+          style:"none",
+          styleDefault:"block"
 
         }
         
@@ -61,9 +63,9 @@ class Cart extends React.Component {
     axios.post(removeFromCartUrl, formData)
     .then((response) => {
       if(response.data.code==200) {
-            this.getCartList();
             this.setState({msg:"Item removed, cart is updated."});
             this.setState({classStr : "alert alert-success"});
+            this.updateCart();
       }else{
         console.log("Response Error");
       }
@@ -208,7 +210,9 @@ class Cart extends React.Component {
     .then((response) => {
       if(response.data.code==200) {
             this.setState({
-              cartList    : response.data
+                cartList    : response.data,
+                style       : "block",
+                styleDefault: "none"
               });
               let selectedOption = [];
               this.state.cartList.cart.forEach((val,i) => {
@@ -217,9 +221,11 @@ class Cart extends React.Component {
               });
               
               this.setState({optionValue:selectedOption});
+              this.setState({style:"block"});
 
 
       }else{
+        this.setState({cartList:[]});
         console.log("Response Error");
       }
     })
@@ -276,7 +282,7 @@ class Cart extends React.Component {
     const { gstAmount } = this.state;
     let settingDetails =  this.state;
     let data = this.state.settingDetails;
-    let price = (data.length>0) ? data[14].options_value : '';
+    let price = (data.length>0) ? data[14].options_value : '0.00';
 
     //let cartListItem = this.state.cartList;
     let cartItemArray = [];
@@ -317,19 +323,23 @@ class Cart extends React.Component {
     return (
         <div>
           <Header/>
-          <div className="container-fluid bg-maroon p-tb15">
+          <div className="container-fluid bg-maroon p-tb15" >
             <div className="container">
             <h1 className="text-center white-text mt-85">Cart 
             </h1>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
-            <h2 className="text-center  white-text">{this.state.cartList.TotalItem} items are added to your cart. You can edit your cart below or <p className="p-tb20">
+            <h2 className="text-center  white-text"  style={{"display":this.state.style}}>{this.state.cartList.TotalItem} items are added to your cart. You can edit your cart below or <p className="p-tb20">
                <a href="/" className="btn btn-red btn-lg btn-red-border1">CONTINUE SHOPPING</a></p>
             </h2>
+            <h2 className="text-center  white-text"  style={{"display":this.state.styleDefault}}>No items are added to your cart.  <p className="p-tb20">
+               <a href="/" className="btn btn-red btn-lg btn-red-border1">CONTINUE SHOPPING</a></p>
+            </h2>
+            
             </div>
         </div>
         <br/><br/><br/>
-        <div className="container">
-        <div className="row">
+        <div className="container" style={{"display":this.state.style}}>
+        <div className="row" >
           <div className="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
             <div className="col-lg-12">	  
             <h3 className="text-center p-tb15">Complete your order, You can use<span className="red-text"> Coupon For Discount </span> on this booking.</h3></div>
@@ -366,7 +376,7 @@ class Cart extends React.Component {
             {/* End */}
           </div>
         </div>
-        <div className="row py-5 p-4 bg-white rounded shadow-sm">
+        <div className="row py-5 p-4 bg-white rounded shadow-sm" >
           <div className="col-lg-6">
             <div className="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
             <div className="p-4">
@@ -406,7 +416,7 @@ class Cart extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+         </div>
         <br/>
         <br/><br/>
        

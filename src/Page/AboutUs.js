@@ -7,11 +7,10 @@ class AboutUs extends React.Component {
         this.state={
           
         }
-        
   }
-
-  
-
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
         <div>
@@ -47,8 +46,6 @@ There are many variations of passages of Lorem Ipsum available, but the majority
           </div>
         </div>
       </div>
-      <br/><br/><br/>
-       
         
       <Footer/>
         </div>
