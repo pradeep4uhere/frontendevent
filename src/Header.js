@@ -79,12 +79,12 @@ class Header extends React.Component {
     if (isLoggedIn) {
       console.log(this.state.userDetails);
       return <div class="dropdown">
-              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-              {"Welcome, "+this.state.first_name} <i class="fa fa-sign-out-alt"></i>
+              <button type="button" class="btn btn-danger">
+              <a href="/profile" style={{"color":"#FFF","textDecoration":"none"}}>{"Welcome, "+this.state.first_name} <i class="fa fa-user"></i></a>
               </button>
-              <div class="dropdown-menu">
+              {/* <div class="dropdown-menu">
                 <a class="dropdown-item" href="logout">Sign Out</a>
-              </div>
+              </div> */}
             </div>
     }
     return <Link className="nav-link" to="login"><img src="../rudra/images/ico_user.png" alt="" className="img-fluid" /></Link>;

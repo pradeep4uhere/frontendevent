@@ -36,6 +36,43 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
   <style>
+.page-header {
+    padding-bottom: 9px;
+    margin: auto;
+    border-bottom: 1px solid #eee;
+    font-size: 22px;
+}
+.page-header>small {
+    color: #666;
+    display: block;
+    margin-top: 5px;
+}
+.pull-right {
+    float: right!important;
+}
+.invoice {
+    position: relative;
+    background: #fff;
+    border: 1px solid #f4f4f4;
+    padding: 20px;
+    margin: auto;
+    font-size: 13px;
+}
+.address {
+    margin-bottom: 20px;
+    font-style: normal;
+    line-height: 1.42857143;
+}
+.list-group-item.active {
+    z-index: 2;
+    color: #fff  !important;
+    background-color: #fffed4f2 !important;
+    border-color: #dbe6e45e  !important;
+}
+ .hidden-sm-down{
+   color: #333;
+   font-weight: 500;
+ }   
 .wrap ul.wrap-nav1 ul li {
     display: block;
     font-size: 13px;
@@ -344,6 +381,8 @@ String.prototype.getDecimals || (String.prototype.getDecimals = function() {
         e = a.attr("step");
     b && "" !== b && "NaN" !== b || (b = 0), "" !== c && "NaN" !== c || (c = ""), "" !== d && "NaN" !== d || (d = 0), "any" !== e && "" !== e && void 0 !== e && "NaN" !== parseFloat(e) || (e = 1), jQuery(this).is(".plus") ? c && b >= c ? a.val(c) : a.val((b + parseFloat(e)).toFixed(e.getDecimals())) : d && b <= d ? a.val(d) : b > 0 && a.val((b - parseFloat(e)).toFixed(e.getDecimals())), a.trigger("change")
 });
+
+
 </script>
 
   

@@ -26,6 +26,10 @@ export const Constants = {
 	DESTINATION_EXP_LIST		: AppUrl+'/generalport/destinationexplist',
 	GET_LAST_ORDER_LIST			: AppUrl+'/generalport/lastorderlist',
 	GET_CITY_NAME_URL			: AppUrl+'/generalport/getcityname',
+	USER_EVENT_ORDER_LSIT_URL	: AppUrl+'/generalport/usereventorderlist',
+	USER_DETAILS_URL			: AppUrl+'/generalport/userdetails',
+	USER_UPDATE_URL				: AppUrl+'/generalport/userupdate',
+	GET_USER_ORDER_DETAILS_URL	: AppUrl+'/generalport/userorderdetails',
     IMG							: {
     								USER_PROFILE: '../theme/dist/img/user2-160x160.jpg',	
     			  				}

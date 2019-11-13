@@ -22,5 +22,10 @@ urlConstant = {
 	GET_DESTINATION_EXP_LIST_URL		:   config.API_HOST_URL+'/getdestinationexplist',
 	GET_LAST_ORADER_LIST				:   config.API_HOST_URL+'/lastorderlist',
 	GET_CITY_NAME_URL					:	config.API_HOST_URL+'/getcityname',
+	USER_ORDER_LIST_REQUEST				:	config.API_HOST_URL+'/usereventorderlist',
+	USER_DETAIL_REQUEST					:	config.API_HOST_URL+'/userdetails',
+	USER_UPDATE_API_REQUEST				:	config.API_HOST_URL+'/updateuser',
+	USER_ORDER_DETAILS_REQUEST			:	config.API_HOST_URL+'/usereventorderdetails',
+	
 }
 module.exports = urlConstant;

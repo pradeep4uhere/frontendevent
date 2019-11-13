@@ -48,6 +48,7 @@ class LoginForm extends React.Component{
               sessionStorage.setItem('email',response.data.user.email);
               sessionStorage.setItem('phone',response.data.user.phone);
               sessionStorage.setItem('userid',response.data.user.id);
+              sessionStorage.setItem('created_at',response.data.user.created_at);
               sessionStorage.setItem('token',response.data.token);
               this.setState({
                     redirectToReferrer : true,

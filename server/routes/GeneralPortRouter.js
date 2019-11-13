@@ -29,6 +29,132 @@ const GET_ALL_EVENT_LIST_URL	= urlConstant.GET_ALL_EVENT_LIST_URL;
 const GET_DESTINATION_EXP_LIST_URL	= urlConstant.GET_DESTINATION_EXP_LIST_URL;
 const GET_LAST_ORDER_LIST		= urlConstant.GET_LAST_ORADER_LIST;
 const GET_CITY_NAME_URL			= urlConstant.GET_CITY_NAME_URL;
+const USER_ORDER_LIST_REQUEST	= urlConstant.USER_ORDER_LIST_REQUEST;
+const USER_DETAIL_REQUEST		= urlConstant.USER_DETAIL_REQUEST;
+const USER_UPDATE_API_REQUEST       = urlConstant.USER_UPDATE_API_REQUEST;
+const USER_ORDER_DETAILS_REQUEST	= urlConstant.USER_ORDER_DETAILS_REQUEST;	
+
+
+
+
+GeneralPortRouter.route('/userorderdetails').post(function(req, res,next){
+    var token        	= req.body.token;
+    var id              = req.body.id;
+    var order_id        = req.body.order_id;
+    var postData ={
+            token	    : token,
+            id          : id,
+            order_id    : order_id
+    }
+    const options = {
+        method: 'POST',
+        uri: USER_ORDER_DETAILS_REQUEST,
+        body: postData,
+        json: true,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    console.log(options);
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
+
+
+
+GeneralPortRouter.route('/userdetails').post(function(req, res,next){
+    var token        	= req.body.token;
+    var id              = req.body.id;
+    var order_id        = req.body.order_id;
+    var postData ={
+            token	    : token,
+            id          : id,
+            order_id    : order_id
+    }
+    const options = {
+        method: 'POST',
+        uri: USER_DETAIL_REQUEST,
+        body: postData,
+        json: true,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    console.log(options);
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
+GeneralPortRouter.route('/userupdate').post(function(req, res,next){
+    var token        	= req.body.token;
+    var user            = req.body.body;
+    var postData ={
+            token	    : token,
+            user        : user
+    }
+    const options = {
+        method: 'POST',
+        uri: USER_UPDATE_API_REQUEST,
+        body: postData,
+        json: true,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    console.log(options);
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
+
+GeneralPortRouter.route('/usereventorderlist').post(function(req, res,next){
+    var token        	= req.body.token;
+    var id              = req.body.id;
+    var order_id        = req.body.order_id;
+    var postData ={
+            token	    : token,
+            id          : id,
+            order_id    : order_id
+    }
+    const options = {
+        method: 'POST',
+        uri: USER_ORDER_LIST_REQUEST,
+        body: postData,
+        json: true,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    console.log(options);
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
 
 
 GeneralPortRouter.route('/lastorderlist').post(function (req, res) {

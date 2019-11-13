@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
-import Dashboard from '../components/Dashboard';
+import Profile from '../components/Profile/Admin';
 import Login, {user} from '../Login/Login';
 import Logout from '../Logout';
 import NotFound from '../components/NotFound';
@@ -70,7 +70,7 @@ render() {
          <Router>
           <Switch>
               {/* <Route path="/" component={Dashboard} exact/> */}
-              <Route path="/dashboard" component={Dashboard}  />
+              <Route path="/profile" component={Profile}  />                
               <Route path="/" component={Index} exact/>
               <Route path="/logout" component={Logout} exact/>
               <Route path="/login" component={Login} exact/>
