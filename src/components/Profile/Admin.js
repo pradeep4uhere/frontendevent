@@ -81,6 +81,7 @@ class Cart extends React.Component {
     const { errorMessage } =  this.state;
     const { isError } = this.state;
     const {memberSince} = this.state;
+    
     return (
      
         <div>
@@ -111,10 +112,10 @@ class Cart extends React.Component {
                     <Link to='/myorder'><i style={{"color":"cadetblue"}} className="fas fa-shipping-fast"></i> <span className="hidden-sm-down">My Order</span></Link>
                     </li>
                     <li className="list-group-item" onClick={(e) => this.handleClick(e,'eventbooking')} id="eventbooking">
-                        <Link to="/eventbooking"><i style={{"color":"cadetblue"}} className="fas fa-calendar-check"></i>&nbsp;<span className="hidden-sm-down">Event Booking Order</span></Link>
+                        <Link to="/eventbooking/1"><i style={{"color":"cadetblue"}} className="fas fa-calendar-check"></i>&nbsp;<span className="hidden-sm-down">Event Booking Order</span></Link>
                     </li>
                     <li className="list-group-item" onClick={(e) => this.handleClick(e,'travelbooking')} id="travelbooking">
-                    <Link to="/travelbooking"><i style={{"color":"cadetblue"}} className="fas fa-plane-departure"></i>&nbsp;<span className="hidden-sm-down">Travel Booking Order</span></Link>
+                    <Link to="/travelbooking/2"><i style={{"color":"cadetblue"}} className="fas fa-plane-departure"></i>&nbsp;<span className="hidden-sm-down">Travel Booking Order</span></Link>
                     </li>
                     <li className="list-group-item" onClick={(e) => this.handleClick(e,'profileedit')} id="profileedit"><Link to='/profileedit'><i style={{"color":"cadetblue"}} className="fas fa-user-cog"></i>&nbsp;<span className="hidden-sm-down">Update Profile</span></Link></li>
                     <li className="list-group-item" onClick={(e) => this.handleClick(e,'changepassword')} id="changepassword"><Link to='/changepassword'><i style={{"color":"cadetblue"}} className="fas fa-key"></i>&nbsp;<span className="hidden-sm-down">Change Password</span></Link></li>
@@ -130,10 +131,10 @@ class Cart extends React.Component {
           <Route path='/profileview' component={ProfileView} />
           <Route path='/profileedit' component={ProfileEdit} />
           <Route path='/myorder' component={OrderHistory} />
-          <Route path='/eventbooking' component={OrderHistory} />
-          <Route path='/travelbooking' component={OrderHistory} />
+          <Route path='/eventbooking/:order_type' component={OrderHistory} />
+          <Route path='/travelbooking/:order_type' component={OrderHistory} />
           <Route path='/changepassword' component={ChangePassword} />
-          <Route path='/orderdetails/:orderid' component={OrderDetails} />
+          <Route path='/orderdetails/:orderid/:ordertype' component={OrderDetails} />
           
          
         </div>

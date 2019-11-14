@@ -8,6 +8,8 @@ var serialize = require('form-serialize');
 var ip = require('ip');
 const getCartList = Constants.GET_CART_LIST;
 const bookingPayment = Constants.BOOKING_PAYMENT;
+const urlStateList      = Constants.STATE_LIST;
+const urlCityList      = Constants.CITY_LIST;
 const token     = localStorage.getItem('token');
 
 class Cart extends React.Component {
@@ -15,6 +17,8 @@ class Cart extends React.Component {
         super(props);
         this.state={
           ipAdress : ip.address(),
+          dahsboardList : [],
+          cityList      : [],
           cartList : {"subTotal":"0.00","gstAmount":"0.00","offerValue":"0.00","total":"0.00"},
           msg      : "",
           classStr : "",
@@ -22,7 +26,8 @@ class Cart extends React.Component {
           offervalue: "0.00",
           offerId : this.props.location.search,
           isShow: false,
-
+          state_id      : "",
+          city_id       : "",
           user_id     : sessionStorage.getItem('userid'),
           first_name  : sessionStorage.getItem('first_name'),
           last_name   : sessionStorage.getItem('last_name'),
@@ -30,7 +35,6 @@ class Cart extends React.Component {
           phone       : sessionStorage.getItem('phone'),
           isLoggedIn  : false,
           userDetails : sessionStorage.getItem('userDetails'),
-          user_id: sessionStorage.getItem('userid'),
           errorMessage : '',
           isError :  false
 
@@ -40,15 +44,77 @@ class Cart extends React.Component {
         this.handleChangeForm    =  this.handleChangeForm.bind(this);
         this.handleSubmit        =  this.handleSubmit.bind(this);
         this.greeting            =  this.greeting.bind(this);
+        this.getStateList   =  this.getStateList.bind(this);
+        this.geCityList     =  this.geCityList.bind(this);
         //console.log(this.props.location.search);
   }
+
+
+  /******Get all the City list here********/   
+  geCityList(state_id){
+    var tokenStr = token;
+    const formData = {
+        token    : tokenStr,
+        id       : state_id,
+    }
+    axios.post(urlCityList, formData)
+    .then((response) => {
+      if(response.data.code==200) {
+            this.setState({
+                cityList:response.data.cityList,
+            });
+      }
+      else
+      {
+        
+      }
+    })
+    .catch((err) => {
+        
+    })
+}
+
+
+
+  /******Get all the state list here********/   
+  getStateList(){
+    var tokenStr = token;
+    const formData = {
+        token    : tokenStr,
+        id       : '',
+    }
+    axios.post(urlStateList, formData)
+    .then((response) => {
+      if(response.data.code==200) {
+            this.setState({
+                dahsboardList:response.data.stateList,
+                selectedStateId: this.props.id
+            });
+            var state_id = '';
+            this.geCityList(state_id);
+      }
+      else
+      {
+        
+      }
+    })
+    .catch((err) => {
+        
+    })
+}
+
+
 
 
 
   handleSubmit(event){
     event.preventDefault();
     $("#paybtn").attr('disabled','disabled');
-    var uid      = ip.toLong(this.state.ipAdress);
+    if(sessionStorage.getItem('userid')){
+      var uid      = this.state.user_id;
+    }else{
+      var uid      = ip.toLong(this.state.ipAdress);
+    }
     var offerId  = this.state.cartList.oid;
     var tokenStr = token;
     var bfname              = event.target.bfname.value;
@@ -213,15 +279,20 @@ class Cart extends React.Component {
 
   handleChangeForm(e){
     let idStr = e.target.id;
-    $("#"+idStr).css({"border":"1px solid #ccc"});     
-    let valueAction = '';
-    $('#checkbox').change(function () {
-      if ($(this).prop("checked")) {
-          $('#billing').fadeIn(200);
-      }else{
-        $('#billing').fadeOut();
-      }
-    });
+    if(idStr=='state'){
+      let state_id = e.target.value;
+      this.geCityList(state_id);
+    }else{
+      $("#"+idStr).css({"border":"1px solid #ccc"});     
+      let valueAction = '';
+      $('#checkbox').change(function () {
+        if ($(this).prop("checked")) {
+            $('#billing').fadeIn(200);
+        }else{
+          $('#billing').fadeOut();
+        }
+      });
+  }
   };
 
   setBilling(e){
@@ -255,6 +326,7 @@ class Cart extends React.Component {
               });
               
               this.setState({optionValue:selectedOption});
+              this.getStateList();
 
 
       }else{
@@ -284,6 +356,22 @@ class Cart extends React.Component {
     const style = this.state.isShow ? {display:'block'}:{display:'none'};
     const { errorMessage } =  this.state;
     const { isError } = this.state;
+    const {dahsboardList }  = this.state;
+    const { cityList }      = this.state;
+    const { state_id} = this.state;
+    const {city_id }= this.state;
+    let optionList = "";
+    if(this.state.dahsboardList.length>0){
+        optionList = this.state.dahsboardList.map((val,i) =>
+           <option value={val.id}>{val.state_name}</option>
+        );    
+    }
+    let optionCityList = "";
+    if(this.state.cityList.length>0){
+      optionCityList = this.state.cityList.map((val,i) =>
+            <option value={val.id}>{val.city_name}</option>
+        );    
+    } 
     return (
         <div>
           <Header/>
@@ -325,13 +413,18 @@ class Cart extends React.Component {
                       <input type="text" className="form-control" id="address2" name="address2" placeholder="Enter address line-2" onChange={((e) => this.handleChangeForm(e))}/>
                     </div>
                     <div className="form-group col-lg-6">
-                      <label htmlFor="exampleInputEmail1">City</label>
-                      <input type="text" className="form-control" id="city" placeholder="Enter City Name " name="city" onChange={((e) => this.handleChangeForm(e))}/>
-                    </div>  
+                    <label htmlFor="exampleInputEmail1">State</label>
+                      <select id="state" className="form-control" value={state_id} onChange={((e) => this.handleChangeForm(e))}>
+                        {optionList}
+                      </select> 
+                    </div>
                     <div className="form-group col-lg-6">
-                      <label htmlFor="exampleInputEmail1">State</label>
-                      <input type="text" className="form-control" id="state" placeholder="Enter State Name" name="state" onChange={((e) => this.handleChangeForm(e))}/>
-                    </div> 
+                          <label htmlFor="exampleInputEmail1">City</label>
+                          <select id="city" className="form-control" value={city_id} onChange={((e) => this.handleChangeForm(e))}>
+                            {optionCityList}
+                          </select>
+                    </div>
+                  
                     <div className="form-group col-lg-6">
                       <label htmlFor="exampleInputEmail1">Postcode / ZIP</label>
                       <input type="text" className="form-control" id="pincode" placeholder="Enter your zipcode" name="pincode" onChange={((e) => this.handleChangeForm(e))}/>

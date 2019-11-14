@@ -36,6 +36,7 @@
     "react": "^16.10.1",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.10.1",
+    "react-dropdown-select": "^3.6.7",
     "react-dropzone": "^10.1.9",
     "react-dropzone-component": "^3.2.0",
     "react-fade-in": "^0.1.6",

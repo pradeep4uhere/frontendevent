@@ -148,6 +148,7 @@ class EventDetails extends React.Component {
       .then((response) => {
         response = response.data;
         console.log(response);
+        // return false;
         if(response.code==200) {
             window.location.href = '/cart'; 
         }else if(response.code==500) {

@@ -31,10 +31,69 @@ const GET_LAST_ORDER_LIST		= urlConstant.GET_LAST_ORADER_LIST;
 const GET_CITY_NAME_URL			= urlConstant.GET_CITY_NAME_URL;
 const USER_ORDER_LIST_REQUEST	= urlConstant.USER_ORDER_LIST_REQUEST;
 const USER_DETAIL_REQUEST		= urlConstant.USER_DETAIL_REQUEST;
-const USER_UPDATE_API_REQUEST       = urlConstant.USER_UPDATE_API_REQUEST;
-const USER_ORDER_DETAILS_REQUEST	= urlConstant.USER_ORDER_DETAILS_REQUEST;	
+const USER_UPDATE_API_REQUEST   = urlConstant.USER_UPDATE_API_REQUEST;
+const USER_ORDER_DETAILS_REQUEST= urlConstant.USER_ORDER_DETAILS_REQUEST;	
+const STATE_LIST_REQUEST		= urlConstant.STATE_LIST_REQUEST;
+const CITY_LIST_REQUEST			= urlConstant.CITY_LIST_REQUEST;	
 
 
+
+
+GeneralPortRouter.route('/citylist').post(function(req, res,next){
+    var token        	= req.body.token;
+    var id              = req.body.id;
+    var postData ={
+            token	    : token,
+            id          : id,
+    }
+    const options = {
+        method: 'POST',
+        uri: CITY_LIST_REQUEST,
+        body: postData,
+        json: true,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    console.log(options);
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
+
+
+GeneralPortRouter.route('/statelist').post(function(req, res,next){
+    var token        	= req.body.token;
+    var id              = req.body.id;
+    var postData ={
+            token	    : token,
+            id          : id,
+    }
+    const options = {
+        method: 'POST',
+        uri: STATE_LIST_REQUEST,
+        body: postData,
+        json: true,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    console.log(options);
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
 
 
 GeneralPortRouter.route('/userorderdetails').post(function(req, res,next){
@@ -129,11 +188,13 @@ GeneralPortRouter.route('/userupdate').post(function(req, res,next){
 GeneralPortRouter.route('/usereventorderlist').post(function(req, res,next){
     var token        	= req.body.token;
     var id              = req.body.id;
-    var order_id        = req.body.order_id;
+	var order_id        = req.body.order_id;
+	var order_type        = req.body.order_type;
     var postData ={
             token	    : token,
             id          : id,
-            order_id    : order_id
+			order_id    : order_id,
+			order_type	: order_type
     }
     const options = {
         method: 'POST',

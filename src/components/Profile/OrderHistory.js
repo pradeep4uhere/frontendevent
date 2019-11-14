@@ -29,10 +29,12 @@ class OrderHistory extends React.Component{
             userDetails   : sessionStorage.getItem('userDetails'),
             user_id       : sessionStorage.getItem('userid'),
             errorMessage  : '',
-            isError       :  false
+            isError       : false,
+            order_type    : this.props.match.params.order_type
             
         }
         this.getEventOrderList       = this.getEventOrderList.bind(this);
+        //alert(this.props.match.params.order_type);
  
     }
 
@@ -43,7 +45,8 @@ class OrderHistory extends React.Component{
         const formData = {
             token    : tokenStr,
             id       : this.state.user_id,
-            order_id : ''
+            order_id : '',
+            order_type:this.props.match.params.order_type
         }
         axios.post(urlUserOrderList, formData)
         .then((response) => {
@@ -93,8 +96,16 @@ class OrderHistory extends React.Component{
     render(){
         const {dahsboardList } =  this.state;
         const { priceType } =  this.state;
-        console.log(dahsboardList.data);
+        const {order_type} = this.state;
         let orderList = "";
+        let title = 'All';
+        if(order_type==1){
+            title = 'Event';
+        }else if(order_type==2){
+            title = 'Travel';
+        }else{
+            title = 'All';
+        }
         if(this.state.dahsboardList.data){
           var urlStr ='orderdetails';  
           console.log("this is new ",this.state.dahsboardList.data);  
@@ -108,15 +119,19 @@ class OrderHistory extends React.Component{
                     <td><span class="label label-success">{val.order_status.status_type}</span></td>
                     <td><div className="sparkbar" data-color="#00a65a" data-height={20}>{priceType}{val.total_amount}</div></td>
                     <td><Moment format="DD-MMM-YYYY">{val.created_at}</Moment></td>
-                    <td><Link to={"/orderdetails/"+val.orderID}>View Details</Link></td>
+                    <td><Link to={"/orderdetails/"+val.orderID+'/'+val.order_type}><button className="btn btn-secondary btn-sm info">View Invoice</button></Link></td>
                 </tr>
            );    
         }
+
+
+
+        
         return(
             <div className="row">
                 {/* Left col */}
                 <div className="col-md-12">
-                <div class="text-white bg bg-danger  px-4 py-3 text-uppercase font-weight-bold"><i className="fas fa-list"></i>&nbsp;Latest Booking Orders</div>
+                <div class="text-white bg bg-danger  px-4 py-3 text-uppercase font-weight-bold"><i className="fas fa-list"></i>&nbsp;Latest {title} Booking Orders</div>
                 <div className="box box-info">
                 {/* /.box-header */}
                 <div className="box-body">

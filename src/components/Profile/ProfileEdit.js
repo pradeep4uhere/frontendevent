@@ -1,19 +1,25 @@
 import React from 'react';
 import Header from '../../InnerHeader';
 import Footer from '../../Footer';
-import Constants  from '../../config/Constants'
-import axios from 'axios'
-import $ from 'jquery'
+import StateDropdownList from '../Profile/StateDropdownList';
+import Select from "react-dropdown-select";
+import Constants  from '../../config/Constants';
+import axios from 'axios';
+import $ from 'jquery';
 var serialize = require('form-serialize');
 var ip = require('ip');
 const urlUserDetails  = Constants.USER_DETAILS_URL;
 const urlStrUpdate    = Constants.USER_UPDATE_URL;
+const urlStateList      = Constants.STATE_LIST;
+const urlCityList      = Constants.CITY_LIST;
 const token           = localStorage.getItem('token');
 class ProfileView extends React.Component {
   constructor(props) {
         super(props);
         this.state={
           userList      : {},  
+          dahsboardList : [],
+          cityList      : [],
           first_name    : '',
           last_name     : '',
           username      : '',
@@ -24,6 +30,8 @@ class ProfileView extends React.Component {
           postcode      : '',
           city_name     : "",
           state_name    : "",
+          state_id      : "",
+          city_id       : "",
           county_name   : "India",
           ipAdress      : ip.address(),
           user_id       : sessionStorage.getItem('userid'),
@@ -39,6 +47,8 @@ class ProfileView extends React.Component {
         this.getUserDetails =  this.getUserDetails.bind(this);
         this.handleSubmit   =  this.handleSubmit.bind(this); 
         this.handleChange   =  this.handleChange.bind(this); 
+        this.getStateList   =  this.getStateList.bind(this);
+        this.geCityList     =  this.geCityList.bind(this);
         
   }
 
@@ -54,14 +64,13 @@ class ProfileView extends React.Component {
       axios.post(urlUserDetails, formData)
       .then((response) => {
         if(response.data.code==200) {
-          console.log("dahsboardListBrfor+++++++++++++++++++++",response.data.userData);
               this.setState({
-                    userList:response.data.userData,
-                    orderList:response.data.userData.order,
-                    city_name:response.data.userData.city.city_name,
-                    state_name:response.data.userData.city.state_name,
-                    county_name:response.data.userData.country.name,
-                    priceType:response.data.settings[14]['options_value'],
+                    userList        : response.data.userData,
+                    orderList       : response.data.userData.order,
+                    city_name       : response.data.userData.city.city_name,
+                    state_name      : response.data.userData.city.state_name,
+                    county_name     : response.data.userData.country.name,
+                    priceType       : response.data.settings[14]['options_value'],
                     first_name      : response.data.userData.first_name,
                     last_name       : response.data.userData.last_name,
                     username        : response.data.userData.username,
@@ -70,10 +79,14 @@ class ProfileView extends React.Component {
                     address_2       : response.data.userData.address_2,
                     postcode        : response.data.userData.postcode,
                     phone           : response.data.userData.phone,
+                    state_id        : response.data.userData.state_id,
+                    selectedStateId : response.data.userData.state_id,
+                    city_id         : response.data.userData.city_id,
                 
 
               });
-              console.log("dahsboardListAfter+++++++++++++++++++++",response.data.userData);
+              this.getStateList();
+              
         }
         else
         {
@@ -102,11 +115,13 @@ class ProfileView extends React.Component {
     if(strid=='address_2'){
         this.setState({address_2 : e.target.value});
     }
-    if(strid=='state_name'){
-        this.setState({state_name : e.target.value});
+    if(strid=='state_id'){
+        this.setState({state_id : e.target.value});
+        this.setState({selectedStateId : e.target.value});
+        this.geCityList(e.target.value);
     }
-    if(strid=='city_name'){
-      this.setState({city_name : e.target.value});
+    if(strid=='city_id'){
+      this.setState({city_id : e.target.value});
     }
     if(strid=='postcode'){
       this.setState({postcode : e.target.value});
@@ -131,8 +146,8 @@ class ProfileView extends React.Component {
       const address_2 = this.state.address_2;
       const postcode = this.state.postcode;
       const phone = this.state.phone;
-      const state_name = this.state.state_name;
-      const city_name = this.state.city_name;
+      const state_id = this.state.state_id;
+      const city_id = this.state.city_id;
       const county_name = this.state.county_name;
       const formData = {
           token           : token,
@@ -141,11 +156,11 @@ class ProfileView extends React.Component {
                               last_name       : last_name,
                               street_address  : street_address,
                               address_2       : address_2,
-                              city_id       : city_name,
-                              state_id      : state_name,
+                              city_id         : city_id,
+                              state_id        : state_id,
                               postcode        : postcode,
                               phone           : phone,
-                              country_id     : county_name,
+                              country_id      : county_name,
                               id              : sessionStorage.getItem('userid'),
                             }
       }
@@ -188,7 +203,66 @@ class ProfileView extends React.Component {
 
   componentDidMount(){
      this.getUserDetails();
+     this.getStateList();
+     
   }
+
+
+  
+  
+  /******Get all the City list here********/   
+  geCityList(state_id){
+    var tokenStr = token;
+    const formData = {
+        token    : tokenStr,
+        id       : state_id,
+    }
+    axios.post(urlCityList, formData)
+    .then((response) => {
+      if(response.data.code==200) {
+            this.setState({
+                cityList:response.data.cityList,
+            });
+      }
+      else
+      {
+        
+      }
+    })
+    .catch((err) => {
+        
+    })
+}
+
+
+
+  /******Get all the state list here********/   
+  getStateList(){
+    var tokenStr = token;
+    const formData = {
+        token    : tokenStr,
+        id       : '',
+    }
+    axios.post(urlStateList, formData)
+    .then((response) => {
+      if(response.data.code==200) {
+            this.setState({
+                dahsboardList:response.data.stateList,
+                selectedStateId: this.props.id
+            });
+            var state_id = '';
+            this.geCityList(state_id);
+      }
+      else
+      {
+        
+      }
+    })
+    .catch((err) => {
+        
+    })
+}
+
 
 
 
@@ -199,6 +273,9 @@ class ProfileView extends React.Component {
     const { address_2 } = this.state;
     const { postcode } = this.state;
     const { phone } = this.state;
+    const { state_id} = this.state;
+    const {city_id }= this.state;
+    const { selectedStateId } = this.state;
 
 
     const { userList }    = this.state;
@@ -211,7 +288,21 @@ class ProfileView extends React.Component {
     const { classstr }      = this.state;
     const { message }       = this.state;
     const { isOverlay }     = this.state;
-    console.log("dahsboardList++++",userList);
+    const {dahsboardList }  = this.state;
+    const { cityList }      = this.state;
+    let optionList = "";
+        if(this.state.dahsboardList.length>0){
+            optionList = this.state.dahsboardList.map((val,i) =>
+               <option value={val.id}>{val.state_name}</option>
+            );    
+        }
+    let optionCityList = "";
+    if(this.state.cityList.length>0){
+      optionCityList = this.state.cityList.map((val,i) =>
+            <option value={val.id}>{val.city_name}</option>
+        );    
+    }    
+    
     return (
         <div>
          
@@ -240,16 +331,20 @@ class ProfileView extends React.Component {
             <input type="name" className="form-control" id="address_2" placeholder="Enter Address Line-1 Name" value={address_2}  onChange = { this.handleChange.bind(this)}/>
           </div>
           <div className="form-group col-lg-6">
-            <label htmlFor="exampleInputEmail1">City</label>
-            <input type="contact" className="form-control" id="city_name"  value={city_name} onChange = { this.handleChange.bind(this)} />
-          </div>  
+          <label htmlFor="exampleInputEmail1">State</label>
+            <select id="state_id" className="form-control" value={state_id} onChange = { this.handleChange.bind(this)}>
+              {optionList}
+            </select> 
+          </div>
           <div className="form-group col-lg-6">
-            <label htmlFor="exampleInputEmail1">State</label>
-            <input type="country" className="form-control" id="state_name" placeholder="Last Name" value={state_name} onChange = { this.handleChange.bind(this)}/>
+                <label htmlFor="exampleInputEmail1">City</label>
+                <select id="city_id" className="form-control" value={city_id} onChange = { this.handleChange.bind(this)}>
+                  {optionCityList}
+                </select>
           </div>
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Country</label>
-            <input type="country" className="form-control" id="county_name" placeholder="Last Name" value={county_name} onChange = { this.handleChange.bind(this)}/>
+            <input type="select" className="form-control" id="county_name" placeholder="Last Name" value={county_name} onChange = { this.handleChange.bind(this)}/>
           </div> 
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Postcode / ZIP</label>
