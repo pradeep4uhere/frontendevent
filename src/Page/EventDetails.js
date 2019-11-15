@@ -4,6 +4,7 @@ import Footer from '../Footer';
 import ImageSlider from '../Elements/ImageSlider';
 import Constants  from '../config/Constants'
 import axios from 'axios'
+import {Link, RichText, Date} from 'prismic-reactjs';
 var serialize = require('form-serialize');
 var ip = require('ip');
 const urlSettingStr = Constants.GENERAL_SETTING_URL;
@@ -215,12 +216,15 @@ class EventDetails extends React.Component {
             <h1 className="text-center white-text mt-85">{this.state.eventDetails.title}
             </h1><p className="text-white small text-center">{this.state.cityName}</p>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
-            <h2 className="text-center p-b50 white-text">{this.stripHtml(this.state.eventDetails.description)}</h2>
+            <p className=" p-b50 white-text">
+              <div dangerouslySetInnerHTML={{ __html: this.state.eventDetails.description }}/>
+            </p>
+            
           </div>
         </div>
         <div className="container">
         <ImageSlider galleryJson={this.state.eventgallery} name="hello" />
-        
+       
         <div className="row">
           <div className="col-xl-8">
            {/* Nav tabs */}
@@ -240,18 +244,20 @@ class EventDetails extends React.Component {
           
         </ul>
         {/* Tab panes */}
+        
         <div className="tab-content">
           <div id="home" className="container tab-pane active"><br />
-          {this.stripHtml(this.state.eventTiming.itinerary)}
+          
+          <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.itinerary }}/>
           </div>
           <div id="menu1" className="container tab-pane fade"><br />
-          {this.stripHtml(this.state.eventTiming.includes)}
+          <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.includes }}/>
           </div>
           <div id="menu2" className="container tab-pane fade"><br />
-          {this.stripHtml(this.state.eventTiming.dincludes)}
+          <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.dincludes }}/>
           </div>
           <div id="menu21" className="container tab-pane fade"><br />
-          {this.stripHtml(this.state.eventTiming.other)}
+          <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.other }}/>
           </div>
         </div>
 
