@@ -36,6 +36,37 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
   <style>
+ .carousel .slide {
+    min-width: 101% !important;
+    margin: 0;
+    position: relative;
+    text-align: center;
+    background: #e7e7e7 !important;
+}
+.thumb{
+    display: none !important;
+}
+
+.carousel.carousel-slider .control-arrow {
+    background: rgba(0,0,0,.5) !important;
+}
+
+.carousel .control-dots .dot {
+    /* -webkit-transition: opacity .25s ease-in;
+    transition: opacity .25s ease-in;
+    opacity: .3;
+    box-shadow: 1px 1px 2px rgba(218, 0, 0, 0.9) !important;
+    background: #ff0f0f !important;
+    border-radius: 50%;
+    width: 15px !important;
+    height: 15px !important;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 8px;
+    bottom: -50px !important; */
+    display: none !important; 
+}
+
 .card .bg-danger {
     background-color: #9a0010 !important;
 }

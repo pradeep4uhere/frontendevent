@@ -112,6 +112,12 @@ getBannerList(){
         let title3   = data[2]['title']
         let place3   = data[2]['place']
         let image3   = data[2]['image']
+
+        let eventid4 = data[3]['event_id']
+        let details4 = data[3]['id']
+        let title4   = data[3]['title']
+        let place4   = data[3]['place']
+        let image4   = data[3]['image']
         $("#rowStr").append('<div class="col-xl-6 padding-0 col-lg-6"><div class="list-small-placeholder"><h1 class="text-center"><a href="day-exp-detail/31-156" class="link-exp">'+title1+'</a></h1><p class="sep"></p><p class="text-center small text-uppercase">'+place1+'</p></div><div class="parent element-list wd-100"><div class="child bg-five col-lg-12" style="backgroundSize: cover;background: url(&quot;'+image1+'&quot;);"><a href="day-exp-detail/31-156"></a></div></div></div>');
         $("#rowStr").append('<div class="col-xl-6 padding-0 parent1 col-lg-6 col-md-12"><div class="z-1 list-large-placeholder col-xl-12  col-lg-12 col-md-10"><h1 class=" white-text text-center"><a href="day-exp-detail/28-160" style="color: rgb(255, 255, 255); text-decoration: none;">'+title2+'</a></h1><p class="sep-white1"></p><p class="small white-text text-center text-uppercase">'+place2+'</p></div><div class="child bg-two col-lg-12 col-md-10" style="backgroundSize: cover; background: url(&quot;'+image2+'&quot;);">&nbsp;</div></div>');
         $("#rowStr").append('<div class="col-xl-6 padding-0 parent1 col-lg-6 col-md-12"><div class="z-1 list-large-placeholder col-xl-12  col-lg-12 col-md-10"><h1 class=" white-text text-center"><a href="day-exp-detail/28-160" style="color: rgb(255, 255, 255); text-decoration: none;">'+title3+'</a></h1><p class="sep-white1"></p><p class="small white-text text-center text-uppercase">'+place3+'</p></div><div class="child bg-two col-lg-12 col-md-10" style="backgroundSize: cover; background: url(&quot;'+image3+'&quot;);">&nbsp;</div></div>');
@@ -121,6 +127,11 @@ getBannerList(){
 
   render() {
     let eventFinalStr = "";
+    let eventid4 = '';
+    let details4 = '';
+    let title4= '';
+    let place4= '';
+    let image4= '';
     if(this.state.eventFinalArr.length>0){
       console.log(this.state.eventFinalArr);
       let eventid1 = this.state.eventFinalArr[0]['event_id'];
@@ -141,11 +152,19 @@ getBannerList(){
       let place3= this.state.eventFinalArr[2]['place'];
       let image3= this.state.eventFinalArr[2]['image'];
 
-      let eventid4 = this.state.eventFinalArr[3]['event_id'];
-      let details4 = this.state.eventFinalArr[3]['id'];
-      let title4= this.state.eventFinalArr[3]['title'];
-      let place4= this.state.eventFinalArr[3]['place'];
-      let image4= this.state.eventFinalArr[3]['image'];
+      if(this.state.eventFinalArr.length>3){
+        let eventid4 = this.state.eventFinalArr[3]['event_id'];
+        let details4 = this.state.eventFinalArr[3]['id'];
+        let title4= this.state.eventFinalArr[3]['title'];
+        let place4= this.state.eventFinalArr[3]['place'];
+        let image4= this.state.eventFinalArr[3]['image'];
+     }else{
+        let eventid4 = '';
+        let details4 = '';
+        let title4= '';
+        let place4= '';
+        let image4= '';
+     }
       eventFinalStr = 
           <div className="row" id="rowStr">
           <div className="col-xl-6 padding-0 col-lg-6">

@@ -3,13 +3,15 @@ import EventItem from './Elements/EventItem';
 import Constants  from './config/Constants'
 import axios from 'axios'
 import $ from 'jquery';
-
-const urlStr = Constants.POPULAR_EVENT_LIST_URL;
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+ const urlStr = Constants.POPULAR_EVENT_LIST_URL;
 const token     = localStorage.getItem('token');
 class PopularEvent extends React.Component {
   constructor() {
         super();
         this.state={
+          Item: [],
           eventDetails:[
             {
               id:100,
@@ -43,6 +45,7 @@ class PopularEvent extends React.Component {
             ]
         }
         this.getEventList       = this.getEventList.bind(this);
+        this.getItem            = this.getItem.bind(this);
   }
 
 
@@ -76,11 +79,28 @@ class PopularEvent extends React.Component {
   componentDidMount(){
     this.getEventList();
   }
-
+  getItem(Item){
+    let listItems ='';
+    if(Item.length>0){
+      listItems = Item.map((val,i) =>
+          <EventItem eventDetails={val}/>
+      );
+      return listItems;
+    }
+    
+      // <EventItem eventDetails={Item[0]}/>
+    //return listItems;
+   }
   render() {
     const { postList }= this.props;
     const {eventDetails} = this.state;
-    console.log(eventDetails);
+    // console.log(eventDetails);
+    let listItems ='';
+    listItems = this.state.eventDetails.map((Item,i) =>
+       <div>
+            {this.getItem(Item)}
+       </div>
+    );
     return (
         <div>
         <div className="container p-b50">
@@ -93,37 +113,12 @@ class PopularEvent extends React.Component {
         <div className="container">
               <div className="row blog">
                 <div className="col-md-12">
-                  <div id="blogCarousel" className="carousel slide" data-ride="carousel">
-                    <ol className="carousel-indicators">
-                      <li data-target="#blogCarousel" data-slide-to={0} className="active" />
-                      <li data-target="#blogCarousel" data-slide-to={1} />
-                    </ol>
-                    {/* Carousel items */}
-                    <div className="carousel-inner">
-                      <div className="carousel-item active">
-                        <div className="row">
-                        <EventItem eventDetails={this.state.eventDetails[0]}/>
-                        <EventItem eventDetails={this.state.eventDetails[1]} />
-                        <EventItem eventDetails={this.state.eventDetails[2]}/>
-                        <EventItem eventDetails={this.state.eventDetails[3]}/>
-                        </div>
-                        {/*.row*/}
-                      </div>
-                      {/*.item*/}
-                      <div className="carousel-item">
-                        <div className="row">
-                        <EventItem eventDetails={this.state.eventDetails[0]}/>
-                        <EventItem eventDetails={this.state.eventDetails[1]}/>
-                        <EventItem eventDetails={this.state.eventDetails[2]}/>
-                        <EventItem eventDetails={this.state.eventDetails[3]}/>
+                <Carousel>
+                  {listItems}
+                  <div style={{"display":"none"}}>
+                      <img src="assets/3.jpeg" />
                   </div>
-                  {/*.row*/}
-                </div>
-                {/*.item*/}
-              </div>
-              {/*.carousel-inner*/}
-            </div>
-            {/*.Carousel*/}
+              </Carousel>
           </div>
         </div>
       </div>
