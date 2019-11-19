@@ -224,13 +224,13 @@ class EventDetails extends React.Component {
         <div className="container">
         <ImageSlider galleryJson={this.state.eventgallery} name="hello" />
        <br/><br/>
-       <div className="row">
+       {/* <div className="row">
           <div className="col-xl-12 bg bg-white">
           <p style={{"padding":"15px"}}>
           <div dangerouslySetInnerHTML={{ __html: this.state.eventDetails.long_description }}/>
           </p>
           </div></div>
-          <br/><br/>
+          <br/><br/> */}
         <div className="row">
           <div className="col-xl-8">
            {/* Nav tabs */}
@@ -243,7 +243,7 @@ class EventDetails extends React.Component {
             <a className="nav-link" data-toggle="tab" href="#menu1">Includes</a>
           </li>
           <li className="nav-item tabs">
-            <a className="nav-link" data-toggle="tab" href="#menu2">Doesn’t Includes</a>
+            <a className="nav-link" data-toggle="tab" href="#menu2">Exclusions</a>
           </li>
           <li className="nav-item tabs">
             <a className="nav-link" data-toggle="tab" href="#menu21">Other Information</a>
