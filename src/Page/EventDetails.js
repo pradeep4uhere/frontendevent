@@ -218,19 +218,26 @@ class EventDetails extends React.Component {
             <div className="bg-whitegrid"><p className="sep-white" /></div>
             <h2 className="text-center p-b50 white-text">
               <div dangerouslySetInnerHTML={{ __html: this.state.eventDetails.description }}/>
-              </h2>
-            
+            </h2>
           </div>
         </div>
         <div className="container">
         <ImageSlider galleryJson={this.state.eventgallery} name="hello" />
        <br/><br/>
+       <div className="row">
+          <div className="col-xl-12 bg bg-white">
+          <p style={{"padding":"15px"}}>
+          <div dangerouslySetInnerHTML={{ __html: this.state.eventDetails.long_description }}/>
+          </p>
+          </div></div>
+          <br/><br/>
         <div className="row">
           <div className="col-xl-8">
            {/* Nav tabs */}
+           
         <ul className="nav nav-tabs">
           <li className="nav-item tabs">
-            <a className="nav-link active" data-toggle="tab" href="#home">Itinerary</a>
+            <a className="nav-link active" data-toggle="tab" href="#menu22">Itinerary</a>
           </li>
           <li className="nav-item tabs">
             <a className="nav-link" data-toggle="tab" href="#menu1">Includes</a>
@@ -239,14 +246,14 @@ class EventDetails extends React.Component {
             <a className="nav-link" data-toggle="tab" href="#menu2">Doesn’t Includes</a>
           </li>
           <li className="nav-item tabs">
-            <a className="nav-link" data-toggle="tab" href="#menu21">Other Info</a>
+            <a className="nav-link" data-toggle="tab" href="#menu21">Other Information</a>
           </li>
           
         </ul>
         {/* Tab panes */}
         
         <div className="tab-content">
-          <div id="home" className="container tab-pane active"><br />
+          <div id="menu22" className="container tab-pane  active"><br />
           
           <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.itinerary }}/>
           </div>
@@ -264,8 +271,8 @@ class EventDetails extends React.Component {
 
 	
           </div>
+          <div className="col-xl-4">
           <form role="form" onSubmit={this.handleSubmit}  id="form-event">
-          <div className="col-xl-12">
             
             <div className="shadow-block text-center">
             <p><span className="price-red-large" style={{"fontSize":"24px","fontWeight":"bold"}}>{this.state.eventDetails.title}</span><hr/></p>
@@ -284,8 +291,8 @@ class EventDetails extends React.Component {
                 <input type="hidden" id="hiddenId" value={this.state.eventTiming.id}/>
                 <button type="submit" class="btn btn-red  btn-lg btn-block text-uppercase">Book Now</button>
               </p></div>
-          </div>
           </form>
+          </div>
         </div>
       </div>
       <br/><br/><br/>

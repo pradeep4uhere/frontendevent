@@ -882,10 +882,12 @@ GeneralPortRouter.route('/getbannerlist').post(function (req, res) {
 GeneralPortRouter.route('/getalleventlist').post(function (req, res) {
     var sess = {token: '',user: {}};
 	var token        	= req.body.token;
+	var page_no        	= req.body.next_page;
     var postData 		={
 		token		 : token,
+		page_no		 : page_no
 	}
-	console.log(postData);
+	console.log(req.body);
     const options = {
 					    method: 'POST',
 					    uri: GET_ALL_EVENT_LIST_URL,

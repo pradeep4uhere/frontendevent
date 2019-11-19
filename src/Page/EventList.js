@@ -14,7 +14,9 @@ class EventList extends React.Component {
                     nextUrl : '',
                     eventDetails:[],
                     total:0,
-                    setting:[]
+                    setting:[],
+                    next_page:0
+
                   }
           this.handleClick  = this.handleClick.bind(this);
   }
@@ -27,15 +29,16 @@ getBannerList(){
   var tokenStr = token;
   const formData = {
       token    : tokenStr,
-      urlParams: this.state.urlParams
+      urlParams: this.state.urlParams,
+      next_page: this.state.next_page
   }
   axios.post(urlStr, formData)
   .then((response) => {
     if(response.data.code==200) {
           this.setState({
             eventFinalArr     : response.data.eventFinalArr,
-            nextUrl           : response.data.eventPaginationData.next_page_url,
-            total             : response.data.eventPaginationData.total,
+            next_page           : response.data.next_page,
+            total             : response.data.total,
             experiencesTag    : response.data.setting[21].options_value
           });
           console.log(response.data.eventPaginationData);
@@ -55,25 +58,28 @@ getBannerList(){
   
 
   componentDidMount(){
+    $('#noloadMore').hide();
     this.getBannerList();
   }
 
 
   handleClick(e) {
     e.preventDefault();
-    let nextUrl = this.state.nextUrl;
+    let next_page = this.state.next_page;
     var tokenStr = token;
     const formData = {
       token    : tokenStr,
-      urlParams: this.state.urlParams
+      urlParams: this.state.urlParams,
+      next_page: next_page
     }
-    axios.get(nextUrl, formData)
+    axios.post(urlStr, formData)
     .then((response) => {
       if(response.data.code==200) {
             this.setState({
-              nextUrl         : response.data.eventPaginationData.next_page_url
+              next_page         : response.data.next_page,
+              eventDetails      : response.data.eventFinalArr
             });
-            this.state.eventDetails.push(response.data.eventFinalArr);
+            //this.state.eventDetails.push(response.data.eventFinalArr);
 
            console.log("New REsposmnse==",this.state.eventDetails);
            this.getMoreLoad();
@@ -93,36 +99,46 @@ getBannerList(){
 
   getMoreLoad(){
        let eventFinalStr= '';
-       let data =this.state.eventDetails[0];
-       if(data.length>0){
-        let eventid1 = data[0]['event_id'];
-        let details1 = data[0]['id']
-        let title1   = data[0]['title']
-        let place1   = data[0]['place']
-        let image1   = data[0]['image']
-
-        let eventid2 = data[1]['event_id']
-        let details2 = data[1]['id']
-        let title2   = data[1]['title']
-        let place2   = data[1]['place']
-        let image2   = data[1]['image']
-
-        let eventid3 = data[2]['event_id']
-        let details3 = data[2]['id']
-        let title3   = data[2]['title']
-        let place3   = data[2]['place']
-        let image3   = data[2]['image']
-
-        let eventid4 = data[3]['event_id']
-        let details4 = data[3]['id']
-        let title4   = data[3]['title']
-        let place4   = data[3]['place']
-        let image4   = data[3]['image']
-        $("#rowStr").append('<div class="col-xl-6 padding-0 col-lg-6"><div class="list-small-placeholder"><h1 class="text-center"><a href="day-exp-detail/31-156" class="link-exp">'+title1+'</a></h1><p class="sep"></p><p class="text-center small text-uppercase">'+place1+'</p></div><div class="parent element-list wd-100"><div class="child bg-five col-lg-12" style="backgroundSize: cover;background: url(&quot;'+image1+'&quot;);"><a href="day-exp-detail/31-156"></a></div></div></div>');
-        $("#rowStr").append('<div class="col-xl-6 padding-0 parent1 col-lg-6 col-md-12"><div class="z-1 list-large-placeholder col-xl-12  col-lg-12 col-md-10"><h1 class=" white-text text-center"><a href="day-exp-detail/28-160" style="color: rgb(255, 255, 255); text-decoration: none;">'+title2+'</a></h1><p class="sep-white1"></p><p class="small white-text text-center text-uppercase">'+place2+'</p></div><div class="child bg-two col-lg-12 col-md-10" style="backgroundSize: cover; background: url(&quot;'+image2+'&quot;);">&nbsp;</div></div>');
-        $("#rowStr").append('<div class="col-xl-6 padding-0 parent1 col-lg-6 col-md-12"><div class="z-1 list-large-placeholder col-xl-12  col-lg-12 col-md-10"><h1 class=" white-text text-center"><a href="day-exp-detail/28-160" style="color: rgb(255, 255, 255); text-decoration: none;">'+title3+'</a></h1><p class="sep-white1"></p><p class="small white-text text-center text-uppercase">'+place3+'</p></div><div class="child bg-two col-lg-12 col-md-10" style="backgroundSize: cover; background: url(&quot;'+image3+'&quot;);">&nbsp;</div></div>');
+       let data =this.state.eventDetails;
+       if ('0' in data){
+            let eventid1 = data[0]['event_id'];
+            let details1 = data[0]['id']
+            let title1   = data[0]['title']
+            let place1   = data[0]['place']
+            let image1   = data[0]['image']
+            $("#rowStr").append('<div class="col-xl-6 padding-0 col-lg-6"><div class="list-small-placeholder"><h1 class="text-center"><a href="day-exp-detail/31-156" class="link-exp">'+title1+'</a></h1><p class="sep"></p><p class="text-center small text-uppercase">'+place1+'</p></div><div class="parent element-list wd-100"><div class="child bg-five col-lg-12" style="backgroundSize: cover;background: url(&quot;'+image1+'&quot;);"><a href="day-exp-detail/31-156"></a></div></div></div>');
+       }
+       if ('1' in data){
+          let eventid2 = data[1]['event_id']
+          let details2 = data[1]['id']
+          let title2   = data[1]['title']
+          let place2   = data[1]['place']
+          let image2   = data[1]['image']
+          $("#rowStr").append('<div class="col-xl-6 padding-0 parent1 col-lg-6 col-md-12"><div class="z-1 list-large-placeholder col-xl-12  col-lg-12 col-md-10"><h1 class=" white-text text-center"><a href="day-exp-detail/28-160" style="color: rgb(255, 255, 255); text-decoration: none;">'+title2+'</a></h1><p class="sep-white1"></p><p class="small white-text text-center text-uppercase">'+place2+'</p></div><div class="child bg-two col-lg-12 col-md-10" style="backgroundSize: cover; background: url(&quot;'+image2+'&quot;);">&nbsp;</div></div>');
+        }
+        if ('2' in data){
+          let eventid3 = data[2]['event_id']
+          let details3 = data[2]['id']
+          let title3   = data[2]['title']
+          let place3   = data[2]['place']
+          let image3   = data[2]['image']
+          $("#rowStr").append('<div class="col-xl-6 padding-0 parent1 col-lg-6 col-md-12"><div class="z-1 list-large-placeholder col-xl-12  col-lg-12 col-md-10"><h1 class=" white-text text-center"><a href="day-exp-detail/28-160" style="color: rgb(255, 255, 255); text-decoration: none;">'+title3+'</a></h1><p class="sep-white1"></p><p class="small white-text text-center text-uppercase">'+place3+'</p></div><div class="child bg-two col-lg-12 col-md-10" style="backgroundSize: cover; background: url(&quot;'+image3+'&quot;);">&nbsp;</div></div>');
+        }
+       if('3' in data){
+            let eventid4 = data[3]['event_id']
+            let details4 = data[3]['id']
+            let title4   = data[3]['title']
+            let place4   = data[3]['place']
+            let image4   = data[3]['image']
+            $("#rowStr").append('<div class="col-xl-6 padding-0 col-lg-6"><div class="list-small-placeholder"><h1 class="text-center"><a href="day-exp-detail/31-156" class="link-exp">'+title4+'</a></h1><p class="sep"></p><p class="text-center small text-uppercase">'+place4+'</p></div><div class="parent element-list wd-100"><div class="child bg-five col-lg-12" style="backgroundSize: cover;background: url(&quot;'+image4+'&quot;);"><a href="day-exp-detail/31-156"></a></div></div></div>');
       }
-  }
+      if(this.state.next_page=='-1'){
+        $('#loadMore').hide();
+        $('#noloadMore').show();
+      }else{
+        $('#noloadMore').hide();
+      }
+    }
 
 
   render() {
@@ -133,7 +149,6 @@ getBannerList(){
     let place4= '';
     let image4= '';
     if(this.state.eventFinalArr.length>0){
-      console.log(this.state.eventFinalArr);
       let eventid1 = this.state.eventFinalArr[0]['event_id'];
       let details1 = this.state.eventFinalArr[0]['id'];
       let title1= this.state.eventFinalArr[0]['title'];
@@ -152,19 +167,12 @@ getBannerList(){
       let place3= this.state.eventFinalArr[2]['place'];
       let image3= this.state.eventFinalArr[2]['image'];
 
-      if(this.state.eventFinalArr.length>3){
-        let eventid4 = this.state.eventFinalArr[3]['event_id'];
-        let details4 = this.state.eventFinalArr[3]['id'];
-        let title4= this.state.eventFinalArr[3]['title'];
-        let place4= this.state.eventFinalArr[3]['place'];
-        let image4= this.state.eventFinalArr[3]['image'];
-     }else{
-        let eventid4 = '';
-        let details4 = '';
-        let title4= '';
-        let place4= '';
-        let image4= '';
-     }
+      let eventid4 = this.state.eventFinalArr[3]['event_id'];
+      let details4 = this.state.eventFinalArr[3]['id'];
+      let title4= this.state.eventFinalArr[3]['title'];
+      let place4= this.state.eventFinalArr[3]['place'];
+      let image4= this.state.eventFinalArr[3]['image'];
+
       eventFinalStr = 
           <div className="row" id="rowStr">
           <div className="col-xl-6 padding-0 col-lg-6">
@@ -230,14 +238,17 @@ getBannerList(){
         <div className="container">
          <div className="col-xl-12 m-ft66 text-center"><img src="../rudra/images/ticket-combo.png" alt="" className="img-fluid" /></div>
         </div>
-        <div className="container-fluid bg-dmaroon p-t100 p-b50 white-text text-center m-ft80">Total {this.state.total-3} RudraXp experiences are listed below: </div>
+        <div className="container-fluid bg-dmaroon p-t100 p-b50 white-text text-center m-ft80">Total {this.state.total} RudraXp experiences are listed below: </div>
         <div className="container bg-grey">
         {eventFinalStr}
         </div>
         <div className="container bg-grey">
         <div className="row">
-          <div className="col-xl-12 padding-0 col-lg-12 col-md-10">
+          <div className="col-xl-12 padding-0 col-lg-12 col-md-10" id="loadMore">
             <button type="button" className="btn btn-red btn-lg btn-block text-uppercase" onClick={this.handleClick} ><span className="small">View More</span></button>
+          </div>
+          <div className="col-xl-12 padding-0 col-lg-12 col-md-10 alert alert-danger text-center" id="noloadMore">
+            <span className="small">No More Event</span>
           </div>
         </div>
         </div>
