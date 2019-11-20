@@ -295,7 +295,7 @@ class Cart extends React.Component {
               <div className="p-2">
                 <img src={val.attributes.event_image} alt="" width={70} className="img-fluid rounded shadow-sm" />
                 <div className="ml-3 d-inline-block align-middle">
-                  <h5 className="mb-0"> <a href="itinerary_detail.html" className="text-dark d-inline-block">{val.name}</a></h5>
+                  <h5 className="mb-0"> <a href="#" className="text-dark d-inline-block">{val.name}</a></h5>
                   <span className="text-muted font-weight-normal font-italic">Sitting Type: {val.attributes.seating_type_name}</span>
                 </div>
               </div>

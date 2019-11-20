@@ -36,8 +36,61 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
   <style>
+.detailsBtnText{
+  font-size: 14px !important;
+}
+.sidenavDetails{
+  background-color: none;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  opacity: 0.9;
+}
+
+
+.sidenavDetails a {
+  padding: 8px 8px 8px 8px;
+  text-decoration: none;
+  font-size: 13px;
+  color: #000000;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenavDetails a:hover {
+  color: #000000;
+}
+
+.sidenavDetails .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.cardBody{
+  font-size: 13px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #000;
+  text-align: left;
+  padding: 15px 15px 15px 25px;   
+}
 .image-gallery{
     margin-top: -75px !important;
+}
+.card-body .image-gallery{
+    margin-top: 0px !important;
 }
  .carousel .slide {
     min-width: 101% !important;
@@ -68,6 +121,13 @@
     margin: 0 8px;
     bottom: -50px !important; */
     display: none !important; 
+}
+
+.listGroupItemButtonActive  {
+    z-index: 2;
+    color: #fff;
+    background-color: #007bff !important;
+    border-color: #007bff !important;
 }
 
 .card .bg-danger {

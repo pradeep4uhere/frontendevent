@@ -85,6 +85,18 @@ handleSort(e,val){
   this.getDestinationList();
 }
 
+
+// getDefaultImage(destination_gallery){
+//   let defaultImage = '';
+//   if(destination_gallery.length>0){
+//     destination_gallery.map((val,i) =>{
+//       if(val.is_default==1){
+//         return val.
+//       }
+//     });
+//   }
+// }
+
   
 
   render() {
@@ -130,7 +142,7 @@ handleSort(e,val){
         </div>
         <div className="container">
           <div className="row p-tb20">
-            <div className="col-xl-8 col-md-8 col-sm-12 col-12"><button type="button" className="btn btn-grey-border">Sort By</button></div>
+            <div className="col-xl-8 col-md-8 col-sm-12 col-12"><a className=" btn-grey-border">Sort By</a></div>
             <div className="col-xl-2 col-md-2 col-sm-12 col-12"><button type="button" className="btn btn-grey-border" id="short" style={{"backgroundColor":"#36ca2624"}}><Link to="/destination#short" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'short'))}>Short Trips</Link></button></div>
             <div className="col-xl-2 col-md-2 col-sm-12 col-12"><button type="button" className="btn btn-grey-border" id="long"><Link href="/destination#long" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'long'))}>Long Trips</Link></button></div>
           </div>

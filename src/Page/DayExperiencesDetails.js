@@ -6,6 +6,7 @@ import axios from 'axios'
 import $ from 'jquery'
 import Constants  from '../config/Constants'
 import DefaultImage  from '../config/default.png';
+import { Link } from 'react-router-dom';
 var serialize = require('form-serialize');
 var ip = require('ip');
 const urlStr = Constants.DESTINATION_EXP_LIST;
@@ -20,13 +21,26 @@ class DayExperiencesDetails extends React.Component {
       destinationDetails:[],
       itinerary_day:[],
       departure_date:[],
-      
+      itinerary_addon:[],
+      itinerary_terms:[],
     }
     this.stripHtml            = this.stripHtml.bind(this);
     this.getDestinationList   = this.getDestinationList.bind(this);
     this.checkDeparture       = this.checkDeparture.bind(this);
+    this.openNav =  this.openNav.bind(this);
+    this.closeNav =  this.closeNav.bind(this);
     
 }
+
+openNav() {
+  $("#mySidenavDetails").css({"width":"100%"});
+  //document.getElementById("mySidenav").style.width = "100%";
+  }
+  
+  closeNav() {
+  $("#mySidenavDetails").css({"width":"0"});
+  // document.getElementById("mySidenav").style.width = "0";
+  }
 
 stripHtml(html){
   // Create a new div element
@@ -53,7 +67,9 @@ getDestinationList(){
             destinationDetails    : response.data.data[0],
             defaultImage          : response.data.data.defaultImg,
             itinerary_day         : response.data.data[0].itinerary_day,
+            itinerary_terms       : response.data.data[0].itinerary_terms_and_conditions,
             departure_date        : response.data.data[0].valid_itinerary_departure,
+            itinerary_addon       : response.data.data[0].itinerary_addon,
           });
     }
     else
@@ -124,8 +140,10 @@ selectDeparture(val,e){
     const { itinerary_day } = this.state;
     let placeTitle = '';
     let daysStr ='';
+    let addonStr = '';
     let basePrice  = '0.00';
     let departureDate = '';
+    let termsStr  = '';
     const { defaultImage } = this.state;
     
     if(this.state.itinerary_day.length){
@@ -147,17 +165,44 @@ selectDeparture(val,e){
                     <ImageSlider galleryJson={val.itinerary_day_gallery} name="hello" />):""}
                     </div>
                     <div className="col-xl-12" style={{"fontSize":"14px"}}><br />
-                    {this.stripHtml(val.details)}
+                    <div dangerouslySetInnerHTML={{ __html: val.details }}/>
                     </div>
                 </div>  
                 </div>
             </div>
         </div>
      );
-
-     
-
     }
+
+    if(this.state.itinerary_addon.length){
+      addonStr = this.state.itinerary_addon.map((val,i) => 
+        <div className="card">
+            <div className="card-header" role="tab" id={"headingOne1"+i}>
+              <h5 className="mb-0"><a  data-toggle="collapse" href={"#collapseOne1"+i} role="button" aria-expanded="false" aria-controls="collapseOne1" className="collapsed dayTitle">{val.title}</a> </h5>
+            </div>
+            <div id={"collapseOne1"+i} className="collapse" role="tabpanel" aria-labelledby={"headingOne1"+i} data-parent={"#accordion1"}>
+              <div className="card-body"><div dangerouslySetInnerHTML={{ __html: val.descriptions }}/></div>
+            </div>
+      </div>
+    );
+   }
+
+
+   if(this.state.itinerary_terms.length){
+    termsStr = this.state.itinerary_terms.map((val,i) => 
+      <div className="card1">
+          <div className="card-header" role="tab" id={"headingTwo1"+i}>
+            <h5 className="mb-0" style={{"lineHeight":"0.2","borderBottom":"thin 1 px","textAlign":"left"}}><a  data-toggle="collapse" href={"#collapseTwo1"+i} role="button" aria-expanded="false" aria-controls="collapseTwo1" className="collapsed dayTitle">{val.title}</a> </h5>
+          </div>
+          <div id={"collapseTwo1"+i} className="collapse" role="tabpanel" aria-labelledby={"headingTwo1"+i} data-parent={"#accordion3"}>
+            <div className="cardBody"><div dangerouslySetInnerHTML={{ __html: val.descriptions }}/></div>
+          </div>
+    </div>
+  );
+ }
+
+
+   
     
     if(this.state.departure_date.length){
         basePrice = this.state.departure_date[0].price;
@@ -177,12 +222,26 @@ selectDeparture(val,e){
         
         <div>
           <Header/>
+          <div id="mySidenavDetails" className="sidenavDetails" style={{"paddingTop":"0%"}}>
+          <div id="rightSide" style={{"width":"20%","float":"right","backgroundColor":"#FFF","height":"100%","color":"#000"}}>
+          <a href="javascript:void(0)" class="closebtn" onClick={this.closeNav.bind(this)}>&times;</a>
+          <div className="wrap" style={{"fontSize":"24px","textAlign":"right","paddingRight":"0px"}}>
+            <div style={{marginTop:"55px"}}>
+            <div id="accordion3" role="tablist">
+                {termsStr}
+            </div>
+            </div>
+          </div>
+          </div>
+        </div>  
+
           <div className="container-fluid bg-maroon p-tb50">
           <div className="container">
           <h1 className="text-center white-text mt-85">{this.state.destinationDetails.title}</h1>
                 <p className="text-white small text-center">{placeTitle}</p>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
-            <h2 className="text-center p-b50 white-text" >{this.stripHtml(this.state.destinationDetails.description).substring(0,100)}</h2>
+            <h2 className="text-center p-b50 white-text" >
+           {this.stripHtml(this.state.destinationDetails.description).substring(0,100)}</h2>
           </div>
         </div>
         <div className="container">
@@ -193,16 +252,11 @@ selectDeparture(val,e){
           <div className="row">
             <div className="col-xl-8">
               <div className="col-xl-12"><h2>{this.state.destinationDetails.title}</h2> 
-              <p style={{"fontSize":"14px"}}>{this.stripHtml(this.state.destinationDetails.description)}</p></div>
+              <p style={{"fontSize":"14px"}}> <div dangerouslySetInnerHTML={{ __html: this.state.destinationDetails.description }}/></p></div>
               <div className="col-xl-12">
-                <h4 className="dayTitle">ADDONS</h4>
+                {(addonStr!='')?(<h4 className="dayTitle">ADDONS</h4>):('')}
                 <div id="accordion1" role="tablist">
-                  <div className="card">
-                    <div >
-                      <div className="card-body">{this.stripHtml(this.state.destinationDetails.addon)}
-                      </div>
-                    </div>
-                  </div>
+                  {addonStr}
                 </div>
                 <br />
                 <br />
@@ -210,10 +264,12 @@ selectDeparture(val,e){
                  {daysStr}
                 </div>
               </div>
+            
             </div>
             <div className="col-xl-4">
-              <div className="shadow-block text-center"><span className="price-red-large">INR {basePrice}</span><br /><br /><p>
+              <div className="shadow-block text-center"><span className="price-red-large">INR{basePrice}</span><br /><br /><p>
                   <button type="button" className="btn btn-red btn-lg btn-block text-uppercase btn-red-small1" onClick={this.checkDeparture}>Book This Experience</button>
+                  <button type="button" className="btn btn-info btn-lg btn-block  btn-info-small1 detailsBtnText" onClick={this.openNav.bind(this)} >Details</button>
                   <input type="hidden" id="dept_id"/>
                 </p>
                 <p className="text-center small bold">Share</p>
@@ -232,7 +288,7 @@ selectDeparture(val,e){
               </div>
               <br/>
               <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action active">
+                <button type="button" class="list-group-item list-group-item-action bg bg-danger text-white" style={{"backgroundColor":"red !important"}}>
                     All Departure Dates
                 </button>
                 <ul class="list-group" style={{"maxHeight":"492px","overflow":"auto"}}>

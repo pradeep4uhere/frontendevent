@@ -138,7 +138,7 @@ class OrderHistory extends React.Component{
                 <div className="table-responsive">
                 <table id="example1" class="table table-bordered table-striped" style={{"fontSize":"14px"}}>
                     <thead>
-                    <tr className="bg bg-info" style={{"color":"#FFF"}}>
+                    <tr className="bg bg-default" style={{"backgroundColor":"#cccccc"}}>
                         <th>Order ID</th>
                         <th>Order Date</th>
                         <th>Name</th>

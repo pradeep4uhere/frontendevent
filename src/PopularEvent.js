@@ -100,6 +100,7 @@ class PopularEvent extends React.Component {
        <div>
             {this.getItem(Item)}
        </div>
+       
     );
     return (
         <div>
@@ -113,11 +114,12 @@ class PopularEvent extends React.Component {
         <div className="container">
               <div className="row blog">
                 <div className="col-md-12">
-                <Carousel>
+                <Carousel number={2}>
                   {listItems}
                   <div style={{"display":"none"}}>
                       <img src="assets/3.jpeg" />
                   </div>
+                  
               </Carousel>
           </div>
         </div>
