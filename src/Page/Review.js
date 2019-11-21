@@ -29,7 +29,7 @@ class Review extends React.Component {
         if(response.data.code==200) {
               this.setState({
                 settingDetails    : response.data.data.setting,
-                reviewViedo       : response.data.data.review,
+                reviewViedo       : response.data.data.allreview,
               });
               //console.log(response.data.data);
         }

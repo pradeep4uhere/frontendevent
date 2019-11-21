@@ -123,7 +123,7 @@ class LoginForm extends React.Component{
                             <div className="form-group loginBtn">
                             <button type="submit" className="btn btn-danger btn-lg col-md-12">LOGIN NOW</button>
                             </div>
-                            <p className="text-left titleText newRudra">NEW TO RUDRAXP?</p>
+                            <p className="text-left titleText">NEW TO RUDRAXP?</p>
                             <a href="register">
                             <button type="button" className="btn btn-danger  btn-lg col-md-12 joinNow">Join Now</button>
                             </a>

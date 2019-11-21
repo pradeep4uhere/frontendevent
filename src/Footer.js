@@ -72,7 +72,7 @@ componentDidMount(){
                       <ul className="footer-list">
                         <li><a href="/exp-list" className="footer-link">Experiences List</a></li>
                         <li><a href="/destination" className="footer-link">Destinations</a> </li>
-                        <li><Link to="/dayexperiences" className="footer-link">Travell Experiences</Link></li>
+                        <li><Link to="/dayexperiences" className="footer-link">Travel Experiences</Link></li>
                         {/* <li><Link to="itinerary_detail" className="footer-link">Itinerary Detail</Link> </li> */}
                         
                         <li><Link to="/aboutus" className="footer-link">About Us</Link> </li>

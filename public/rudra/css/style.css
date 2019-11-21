@@ -793,7 +793,7 @@ box-shadow: 0 0 10px rgba(0,0,0,0.2);
 /* Image zoom on hover + Overlay colour */
 .parent {
     width: 570PX;
-    height: 292px;
+    height: 295px;
     overflow: hidden;
     position: relative;
     float: left;

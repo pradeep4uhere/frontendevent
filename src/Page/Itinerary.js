@@ -109,7 +109,7 @@ handleSort(e,val){
         <div className="card">
         <div className="card-header" role="tab" id={"headingOne"+val.id}>
           <div className="row">
-            <div className="circular-landscape" style={{marginLeft: '10px'}}><img src={(val.destination_gallery!='')?val.destination_gallery[0]:val.defaultImg} alt="Image" /></div>
+            <div className="circular-landscape" style={{marginLeft: '10px'}}><img src={(val.destination_gallery!='')?val.destination_gallery[0].icon:val.defaultImg} alt="Image" /></div>
             <div className="col-xl-10"><h3 className="mb-0"><a data-toggle="collapse" href={"#collapseOne"+val.id} role="button" aria-expanded="true" aria-controls={"collapseOne"+val.id}>
                   {val.title}</a> </h3><br /><p style={{marginTop: '-20px'}}>{this.stripHtml(val.descriptions).substring(0,100)}</p></div>
           </div>
@@ -117,8 +117,8 @@ handleSort(e,val){
         <div id={"collapseOne"+val.id} className="collapse" role="tabpanel" aria-labelledby={"headingOne"+val.id} data-parent={"#accordion1"}>
           <div className="card-body">
             <div className="row">
-              <div className="col-xl-4"><img src={val.destination_gallery[0]} alt="Image" onerror={"this.onerror=null;this.src='"+defaultImage+"'"}/></div>
-              <div className="col-xl-8">{this.stripHtml(val.descriptions)}<br />	 <a href={"/destinationdetails/"+val.id} className="btn btn-red-small1">View More</a>
+              <div className="col-xl-4"><img src={(val.destination_gallery!='')?val.destination_gallery[0].image:val.defaultImg} alt="Image" onerror={"this.onerror=null;this.src='"+defaultImage+"'"}/></div>
+              <div className="col-xl-8">  <br />	 <a href={"/destinationdetails/"+val.id} className="btn btn-red-small1">View More</a>
               </div>
             </div>
           </div>
