@@ -164,9 +164,9 @@ return <Link className="nav-link" to="login"><img src="../rudra/images/ico_user.
               <Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 2px #EF4136"}}>Home</span></Link>
                 <ul>
                     
-                    <li><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Day Experiences</span></Link></li>
-                    <li><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Destination</span></Link></li>
-                    <li><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Travel Experiences</span></Link></li>
+                <li><Link to={"/exp-list"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Day Experiences</span></Link></li>
+                    <li><Link to={"/destination"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Destination</span></Link></li>
+                    <li><Link to={"/dayexperiences"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Travel Experiences</span></Link></li>
                     <li><Link to={"/aboutus"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>About Us</span></Link></li>
                     <li><Link to={"/termsandconditions"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Terms and Conditions</span></Link></li>
                     <li><Link to={"/contactus"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Contact Us</span></Link></li>
@@ -201,7 +201,7 @@ return <Link className="nav-link" to="login"><img src="../rudra/images/ico_user.
                           {this.greeting()}
                      </li>
                   <li></li>   
-                  <li className="nav-item"> <Link className="nav-link" to="cart"><img src="../rudra/images/ico_cart.png" alt="" className="img-fluid" /></Link> </li>
+                  <li className="nav-item"> <Link className="nav-link" to="/cart"><img src="../rudra/images/ico_cart.png" alt="" className="img-fluid" /></Link> </li>
                   <li className="nav-item"> <Link className="nav-link" to="#"> <img src="../rudra/images/ico_search.png" alt="" className="img-fluid" /></Link></li>
                   <li className="nav-item">
                     <div className="button">	 

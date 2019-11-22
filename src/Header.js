@@ -5,6 +5,7 @@ import axios from 'axios'
 import $ from 'jquery'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import { link } from 'fs';
 const urlStr = Constants.GET_BANNER_LIST;
 const token     = localStorage.getItem('token');
 class Header extends React.Component {
@@ -132,7 +133,10 @@ class Header extends React.Component {
     if(this.state.eventFinalArr.length>0){
       bannerStr = this.state.defaultImage.map((val,i) =>
             <div>
+              
               <img src={val} />
+              {/* <p className="bannerText">Rudra Experiences is a socially committed</p> */}
+             
           </div>
       );
     }
@@ -169,9 +173,9 @@ class Header extends React.Component {
               <Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 2px #EF4136"}}>Home</span></Link>
                 <ul>
                     
-                    <li><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Day Experiences</span></Link></li>
-                    <li><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Destination</span></Link></li>
-                    <li><Link to="#"><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Travel Experiences</span></Link></li>
+                    <li><Link to={"/exp-list"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Day Experiences</span></Link></li>
+                    <li><Link to={"/destination"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Destination</span></Link></li>
+                    <li><Link to={"/dayexperiences"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Travel Experiences</span></Link></li>
                     <li><Link to={"/aboutus"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>About Us</span></Link></li>
                     <li><Link to={"/termsandconditions"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Terms and Conditions</span></Link></li>
                     <li><Link to={"/contactus"}><span style={{"color":"#000000","display":"block","fontSize":"24px","borderBottom":"solid 1px #EF4136"}}>Contact Us</span></Link></li>
@@ -198,10 +202,10 @@ class Header extends React.Component {
       
         <header id="home" className="hero-area-2">    
           {/* <div className="overlay" style={{ "background": 'url('+this.state.defaultImage+')'}}></div> */}
-            <Carousel dynamicHeight={false} showArrows={false} infiniteLoop={true} width={'1900px'} autoPlay={true} interval={3000}>
+            <Carousel dynamicHeight={false} showArrows={false} infiniteLoop={true} width={'1900px'} autoPlay={true} interval={30000}>
                 {bannerStr}
             </Carousel>
-          <nav className="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+          <nav className="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar menu-bg">
             <div className="container">
               <Link to="/" className="navbar-brand brand-pos text-left"><img className="logo-width " src="../rudra/images/rudra-logo.png" style={{}} alt="" /></Link>  
               <div className id="navbarCollapse">
@@ -213,8 +217,9 @@ class Header extends React.Component {
                   <li className="nav-item"> <Link className="nav-link" to="cart"><img src="../rudra/images/ico_cart.png" alt="" className="img-fluid" /></Link> </li>
                   <li className="nav-item"> <Link className="nav-link" to="#"> <img src="../rudra/images/ico_search.png" alt="" className="img-fluid" /></Link></li>
                   <li className="nav-item">
-                    <div className="button">	 
+                    <div className="button">
                       <span onClick={this.openNav.bind(this)}><img src="../rudra/images/icon_nav.png" alt="" width={33} height={21} className="img-fluid" /></span>
+                      
                     </div> 
                   </li>
                 </ul> 

@@ -247,7 +247,7 @@ getBannerList(){
           <div className="col-xl-12 padding-0 col-lg-12 col-md-10" id="loadMore">
             <button type="button" className="btn btn-red btn-lg btn-block text-uppercase" onClick={this.handleClick} ><span className="small">View More</span></button>
           </div>
-          <div className="col-xl-12 padding-0 col-lg-12 col-md-10 alert alert-danger text-center" id="noloadMore">
+          <div className="col-xl-12 padding-0 col-lg-12 col-md-10 alert alert-danger-class text-center" id="noloadMore">
             <span className="small">No More Event</span>
           </div>
         </div>

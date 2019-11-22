@@ -37,6 +37,35 @@
 
   <style>
 
+.slick-next{
+display: none !important;
+}
+
+.slick-prev{
+display: none !important;
+}
+.rc-time-picker-clear-icon{
+  display: none !important;
+}
+.bannerText{
+    /* font-family: cursive; */
+    font-size: 53px;
+    color: #ffffffe6;
+    font-weight: 511;
+    font-family: none;
+    position: absolute;
+    top: 540px;
+    left: 28%;
+    font-variant-caps: unicase;
+    font-style: oblique;
+    font-variation-settings: normal;
+    font-weight: 500;
+}
+.alert-danger-class {
+    color: #7d7d7d;
+    background-color: #e6e3e3;
+    border-color: #e6e3e3;
+}
 .slick-dots li button:before {
     font-family: 'slick';
     font-size: 23px !important;
@@ -421,6 +450,7 @@ ul.social-network li {
   <script>
     $(document).ready(function(){
       $('nav').addClass('menu-bg');
+      $('nav a').addClass('menu-bg');
       // optional
 		$('#blogCarousel').carousel({
 				interval: 5000

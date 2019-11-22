@@ -118,7 +118,9 @@ handleSort(e,val){
           <div className="card-body">
             <div className="row">
               <div className="col-xl-4"><img src={(val.destination_gallery!='')?val.destination_gallery[0].image:val.defaultImg} alt="Image" onerror={"this.onerror=null;this.src='"+defaultImage+"'"}/></div>
-              <div className="col-xl-8">  <br />	 <a href={"/destinationdetails/"+val.id} className="btn btn-red-small1">View More</a>
+              <div className="col-xl-8">  
+                <div dangerouslySetInnerHTML={{ __html: val.descriptions.substring(0,180) }}/>
+              <br />	 <a href={"/destinationdetails/"+val.id} className="btn btn-red-small1">View More</a>
               </div>
             </div>
           </div>
