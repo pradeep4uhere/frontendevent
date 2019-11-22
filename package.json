@@ -47,6 +47,7 @@
     "react-google-charts": "^3.0.15",
     "react-grid-gallery": "^0.5.5",
     "react-image-gallery": "^0.8.18",
+    "react-items-carousel": "^2.8.0",
     "react-modal": "^3.10.1",
     "react-moment": "^0.9.6",
     "react-number-format": "^4.3.1",
@@ -56,6 +57,7 @@
     "react-router-dom": "^5.1.1",
     "react-scripts": "^3.1.2",
     "react-select": "^3.0.5",
+    "react-slick": "^0.25.2",
     "react-switch": "^5.0.1",
     "react-tooltip": "^3.11.1",
     "react-uid": "^2.2.0",
@@ -68,6 +70,7 @@
     "request-ip": "^2.1.3",
     "request-promise": "^4.2.4",
     "sha1": "^1.1.1",
+    "slick-carousel": "^1.8.1",
     "sparkline": "^0.2.0",
     "sweetalert-react": "^0.4.11",
     "sweetalert2-react": "^0.8.3"

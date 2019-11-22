@@ -211,9 +211,9 @@ getBannerList(){
                 <a href={"day-exp-detail/"+eventid4+'-'+details4} />
               </div>
             </div>	  
-            <div className="list-small-placeholder1  col-md-10 col-xl-12  bgWhiteClass"> 
+            <div className="list-small-placeholder1  col-md-10 col-xl-12"> 
               <h1 className="text-center"><a href={"day-exp-detail/"+eventid4+'-'+details4} style={{"color":"#000","text-decoration":"none"}}>{title4}</a></h1>
-              <p className="sep" />
+              <p className="sep " />
               <p className="text-center small text-uppercase">{place4}</p>
             </div>
           </div>

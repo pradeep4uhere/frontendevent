@@ -328,7 +328,7 @@ background-color:#363636;
 .sep-white1{
   background: url("../images/sep-white.png") no-repeat center center;
   position: relative;
-  height: 2vh;
+  height: 3vh;
 }
 
 .link1{
@@ -364,7 +364,7 @@ background-color:#363636;
   background-color: #d2000c;
   display: block;
   float:left;
-  max-width: 272px;
+  max-width: 270px;
   height: 272px;
   -webkit-mask-image: url("../images/red-ticket1.png");
   mask-image: url("../images/red-ticket1.png");

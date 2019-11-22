@@ -109,7 +109,7 @@ handleSort(e,val){
           <div className="card-body">
             <div className="row">
               <div className="col-xl-4"><img src={val.itinerary_gallery[0]} alt="" onerror="this.onerror=null;this.src='http://192.168.0.140/project-1/Rudra/API/rudra/storage/app/public/destination/b45424115a3d0fe8ad645a1c5a932829.jpeg'"/></div>
-              <div className="col-xl-8">{this.stripHtml(val.description)}<br />	 <a href={"/destinationexpdetails/"+val.id} className="btn btn-red-small1">View More</a>
+              <div className="col-xl-8"><div dangerouslySetInnerHTML={{ __html: (val.description).substring(0,250) }}/><br />	 <a href={"/destinationexpdetails/"+val.id} className="btn btn-red-small1">View More</a>
               </div>
             </div>
           </div>

@@ -154,7 +154,7 @@ selectDeparture(val,e){
                 <div className="row">
                 <div className="circular-landscape" style={{marginLeft: '10px'}}><img src={(val.itinerary_day_gallery.length)?val.itinerary_day_gallery[0].original:defaultImage} alt="image" /></div>
                 <div className="col-xl-10"><h3 className="mb-0"><a className="dayTitle" data-toggle="collapse" href={"#collapseThree1"+i} role="button" aria-expanded="true" aria-controls="collapseThree1">
-                        {val.place_name}: {val.day}</a> </h3><br /><p style={{marginTop: '-20px',"fontSize":"14px"}}>{this.stripHtml(this.state.destinationDetails.description).substring(0,80)}</p></div>
+                        {val.place_name}: {val.day}</a> </h3><br /><p style={{marginTop: '-20px',"fontSize":"14px"}}>{this.stripHtml(val.details).substring(0,80)}</p></div>
                 </div>
             </div>
             <div id={"collapseThree1"+i} className="collapse" role="tabpanel" aria-labelledby={"headingThree1"+i} data-parent={"#accordion2"}>

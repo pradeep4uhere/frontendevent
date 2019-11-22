@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Constants  from './config/Constants';
 import axios from 'axios'
 import $ from 'jquery'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 const urlStr = Constants.GET_BANNER_LIST;
 const token     = localStorage.getItem('token');
 class Header extends React.Component {
@@ -125,6 +127,16 @@ class Header extends React.Component {
     
     }
     
+
+    let bannerStr = "";
+    if(this.state.eventFinalArr.length>0){
+      bannerStr = this.state.defaultImage.map((val,i) =>
+            <div>
+              <img src={val} />
+          </div>
+      );
+    }
+    
     
    
     return (
@@ -185,7 +197,10 @@ class Header extends React.Component {
         </div>  
       
         <header id="home" className="hero-area-2">    
-          <div className="overlay" style={{ "background": 'url('+this.state.defaultImage+')'}}></div>
+          {/* <div className="overlay" style={{ "background": 'url('+this.state.defaultImage+')'}}></div> */}
+            <Carousel dynamicHeight={false} showArrows={false} infiniteLoop={true} width={'1900px'} autoPlay={true} interval={3000}>
+                {bannerStr}
+            </Carousel>
           <nav className="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
             <div className="container">
               <Link to="/" className="navbar-brand brand-pos text-left"><img className="logo-width " src="../rudra/images/rudra-logo.png" style={{}} alt="" /></Link>  

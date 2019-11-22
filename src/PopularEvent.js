@@ -3,8 +3,9 @@ import EventItem from './Elements/EventItem';
 import Constants  from './config/Constants'
 import axios from 'axios'
 import $ from 'jquery';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
  const urlStr = Constants.POPULAR_EVENT_LIST_URL;
 const token     = localStorage.getItem('token');
 class PopularEvent extends React.Component {
@@ -94,6 +95,13 @@ class PopularEvent extends React.Component {
   render() {
     const { postList }= this.props;
     const {eventDetails} = this.state;
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
     // console.log(eventDetails);
     let listItems ='';
     listItems = this.state.eventDetails.map((Item,i) =>
@@ -102,6 +110,9 @@ class PopularEvent extends React.Component {
        </div>
        
     );
+    const activeItemIndex = 0;
+    const setActiveItemIndex = 0;
+    const chevronWidth = 40;
     return (
         <div>
         <div className="container p-b50">
@@ -114,13 +125,9 @@ class PopularEvent extends React.Component {
         <div className="container">
               <div className="row blog">
                 <div className="col-md-12">
-                <Carousel number={2}>
+                <Slider {...settings}>
                   {listItems}
-                  <div style={{"display":"none"}}>
-                      <img src="assets/3.jpeg" />
-                  </div>
-                  
-              </Carousel>
+                </Slider>
           </div>
         </div>
       </div>

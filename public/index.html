@@ -36,6 +36,23 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
   <style>
+
+.slick-dots li button:before {
+    font-family: 'slick';
+    font-size: 23px !important;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    /* opacity: .25; */
+    color: #d40226 !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 .bgWhiteClass{
   background-color: #FFF;
 }
@@ -99,7 +116,7 @@
     margin-top: 0px !important;
 }
  .carousel .slide {
-    min-width: 101% !important;
+    min-width: 100% !important;
     margin: 0;
     position: relative;
     text-align: center;
@@ -403,6 +420,7 @@ ul.social-network li {
 
   <script>
     $(document).ready(function(){
+      $('nav').addClass('menu-bg');
       // optional
 		$('#blogCarousel').carousel({
 				interval: 5000
@@ -424,11 +442,11 @@ ul.social-network li {
   <script>
   $(window).scroll(function() {
       var windscroll = $(window).scrollTop();
-      if (windscroll >= 100) {
+      if (windscroll >= 0) {
       
           $('nav').addClass('menu-bg');
           $('.wrapper section').each(function(i) {
-              if ($(this).position().top <= windscroll - 100) {
+              if ($(this).position().top <= windscroll - 0) {
                  $('nav a').eq(i).addClass('menu-bg');
               }
           });
