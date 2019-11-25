@@ -28,6 +28,7 @@ urlConstant = {
 	USER_ORDER_DETAILS_REQUEST			:	config.API_HOST_URL+'/usereventorderdetails',
 	STATE_LIST_REQUEST					:	config.API_HOST_URL+'/getallstate',
 	CITY_LIST_REQUEST					:	config.API_HOST_URL+'/getallcity',
+	SEARCH_RESULT_REQUEST				:	config.API_HOST_URL+'/searchresult',
 	
 }
 module.exports = urlConstant;

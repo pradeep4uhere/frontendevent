@@ -21,9 +21,24 @@ class AllViedoReview extends React.Component {
     if(data.length>0){ 
       optionItems = data.map((val,i) =>
        <div className="col-xl-4 col-lg-4 col-md-4 text-center">
-            <iframe width="350" height="250" src={val.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <h3 className="text-center"><p className="link-review">{val.title}</p></h3>
+            <iframe data-toggle="modal" data-target={"#exampleModalLong"+i} width="350" height="250" src={val.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3 className="text-center"><a href="#" className="link-review" data-toggle="modal" data-target={"#exampleModalLong"+i}>{val.title}</a></h3>
             <p />
+            <div className="modal fade" id={"exampleModalLong"+i} tabIndex={-1} role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content" style={{"width":"890px",'padding':'1px',"left":"-20%"}}>
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLongTitle">{val.title}</h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <iframe width="850" height="660" src={val.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+            </div> 
         </div>
       );
     }

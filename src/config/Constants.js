@@ -32,6 +32,7 @@ export const Constants = {
 	GET_USER_ORDER_DETAILS_URL	: AppUrl+'/generalport/userorderdetails',
 	STATE_LIST					: AppUrl+'/generalport/statelist',
 	CITY_LIST					: AppUrl+'/generalport/citylist',
+	SEARCH_RESULT				: AppUrl+'/generalport/searchresult',
     IMG							: {
     								USER_PROFILE: '../theme/dist/img/user2-160x160.jpg',	
     			  				}

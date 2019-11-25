@@ -7,8 +7,20 @@ import $ from 'jquery'
 import Constants  from '../config/Constants'
 import DefaultImage  from '../config/default.png';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
 var serialize = require('form-serialize');
 var ip = require('ip');
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)',
+    zIndex               : '99999'
+  }
+};
 const urlStr = Constants.DESTINATION_EXP_LIST;
 const addToCartUrl  = Constants.ADD_TO_EXP_CART_URL;
 const token     = localStorage.getItem('token');
@@ -23,13 +35,29 @@ class DayExperiencesDetails extends React.Component {
       departure_date:[],
       itinerary_addon:[],
       itinerary_terms:[],
+      modalIsOpen: false
     }
     this.stripHtml            = this.stripHtml.bind(this);
     this.getDestinationList   = this.getDestinationList.bind(this);
     this.checkDeparture       = this.checkDeparture.bind(this);
     this.openNav =  this.openNav.bind(this);
     this.closeNav =  this.closeNav.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     
+}
+openModal() {
+  this.setState({modalIsOpen: true});
+}
+
+afterOpenModal() {
+  // references are now sync'd and can be accessed.
+  //this.subtitle.style.color = '#f00';
+}
+
+closeModal() {
+  this.setState({modalIsOpen: false});
 }
 
 openNav() {
@@ -86,7 +114,7 @@ getDestinationList(){
 
 
 componentDidMount(){
-this.getDestinationList();
+  this.getDestinationList();
 
 }
 
@@ -161,8 +189,10 @@ selectDeparture(val,e){
                 <div className="card-body">
                 <div className="row">
                     <div className="col-xl-12">
+                    
                     {(val.itinerary_day_gallery.length)?(
                     <ImageSlider galleryJson={val.itinerary_day_gallery} name="hello" />):""}
+                   
                     </div>
                     <div className="col-xl-12" style={{"fontSize":"14px"}}><br />
                     <div dangerouslySetInnerHTML={{ __html: val.details }}/>
@@ -181,8 +211,67 @@ selectDeparture(val,e){
               <h5 className="mb-0"><a  data-toggle="collapse" href={"#collapseOne1"+i} role="button" aria-expanded="false" aria-controls="collapseOne1" className="collapsed dayTitle">{val.title}</a> </h5>
             </div>
             <div id={"collapseOne1"+i} className="collapse" role="tabpanel" aria-labelledby={"headingOne1"+i} data-parent={"#accordion1"}>
-              <div className="card-body"><div dangerouslySetInnerHTML={{ __html: val.descriptions }}/></div>
+              <div className="card-body">
+                  <div dangerouslySetInnerHTML={{ __html: val.descriptions }}/>
+
+                  <div className="col-md-4 pull-left">
+                  <a href="#" className="" data-toggle="modal" data-target={"#exampleModalLong"+i}>
+                      Description>>
+                  </a>
+                  <div className="modal fade" id={"exampleModalLong"+i} tabIndex={-1} role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLongTitle">Destination</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                      <div className="modal-body">
+                      <div dangerouslySetInnerHTML={{ __html: val.addon_description }}></div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>  
+                </div>
+                <div className="col-md-6 pull-left">
+                  <a href="#" className="" data-toggle="modal" data-target={"#exampleModalLong1"+i}>
+                      Includes>>
+                  </a>
+                  <div className="modal fade" id={"exampleModalLong1"+i} tabIndex={-1} role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLongTitle">Includes</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                      <div className="modal-body">
+                      <div dangerouslySetInnerHTML={{ __html: val.addon_includes }}></div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>  
+                </div>
+
+
+
+                  {/* {(val.addon_description!='')?(  
+                  <div className="col-md-6 pull-left">
+                        <a onClick={this.openModal(val.id)}><b>Description>></b></a>
+                        <div dangerouslySetInnerHTML={{ __html: val.addon_description }}/></div>
+                        ):('')}
+                    {(val.addon_includes!='')?(  
+                    <div className="col-md-6 pull-right">
+                        <a onClick={this.openModal(val.id)}><b>Includes>></b></a>
+                       <div dangerouslySetInnerHTML={{ __html: val.addon_includes }}/></div>
+                        ):('')} */}
+              </div>
             </div>
+            
+            
+            
       </div>
     );
    }
@@ -249,6 +338,7 @@ selectDeparture(val,e){
           <br />
           <br />
           <br />
+          
           <div className="row">
             <div className="col-xl-8">
               <div className="col-xl-12"><h2>{this.state.destinationDetails.title}</h2> 
@@ -395,6 +485,7 @@ selectDeparture(val,e){
           </div>
         </div>
         <br/><br/><br/>
+        
         <Footer/>
         </div>
         

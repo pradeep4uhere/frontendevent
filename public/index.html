@@ -36,7 +36,29 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
   <style>
+.search-result{
+  color: #000;
+  font-size: 17px;
+  font-family: inherit;
+  border-bottom: solid 1px #dcd6db;
+  margin-top: 10px; 
+}
+.search-result a{
+  color: #580000;
+  font-size: 42px;
+  font-family: inherit;
+  text-decoration: none;
 
+}
+.readMore{
+  font-size: 14px !important;
+  color: #FFF !important;;
+  margin-bottom: 10px;
+}
+.searchBar{
+  z-index: 99999;
+  width: 80%
+}
 .slick-next{
 display: none !important;
 }
@@ -91,6 +113,59 @@ display: none !important;
 .detailsBtnText{
   font-size: 14px !important;
 }
+.searchBar{
+    width: 700px;
+    align-items: center;
+    height: 48px;
+    float: left;
+    margin-left: 50%;
+    margin: 13px;
+}
+.searchBox{
+  width: 100%;
+  float: right;
+  background-color: rgb(255, 255, 255);
+  height: 14%;
+  color: rgb(0, 0, 0);
+}
+
+.sidenavSearchDetails{
+  background-color: none;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  opacity: 0.9;
+}
+
+
+.sidenavSearchDetails a {
+  padding: 8px 8px 8px 8px;
+  text-decoration: none;
+  font-size: 13px;
+  color: #000000;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenavSearchDetails a:hover {
+  color: #000000;
+}
+
+.sidenavSearchDetails .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
 .sidenavDetails{
   background-color: none;
   height: 100%;
@@ -450,7 +525,6 @@ ul.social-network li {
   <script>
     $(document).ready(function(){
       $('nav').addClass('menu-bg');
-      $('nav a').addClass('menu-bg');
       // optional
 		$('#blogCarousel').carousel({
 				interval: 5000

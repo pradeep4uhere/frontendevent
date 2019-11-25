@@ -35,8 +35,37 @@ const USER_UPDATE_API_REQUEST   = urlConstant.USER_UPDATE_API_REQUEST;
 const USER_ORDER_DETAILS_REQUEST= urlConstant.USER_ORDER_DETAILS_REQUEST;	
 const STATE_LIST_REQUEST		= urlConstant.STATE_LIST_REQUEST;
 const CITY_LIST_REQUEST			= urlConstant.CITY_LIST_REQUEST;	
+const SEARCH_RESULT_REQUEST		= urlConstant.SEARCH_RESULT_REQUEST;	
 
 
+
+
+GeneralPortRouter.route('/searchresult').post(function(req, res,next){
+    var token        	= req.body.token;
+    var search_text     = req.body.search_text;
+    var postData ={
+            token	    : token,
+            search_text : search_text,
+    }
+    const options = {
+        method: 'POST',
+        uri: SEARCH_RESULT_REQUEST,
+        body: postData,
+        json: true,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    console.log(options);
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
 
 
 GeneralPortRouter.route('/citylist').post(function(req, res,next){

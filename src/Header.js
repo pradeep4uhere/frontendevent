@@ -28,6 +28,9 @@ class Header extends React.Component {
         this.greeting = this.greeting.bind(this);
         this.openNav =  this.openNav.bind(this);
         this.closeNav =  this.closeNav.bind(this);
+        this.openNavSearch =  this.openNavSearch.bind(this);
+        this.closeNavSearch =  this.closeNavSearch.bind(this);
+        this.searchNow =  this.searchNow.bind(this);
   }
 
 
@@ -48,7 +51,7 @@ class Header extends React.Component {
               destinationList : response.data.destinationList,
               eventFinalArr   : response.data.eventFinalArr
             });
-            //console.log(response.data.data);
+            console.log(this.state.eventFinalArr);
       }
       else
       {
@@ -67,10 +70,24 @@ class Header extends React.Component {
     this.getBannerList();
   }
 
+  
+  openNavSearch() {
+    $("#sidenavSearchDetails").css({"width":"100%"});
+    //document.getElementById("mySidenav").style.width = "100%";
+  }
+
+   
+  closeNavSearch() {
+    $("#sidenavSearchDetails").css({"width":"0"});
+    // document.getElementById("mySidenav").style.width = "0";
+  }
+
   openNav() {
     $("#mySidenav").css({"width":"100%"});
     //document.getElementById("mySidenav").style.width = "100%";
   }
+
+
   
   closeNav() {
     $("#mySidenav").css({"width":"0"});
@@ -79,7 +96,7 @@ class Header extends React.Component {
 
   greeting() {
     const isLoggedIn = sessionStorage.getItem('userid');
-    if (isLoggedIn) {
+    if (isLoggedIn>0) {
       console.log(this.state.userDetails);
       return <div class="dropdown">
               <button type="button" class="btn btn-danger">
@@ -91,6 +108,17 @@ class Header extends React.Component {
             </div>
     }
     return <Link className="nav-link" to="login"><img src="../rudra/images/ico_user.png" alt="" className="img-fluid" /></Link>;
+  }
+
+  searchNow(e){
+    e.preventDefault();
+    var text = $("#searchtext").val();
+    if(text==''){
+      alert("Please enter search text!");
+      return false;
+    }else{
+      window.location.href="searchresult/"+text;
+    }
   }
 
 
@@ -145,6 +173,24 @@ class Header extends React.Component {
    
     return (
         <div>
+          <div id="sidenavSearchDetails" className="sidenavSearchDetails" style={{"paddingTop":"0%"}}>
+            <div id="searchBox" style={{"width":"100%","float":"right","backgroundColor":"#FFF","height":"72px","color":"#000"}}>
+              <a href="javascript:void(0)" class="closebtn" onClick={this.closeNavSearch.bind(this)}>&times;</a>
+              <div className="row">
+              <div className="col-md-4 pull-right text-right">
+                  <h2 style={{paddingTop:"14px"}}>Search</h2>
+              </div>
+              <div className="col-md-6">
+                <form action="#" method="GET" onSubmit={this.searchNow.bind(this)}>
+                <input type="text" className="searchBar" placeholder="Enter your text here" style={{fontSize:"24px"}}  id="searchtext"/>
+                </form>
+                <input type="button" className="btn btn-danger" value="Search" onClick={this.searchNow.bind(this)} style={{marginTop:"15px"}}/>
+               
+              </div>
+              </div>
+            </div>
+          </div>
+          
         <div id="mySidenav" className="sidenav" style={{"paddingTop":"0%"}}>
           <div id="rightSide" style={{"width":"75%","float":"right","backgroundColor":"#FFF","height":"100%","color":"#000"}}>
           <a href="javascript:void(0)" class="closebtn" onClick={this.closeNav.bind(this)}>&times;</a>
@@ -215,7 +261,8 @@ class Header extends React.Component {
                      </li>
                   <li></li>   
                   <li className="nav-item"> <Link className="nav-link" to="cart"><img src="../rudra/images/ico_cart.png" alt="" className="img-fluid" /></Link> </li>
-                  <li className="nav-item"> <Link className="nav-link" to="#"> <img src="../rudra/images/ico_search.png" alt="" className="img-fluid" /></Link></li>
+                  <li className="nav-item"> <Link className="nav-link" to="#" onClick={this.openNavSearch.bind(this)}> <img src="../rudra/images/ico_search.png" alt="" className="img-fluid" /></Link></li>
+                  <li class="nav-item book-btn"><Link className="nav-link btn btn-red-small" to="/exp-list">BOOK NOW</Link></li>
                   <li className="nav-item">
                     <div className="button">
                       <span onClick={this.openNav.bind(this)}><img src="../rudra/images/icon_nav.png" alt="" width={33} height={21} className="img-fluid" /></span>

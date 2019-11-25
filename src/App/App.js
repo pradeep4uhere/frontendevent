@@ -18,6 +18,7 @@ import EventList from '../Page/EventList';
 import Membership from '../Page/Membership';
 import AboutUs from '../Page/AboutUs';
 import SocialCommittment from '../Page/SocialCommittment';
+import SearchResultDetails from '../Page/SearchResultDetails';
 import ContactUs from '../Page/ContactUs';
 import Termsandconditions from '../Page/Termsandconditions';
 import Review from '../Page/Review';
@@ -70,6 +71,7 @@ render() {
          <Router>
           <Switch>
               {/* <Route path="/" component={Dashboard} exact/> */}
+              <Route path="/searchresult/:searchtext" component={SearchResultDetails} exact/>
               <Route path="/profile" component={Profile}  />                
               <Route path="/" component={Index} exact/>
               <Route path="/logout" component={Logout} exact/>
@@ -95,6 +97,9 @@ render() {
               <Route path="/destinationdetails/:id" component={Destination} exact/>
               <Route path="/dayexperiences" component={DayExperiences} exact/>
               <Route path="/destinationexpdetails/:id" component={DayExperiencesDetails} exact/>
+              
+
+              
               
               <Route path="*" component={NotFound} exact/>
          </Switch>

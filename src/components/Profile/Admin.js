@@ -86,7 +86,6 @@ class Cart extends React.Component {
      
         <div>
           <Header/>
-        
           <div className="container-fluid bg-maroon p-tb15">
           <div className="container">
             <h1 className="text-center white-text mt-85">Profile{orderid}
