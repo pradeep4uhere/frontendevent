@@ -139,7 +139,7 @@ class MembershipPlan extends React.Component{
                     <td><span class="label label-success">{val.order_status.status_type}</span></td>
                     <td><div className="sparkbar" data-color="#00a65a" data-height={20}>{priceType}{val.total_amount}</div></td>
                     <td><Moment format="DD-MMM-YYYY">{val.created_at}</Moment></td>
-                    <td><Link to={"/orderdetails/"+val.orderID+'/'+val.order_type}><button className="btn btn-secondary btn-sm info">View Invoice</button></Link></td>
+                    
                   
                 </tr>
           );    
@@ -194,7 +194,6 @@ class MembershipPlan extends React.Component{
                         <th>Status</th>
                         <th>Total Amount</th>
                         <th>Created Date</th>
-                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
