@@ -13,13 +13,14 @@ class Header extends React.Component {
         super(props);
         this.state={
          
-          user_id     : sessionStorage.getItem('userid'),
-          first_name  : sessionStorage.getItem('first_name'),
-          last_name  : sessionStorage.getItem('last_name'),
-          email  : sessionStorage.getItem('email'),
-          phone  : sessionStorage.getItem('phone'),
+          user        : localStorage.getItem('user'),
+          userid      : localStorage.getItem('userid'),
+          first_name  : localStorage.getItem('first_name'),
+          last_name   : localStorage.getItem('last_name'),
+          email       : localStorage.getItem('email'),
+          phone       : localStorage.getItem('phone'),
           isLoggedIn  : false,
-          userDetails : sessionStorage.getItem('userDetails'),
+          userDetails : localStorage.getItem('userDetails'),
           defaultImage: '../rudra/images/home-banner.jpg',
           settingDetails: [],
           destinationList: [],
@@ -80,6 +81,11 @@ class Header extends React.Component {
 
 
   componentDidMount(){
+    if(localStorage.getItem('userid')>0){
+      this.setState({
+        isLoggedIn  : true,
+      });
+    }
     this.getBannerList();
   }
 
@@ -99,16 +105,13 @@ class Header extends React.Component {
   }
 
   greeting() {
-    const isLoggedIn = sessionStorage.getItem('userid');
-    if (isLoggedIn>0) {
+    const {isLoggedIn} = this.state;
+    if (isLoggedIn) {
       console.log(this.state.userDetails);
       return <div class="dropdown">
               <button type="button" class="btn btn-danger">
               <a href="/profile" style={{"color":"#FFF","textDecoration":"none"}}>{"Welcome, "+this.state.first_name} <i class="fa fa-user"></i></a>
               </button>
-              {/* <div class="dropdown-menu">
-                <a class="dropdown-item" href="logout">Sign Out</a>
-              </div> */}
             </div>
     }
     return <Link className="nav-link" to="login"><img src="../rudra/images/ico_user.png" alt="" className="img-fluid" /></Link>;
@@ -265,7 +268,7 @@ class Header extends React.Component {
                           {this.greeting()}
                      </li>
                   <li></li>   
-                  <li className="nav-item"> <Link className="nav-link" to="cart"><img src="../rudra/images/ico_cart.png" alt="" className="img-fluid" /></Link> </li>
+                  <li className="nav-item"> <Link className="nav-link" to="/cart"><img src="../rudra/images/ico_cart.png" alt="" className="img-fluid" /></Link> </li>
                   <li className="nav-item"> <Link className="nav-link" to="#" onClick={this.openNavSearch.bind(this)}> <img src="../rudra/images/ico_search.png" alt="" className="img-fluid" /></Link></li>
                   <li class="nav-item book-btn"><Link className="nav-link btn btn-red-small" to="/exp-list">BOOK NOW</Link></li>
 

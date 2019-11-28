@@ -43,14 +43,15 @@ class LoginForm extends React.Component{
               globals.set('user',response.data.user);
               globals.set('token',response.data.token);
               localStorage.setItem('token',response.data.token);
-              sessionStorage.setItem('userDetails',response.data.user);
-              sessionStorage.setItem('first_name',response.data.user.first_name);
-              sessionStorage.setItem('last_name',response.data.user.last_name);
-              sessionStorage.setItem('email',response.data.user.email);
-              sessionStorage.setItem('phone',response.data.user.phone);
-              sessionStorage.setItem('userid',response.data.user.id);
-              sessionStorage.setItem('created_at',response.data.user.created_at);
-              sessionStorage.setItem('token',response.data.token);
+              localStorage.setItem('userDetails',response.data.user);
+              localStorage.setItem('first_name',response.data.user.first_name);
+              localStorage.setItem('last_name',response.data.user.last_name);
+              localStorage.setItem('email',response.data.user.email);
+              localStorage.setItem('phone',response.data.user.phone);
+              localStorage.setItem('userid',response.data.user.id);
+              localStorage.setItem('created_at',response.data.user.created_at);
+              localStorage.setItem('token',response.data.token);
+
               this.setState({
                     redirectToReferrer : true,
                     message:response.data.message,
@@ -81,7 +82,7 @@ class LoginForm extends React.Component{
 
 
     componentDidMount() {
-        if(localStorage.getItem('user')){
+        if(localStorage.getItem('userid')){
           this.setState({ redirectToReferrer: true});    
         }else{
           this.setState({ redirectToReferrer: false });    
@@ -93,9 +94,8 @@ class LoginForm extends React.Component{
         const { redirectToReferrer } = this.state;
         const { message } = this.state;
         const { classstr } = this.state;
-        console.log(redirectToReferrer);
         if (redirectToReferrer === true) {
-            if(this.props.urlString!=''){
+            if(this.props.urlString!='' && this.props.urlString!=undefined){
                 return <Redirect to={'/'+this.props.urlString}/>;
 
             }else{

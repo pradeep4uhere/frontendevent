@@ -282,7 +282,7 @@ class MembershipCheckout extends React.Component {
   greeting() {
     const isLoggedIn = sessionStorage.getItem('userid');
     if (!isLoggedIn) {
-      return <h2 className="text-center  white-text">Returning customers? then Login below or go for <a className="link-check" href>Guest Checkout</a> <p className="p-tb20"> <a href={"/login"} className="btn btn-red btn-lg btn-red-border1 text-uppercase">Login here</a></p>           </h2>;
+      return <h2 className="text-center  white-text">Review your membership plan details</h2>;
     }
   }
 

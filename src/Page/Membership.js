@@ -12,14 +12,13 @@ class Membership extends React.Component {
         super();
         this.state={
           url         :'login',
-          user_id     : sessionStorage.getItem('userid'),
-          first_name  : sessionStorage.getItem('first_name'),
-          last_name  : sessionStorage.getItem('last_name'),
-          email  : sessionStorage.getItem('email'),
-          phone  : sessionStorage.getItem('phone'),
+          user_id     : localStorage.getItem('userid'),
+          first_name  : localStorage.getItem('first_name'),
+          last_name   : localStorage.getItem('last_name'),
+          email       : localStorage.getItem('email'),
+          phone       : localStorage.getItem('phone'),
           isLoggedIn  : false,
-          userDetails : sessionStorage.getItem('userDetails'),
-
+          userDetails : localStorage.getItem('userDetails'),
           membership:[],
           header:['bg-info','bg-danger','bg-success'],
           headerT:['basic-info','basic-danger','basic-success'],

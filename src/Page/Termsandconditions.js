@@ -1,30 +1,74 @@
 import React from 'react';
 import Header from '../InnerHeader';
 import Footer from '../Footer';
+import Constants  from '../config/Constants'
+import axios from 'axios'
+import $ from 'jquery'
+const urlStr = Constants.GENERAL_PAGE_SETTING_URL;
+const token     = localStorage.getItem('token');
 class Termsandconditions extends React.Component {
   constructor() {
         super();
         this.state={
-          
+          pageDetails:{},
+          AboutUsTag:''
         }
-        
+
+        this.getSettingList               = this.getSettingList.bind(this);
   }
+
+
+
+ /******Get all the user list here********/   
+ getSettingList(){
+  var tokenStr = token;
+  const formData = {
+      token    : tokenStr,
+      option   : {'page':'terms_and_conditions'}
+  }
+  axios.post(urlStr, formData)
+  .then((response) => {
+    console.log(response.data);
+    if(response.data.code==200) {
+          this.setState({
+            AboutUsTag        : response.data.setting[23].options_value,
+            pageDetails       : response.data.page,
+          });
+          //console.log(response.data.data);
+    }
+    else
+    {
+      this.setState({isMsg:true});
+      this.setState({className:'error'});
+    }
+  })
+  .catch((err) => {
+      this.setState({isMsg:true});
+      this.setState({className:'error'});
+  })
+}
+
+
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.getSettingList();
   }
-  
 
   render() {
+    const {pageDetails}= this.state;
+    const {AboutUsTag}=this.state;
+
     return (
         <div>
           <Header/>
           <div className="container-fluid bg-maroon p-tb50">
             <div className="container">
-            <h1 className="text-center white-text mt-85">Terms & Conditions
+            <h1 className="text-center white-text mt-85">{pageDetails.title}
             </h1>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
             <h2 className="text-center p-b50 white-text">
-            At Rudra Xp, our endeavour is to make the most of the time that you take out for your travel pursuits and embellish them with characteristic, exclusive and rich experiences. We care for the unique perspective, the appreciation of excellence and that which maybe simple but not ordinary.</h2>
+            {AboutUsTag}
+            </h2>
             </div>
         </div>
         <br/><br/><br/><br/>
@@ -32,25 +76,13 @@ class Termsandconditions extends React.Component {
         <div className="col-lg-12 m-ft66">
           <div className="row m-t-50">
             <div className="col-xl-12">
-              <p>At Rudra Xp, our endeavour is to make the most of the time that you take out for your travel pursuits and embellish them with characteristic, exclusive and rich experiences. We care for the unique perspective, the appreciation of excellence and that which maybe simple but not ordinary.</p>
-  <p>Where does it come from?
-  Contrary to popular belief, Lorem Ipsum ssis not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-  </p>
-
-  <p>
-  The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-
-  Where can I get some?
-  There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-  </p>
+              <div dangerouslySetInnerHTML={{ __html: pageDetails.description }}/>
             </div>
             
           
           </div>
         </div>
       </div>
-      <br/><br/><br/>
-       
         
       <Footer/>
         </div>

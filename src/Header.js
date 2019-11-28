@@ -12,14 +12,14 @@ class Header extends React.Component {
   constructor(props) {
         super(props);
         this.state={
-         
-          user_id     : sessionStorage.getItem('userid'),
-          first_name  : sessionStorage.getItem('first_name'),
-          last_name  : sessionStorage.getItem('last_name'),
-          email  : sessionStorage.getItem('email'),
-          phone  : sessionStorage.getItem('phone'),
+          user        : localStorage.getItem('user'),
+          userid      : localStorage.getItem('userid'),
+          first_name  : localStorage.getItem('first_name'),
+          last_name   : localStorage.getItem('last_name'),
+          email       : localStorage.getItem('email'),
+          phone       : localStorage.getItem('phone'),
           isLoggedIn  : false,
-          userDetails : sessionStorage.getItem('userDetails'),
+          userDetails : localStorage.getItem('userDetails'),
           defaultImage: '../rudra/images/home-banner.jpg',
           settingDetails: [],
           destinationList: [],
@@ -67,6 +67,11 @@ class Header extends React.Component {
 
 
   componentDidMount(){
+    if(localStorage.getItem('userid')>0){
+      this.setState({
+        isLoggedIn  : true,
+      });
+    }
     this.getBannerList();
   }
 
@@ -95,8 +100,8 @@ class Header extends React.Component {
   }
 
   greeting() {
-    const isLoggedIn = sessionStorage.getItem('userid');
-    if (isLoggedIn>0) {
+    const {isLoggedIn} = this.state;
+    if (isLoggedIn) {
       console.log(this.state.userDetails);
       return <div class="dropdown">
               <button type="button" class="btn btn-danger">

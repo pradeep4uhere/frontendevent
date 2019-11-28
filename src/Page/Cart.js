@@ -65,7 +65,7 @@ class Cart extends React.Component {
       if(response.data.code==200) {
             this.setState({msg:"Item removed, cart is updated."});
             this.setState({classStr : "alert alert-success"});
-            this.updateCart();
+            this.getCartList();
       }else{
         console.log("Response Error");
       }

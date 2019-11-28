@@ -37,7 +37,8 @@ const STATE_LIST_REQUEST		= urlConstant.STATE_LIST_REQUEST;
 const CITY_LIST_REQUEST			= urlConstant.CITY_LIST_REQUEST;	
 const SEARCH_RESULT_REQUEST		= urlConstant.SEARCH_RESULT_REQUEST;	
 const GET_MEMBERSHIP_LIST		= urlConstant.GET_MEMBERSHIP_LIST;	
-const PRE_MEMBERSHIP_BOOKING	= urlConstant.PRE_MEMBERSHIP_BOOKING;	 
+const PRE_MEMBERSHIP_BOOKING	= urlConstant.PRE_MEMBERSHIP_BOOKING;	
+const GET_GENERAL_PAGES_REQUEST	= urlConstant.GET_GENERAL_PAGES_REQUEST; 
 
 
 
@@ -123,6 +124,36 @@ GeneralPortRouter.route('/membershiplist').post(function(req, res,next){
     const options = {
         method: 'POST',
         uri: GET_MEMBERSHIP_LIST,
+        body: postData,
+        json: true,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    console.log(options);
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
+
+
+
+GeneralPortRouter.route('/getstaticpages').post(function(req, res,next){
+    var token        	= req.body.token;
+    var option     = req.body.option;
+    var postData ={
+            token	    : token,
+            optionsArr 	: option,
+    }
+    const options = {
+        method: 'POST',
+        uri: GET_GENERAL_PAGES_REQUEST,
         body: postData,
         json: true,
         headers: {

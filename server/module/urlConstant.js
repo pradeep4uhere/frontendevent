@@ -31,6 +31,7 @@ urlConstant = {
 	SEARCH_RESULT_REQUEST				:	config.API_HOST_URL+'/searchresult',
 	GET_MEMBERSHIP_LIST					:	config.API_HOST_URL+'/membershiplist',
 	PRE_MEMBERSHIP_BOOKING				:	config.API_HOST_URL+'/membershipbooking',
+	GET_GENERAL_PAGES_REQUEST			:	config.API_HOST_URL+'/getgeneralpages',
 	
 }
 module.exports = urlConstant;

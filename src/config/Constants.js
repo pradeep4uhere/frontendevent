@@ -35,6 +35,7 @@ export const Constants = {
 	GET_MEMBERSHIP_LIST			: AppUrl+'/generalport/membershiplist',
 	SEARCH_RESULT				: AppUrl+'/generalport/searchresult',
 	BOOKING_MEMBERSHIP_PAYMENT	: AppUrl+'/generalport/membershipbooking',
+	GENERAL_PAGE_SETTING_URL	: AppUrl+'/generalport/getstaticpages',
     IMG							: {
     								USER_PROFILE: '../theme/dist/img/user2-160x160.jpg',	
     			  				}
