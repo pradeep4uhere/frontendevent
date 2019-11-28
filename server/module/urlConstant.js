@@ -29,6 +29,8 @@ urlConstant = {
 	STATE_LIST_REQUEST					:	config.API_HOST_URL+'/getallstate',
 	CITY_LIST_REQUEST					:	config.API_HOST_URL+'/getallcity',
 	SEARCH_RESULT_REQUEST				:	config.API_HOST_URL+'/searchresult',
+	GET_MEMBERSHIP_LIST					:	config.API_HOST_URL+'/membershiplist',
+	PRE_MEMBERSHIP_BOOKING				:	config.API_HOST_URL+'/membershipbooking',
 	
 }
 module.exports = urlConstant;

@@ -18,8 +18,9 @@ class LoginForm extends React.Component{
             classNameError: false,
             isLoggedIn: false,
             message:'',
-            classstr:''
+            classstr:'',
         };
+        
         this.handleSubmit = this.handleSubmit.bind(this);
         console.log(Constants);
     }
@@ -94,7 +95,12 @@ class LoginForm extends React.Component{
         const { classstr } = this.state;
         console.log(redirectToReferrer);
         if (redirectToReferrer === true) {
-            return <Redirect to='/'/>;
+            if(this.props.urlString!=''){
+                return <Redirect to={'/'+this.props.urlString}/>;
+
+            }else{
+                return <Redirect to='/'/>;
+            }
         }
         return(
             <div className="form-bg text-white text-center">

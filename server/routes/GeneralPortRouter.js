@@ -36,8 +36,109 @@ const USER_ORDER_DETAILS_REQUEST= urlConstant.USER_ORDER_DETAILS_REQUEST;
 const STATE_LIST_REQUEST		= urlConstant.STATE_LIST_REQUEST;
 const CITY_LIST_REQUEST			= urlConstant.CITY_LIST_REQUEST;	
 const SEARCH_RESULT_REQUEST		= urlConstant.SEARCH_RESULT_REQUEST;	
+const GET_MEMBERSHIP_LIST		= urlConstant.GET_MEMBERSHIP_LIST;	
+const PRE_MEMBERSHIP_BOOKING	= urlConstant.PRE_MEMBERSHIP_BOOKING;	 
 
 
+
+
+
+GeneralPortRouter.route('/membershipbooking').post(function (req, res) {
+	var token        		= req.body.token;
+	var uid        			= req.body.uid;
+	var id     				= req.body.id;
+	var type  				= req.body.type;
+	var bfname              = req.body.bfname;
+    var blname              = req.body.blname;
+    var baddress1           = req.body.baddress1;
+    var baddress2           = req.body.baddress2;
+    var bcity               = req.body.bcity;
+    var bstate              = req.body.bstate;
+    var bpincode            = req.body.bpincode;
+    var bmobile             = req.body.bmobile;
+    var bemail              = req.body.bemail;
+    var checkbox            = req.body.checkbox;
+
+    var fname              = req.body.fname;
+    var lname              = req.body.lname;
+    var address1           = req.body.address1;
+    var address2           = req.body.address2;
+    var city               = req.body.city;
+    var state              = req.body.state;
+    var pincode            = req.body.pincode;
+    var mobile             = req.body.mobile;
+    var email              = req.body.bemail;
+    var postData 		={
+		token		 	: token,
+		user_id		 	: uid,
+		ip_address		: ip.fromLong(uid),
+		id				: id,
+		type		 	: type,
+		bfname   		: bfname,
+		blname   		: blname,
+        baddress1		: baddress1,
+        baddress2		: baddress2,
+        bcity    		: bcity,
+        bstate   		: bstate,
+        bpincode 		: bpincode,
+        bmobile  		: bmobile,
+        bemail   		: bemail,
+        checkbox 		: checkbox,
+
+		fname   		: fname,
+		lname   		: lname,
+        address1		: address1,
+        address2		: address2,
+        city    		: city,
+        state   		: state,
+        pincode 		: pincode,
+        mobile  		: mobile,
+        email   		: email
+	}
+	console.log(postData);
+    const options = {
+					    method	: 'POST',
+					    uri		: PRE_MEMBERSHIP_BOOKING,
+					    body	: postData,
+						json	: true,
+				        headers	: {
+			            	'Authorization': 'Bearer ' + token,
+				        },
+				    }
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
+GeneralPortRouter.route('/membershiplist').post(function(req, res,next){
+    var token        	= req.body.token;
+    var postData ={
+            token	    : token,
+    }
+    const options = {
+        method: 'POST',
+        uri: GET_MEMBERSHIP_LIST,
+        body: postData,
+        json: true,
+        headers: {
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    console.log(options);
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
 
 
 GeneralPortRouter.route('/searchresult').post(function(req, res,next){

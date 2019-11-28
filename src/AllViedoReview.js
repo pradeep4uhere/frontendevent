@@ -21,7 +21,7 @@ class AllViedoReview extends React.Component {
     if(data.length>0){ 
       optionItems = data.map((val,i) =>
        <div className="col-xl-4 col-lg-4 col-md-4 text-center">
-            <iframe data-toggle="modal" data-target={"#exampleModalLong"+i} width="350" height="250" src={val.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe data-toggle="modal" data-target={"#exampleModalLong"+i} width="350" height="250" src={val.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
             <h3 className="text-center"><a href="#" className="link-review" data-toggle="modal" data-target={"#exampleModalLong"+i}>{val.title}</a></h3>
             <p />
             <div className="modal fade" id={"exampleModalLong"+i} tabIndex={-1} role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">

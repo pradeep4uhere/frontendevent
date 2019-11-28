@@ -3,7 +3,7 @@ export const Constants = {
 	APP_NAME					: 'Rudra',
     APP_TAG	    				: 'XP',
 	APP_SALT					: 'MdtKyGbnrGT3wzxgkCPRO+wwfBGrlhMwGuOHX6xyFE0=',
-	
+	AppUrl 						: 'http://localhost:3000/',
 	//All API URL GOES HERE
 	LOGIN_URL					: AppUrl+'/serverport/login',
 	REGISTER_URL				: AppUrl+'/serverport/register',	
@@ -32,7 +32,9 @@ export const Constants = {
 	GET_USER_ORDER_DETAILS_URL	: AppUrl+'/generalport/userorderdetails',
 	STATE_LIST					: AppUrl+'/generalport/statelist',
 	CITY_LIST					: AppUrl+'/generalport/citylist',
+	GET_MEMBERSHIP_LIST			: AppUrl+'/generalport/membershiplist',
 	SEARCH_RESULT				: AppUrl+'/generalport/searchresult',
+	BOOKING_MEMBERSHIP_PAYMENT	: AppUrl+'/generalport/membershipbooking',
     IMG							: {
     								USER_PROFILE: '../theme/dist/img/user2-160x160.jpg',	
     			  				}

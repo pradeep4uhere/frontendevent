@@ -26,8 +26,10 @@ import Cart from '../Page/Cart';
 import ExpCart from '../Page/ExpCart';
 import Checkout from '../Page/Checkout';
 import ExpCheckout  from '../Page/ExpCheckout';
+import MembershipCheckout from '../Page/MembershipCheckout';
 import Proccessing from '../Page/Proccessing';
 import Thankyou from '../Page/Thankyou';
+import Success from '../Page/Success';
 import ThankExpyou from '../Page/ThankExpyou';
 
 
@@ -76,6 +78,7 @@ render() {
               <Route path="/" component={Index} exact/>
               <Route path="/logout" component={Logout} exact/>
               <Route path="/login" component={Login} exact/>
+              <Route path="/login/:ref" component={Login} exact/>
               <Route path="/register" component={Register} exact/>
               <Route path="/day-exp-detail/:id" component={EventDetail}/>
               <Route path="/exp-list" component={EventList} exact/>
@@ -89,8 +92,13 @@ render() {
               <Route path="/expcart" component={ExpCart} exact/>
               <Route path="/checkout" component={Checkout} exact/>
               <Route path="/expcheckout" component={ExpCheckout} exact/>
+              <Route path="/membershipcheckout/:id" component={MembershipCheckout} exact/>
+              <Route path="/membershipcheckout/:id/:type" component={MembershipCheckout} exact/>
+              
               <Route path="/thankyou/:oid" component={ThankExpyou} exact/>
               <Route path="/thankyou" component={Thankyou} exact/>
+              <Route path="/success/:oid" component={Success} exact/>
+              
               <Route path="/process/:oid" component={Proccessing} exact/>
               <Route path="/destinationdetails" component={Destination} exact/>
               <Route path="/destination" component={Itinerary} exact/>

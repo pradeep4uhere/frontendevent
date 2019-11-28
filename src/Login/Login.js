@@ -7,12 +7,17 @@ var globals = require('node-global-storage');
 class Login extends React.Component{
     constructor(props) {
         super(props);
+        this.state={
+          ref : this.props.match.params.ref,
+        }
     }
    render(){
+     const {ref} =  this.state;
+     
       return(
       <div>
         <UserHeader/>
-        <LoginForm/>
+        <LoginForm urlString={ref}/>
         <Footer/>
       </div>
       );

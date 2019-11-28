@@ -122,7 +122,7 @@ class Header extends React.Component {
       alert("Please enter search text!");
       return false;
     }else{
-      window.location.href=text;
+      window.location.href=Constants.AppUrl+'searchresult/'+text;
     }
   }
 

@@ -6,6 +6,7 @@ import Constants  from '../../config/Constants'
 import ProfileView from '../Profile/ProfileView';
 import ProfileEdit from '../Profile/ProfileEdit';
 import OrderHistory from '../Profile/OrderHistory';
+import MembershipPlan from '../Profile/MembershipPlan';
 import OrderDetails from '../Profile/OrderDetails';
 import ChangePassword from '../Profile/ChangePassword';
 
@@ -116,6 +117,9 @@ class Cart extends React.Component {
                     <li className="list-group-item" onClick={(e) => this.handleClick(e,'travelbooking')} id="travelbooking">
                     <Link to="/travelbooking/2"><i style={{"color":"cadetblue"}} className="fas fa-plane-departure"></i>&nbsp;<span className="hidden-sm-down">Travel Booking Order</span></Link>
                     </li>
+                    <li className="list-group-item" onClick={(e) => this.handleClick(e,'membership')} id="membership">
+                    <Link to="/mymembership"><i style={{"color":"cadetblue"}} className="fas fa-bookmark"></i>&nbsp;<span className="hidden-sm-down">Membership</span></Link>
+                    </li>
                     <li className="list-group-item" onClick={(e) => this.handleClick(e,'profileedit')} id="profileedit"><Link to='/profileedit'><i style={{"color":"cadetblue"}} className="fas fa-user-cog"></i>&nbsp;<span className="hidden-sm-down">Update Profile</span></Link></li>
                     <li className="list-group-item" onClick={(e) => this.handleClick(e,'changepassword')} id="changepassword"><Link to='/changepassword'><i style={{"color":"cadetblue"}} className="fas fa-key"></i>&nbsp;<span className="hidden-sm-down">Change Password</span></Link></li>
                     <li className="list-group-item"><a href="/logout"><i style={{"color":"cadetblue"}} className="fas fa-sign-out-alt"></i>&nbsp;<span className="hidden-sm-down">Logout</span></a></li>
@@ -129,6 +133,7 @@ class Cart extends React.Component {
           <Route path='/profile' exact component={ProfileView} />
           <Route path='/profileview' component={ProfileView} />
           <Route path='/profileedit' component={ProfileEdit} />
+          <Route path='/mymembership' component={MembershipPlan} />
           <Route path='/myorder' component={OrderHistory} />
           <Route path='/eventbooking/:order_type' component={OrderHistory} />
           <Route path='/travelbooking/:order_type' component={OrderHistory} />
