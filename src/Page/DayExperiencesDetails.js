@@ -8,6 +8,7 @@ import Constants  from '../config/Constants'
 import DefaultImage  from '../config/default.png';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
+import Moment from 'react-moment';  
 var serialize = require('form-serialize');
 var ip = require('ip');
 const customStyles = {
@@ -28,14 +29,15 @@ class DayExperiencesDetails extends React.Component {
   constructor() {
     super();
     this.state={
-      ipAdress : ip.address(),
-      user_id: sessionStorage.getItem('userid'),
-      destinationDetails:[],
-      itinerary_day:[],
-      departure_date:[],
-      itinerary_addon:[],
-      itinerary_terms:[],
-      modalIsOpen: false
+            ipAdress : ip.address(),
+            user_id: sessionStorage.getItem('userid'),
+            destinationDetails:[],
+            itinerary_day:[],
+            departure_date:[],
+            itinerary_addon:[],
+            itinerary_terms:[],
+            modalIsOpen: false,
+            priceTitle:'INR'
     }
     this.stripHtml            = this.stripHtml.bind(this);
     this.getDestinationList   = this.getDestinationList.bind(this);
@@ -307,6 +309,13 @@ selectDeparture(val,e){
                 </a>
             </li>
     );
+    let  departureDatePrice ='';
+    departureDatePrice = this.state.departure_date.map((val,i) =>
+      <li className="list-group-item d-flex justify-content-between align-items-center" onClick={(e) => this.selectDeparture(val,e)} style={{cursor:'pointer'}}>
+        <Moment format="DD-MMM-YYYY">{val.start_date}</Moment>-<Moment format="DD-MMM-YYYY">{val.end_date}</Moment>
+        <span className="badge badge-info badge-pill" style={{fontSize:'15px'}}>{this.state.priceTitle}{val.price}{(val.price_in_doller>0)?' / $'+val.price_in_doller:''}</span>
+      </li>
+    );
     return (
         
         <div>
@@ -370,13 +379,21 @@ selectDeparture(val,e){
                 <a href="#" className="fab fa-linkedin" style={{fontSize: '37px', width: '37px', padding: '5px'}}/>
                 <a href="#" className="fab fa-pinterest" style={{fontSize: '37px', width: '37px', padding: '5px'}}/>
               </div>
-              <br />
-              
+              <hr/>
+              <div class="list-group">
+                <button type="button" class="list-group-item list-group-item-action bg bg-danger text-white" style={{"backgroundColor":"red !important"}}>
+                    All Price Details
+                </button>
+                <ul className="list-group" style={{fontSize:'14px'}}>
+                  {departureDatePrice}
+                </ul>
+                </div>
+                <hr/>
+
               <div className="promo-text text-center"> 
-                <p>For more details about this experience, please email us<a href> info@rudraxp.com</a></p>
-                  
+              <p>For more details about this experience, please email us<a href> info@rudraxp.com</a></p>
               </div>
-              <br/>
+              <hr/>
               <div class="list-group">
                 <button type="button" class="list-group-item list-group-item-action bg bg-danger text-white" style={{"backgroundColor":"red !important"}}>
                     All Departure Dates
