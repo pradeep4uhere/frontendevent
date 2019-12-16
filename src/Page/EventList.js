@@ -224,7 +224,7 @@ getBannerList(){
      
     }
     return (
-        <div>
+        <div className="containerBox">
           <Header/>
           <div className="container-fluid bg-maroon p-tb50">
             <div className="container">
@@ -235,14 +235,14 @@ getBannerList(){
             </div>
         </div>
 
-        <div className="container">
+        <div className="container ">
          <div className="col-xl-12 m-ft66 text-center"><img src="../rudra/images/ticket-combo.png" alt="" className="img-fluid" /></div>
         </div>
         <div className="container-fluid bg-dmaroon p-t100 p-b50 white-text text-center m-ft80">Total {this.state.total} RudraXp experiences are listed below: </div>
-        <div className="container bg-grey">
+        <div className="container containerBox bg-grey">
         {eventFinalStr}
         </div>
-        <div className="container bg-grey">
+        <div className="container  bg-grey">
         <div className="row">
           <div className="col-xl-12 padding-0 col-lg-12 col-md-10" id="loadMore">
             <button type="button" className="btn btn-red btn-lg btn-block text-uppercase" onClick={this.handleClick} ><span className="small">View More</span></button>

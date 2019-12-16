@@ -76,7 +76,7 @@ class AboutUs extends React.Component {
         <div className="col-lg-12 m-ft66">
           <div className="row m-t-50">
             <div className="col-xl-12">
-              <div dangerouslySetInnerHTML={{ __html: pageDetails.description }}/>
+              <div className="pText" style={{textAlign:"justify"}} dangerouslySetInnerHTML={{ __html: pageDetails.description }}/>
             </div>
             
           

@@ -183,11 +183,11 @@ selectDeparture(val,e){
             <div className="card-header" role="tab" id={"headingThree1"+i}>
                 <div className="row">
                 <div className="circular-landscape" style={{marginLeft: '10px'}}><img src={(val.itinerary_day_gallery.length)?val.itinerary_day_gallery[0].original:defaultImage} alt="image" /></div>
-                <div className="col-xl-10"><h3 className="mb-0"><a className="dayTitle" data-toggle="collapse" href={"#collapseThree1"+i} role="button" aria-expanded="true" aria-controls="collapseThree1">
+                <div className="col-xl-10"><h3 className="mb-0"><a className="dayTitle " data-toggle="collapse" href={"#collapseThree1"+i} role="button" aria-expanded="true" aria-controls="collapseThree1">
                         {val.place_name}: {val.day}</a> </h3><br /><p style={{marginTop: '-20px',"fontSize":"14px"}}>{this.stripHtml(val.details).substring(0,80)}</p></div>
                 </div>
             </div>
-            <div id={"collapseThree1"+i} className="collapse" role="tabpanel" aria-labelledby={"headingThree1"+i} data-parent={"#accordion2"}>
+            <div id={"collapseThree1"+i} className="collapse pText" role="tabpanel" aria-labelledby={"headingThree1"+i} data-parent={"#accordion2"}>
                 <div className="card-body">
                 <div className="row">
                     <div className="col-xl-12">
@@ -209,11 +209,11 @@ selectDeparture(val,e){
     if(this.state.itinerary_addon.length){
       addonStr = this.state.itinerary_addon.map((val,i) => 
         <div className="card">
-            <div className="card-header" role="tab" id={"headingOne1"+i}>
-              <h5 className="mb-0"><a  data-toggle="collapse" href={"#collapseOne1"+i} role="button" aria-expanded="false" aria-controls="collapseOne1" className="collapsed dayTitle">{val.title}</a> </h5>
+            <div className="card-header " role="tab" id={"headingOne1"+i}>
+              <h5 className="mb-0"><a  data-toggle="collapse" href={"#collapseOne1"+i} role="button" aria-expanded="false" aria-controls="collapseOne1" className="collapsed dayTitle daySmTitle">{val.title}</a> </h5>
             </div>
-            <div id={"collapseOne1"+i} className="collapse" role="tabpanel" aria-labelledby={"headingOne1"+i} data-parent={"#accordion1"}>
-              <div className="card-body">
+            <div id={"collapseOne1"+i} className="collapse pText" role="tabpanel" aria-labelledby={"headingOne1"+i} data-parent={"#accordion1"}>
+              <div className="card-body pText">
                   <div dangerouslySetInnerHTML={{ __html: val.descriptions }}/>
 
                   <div className="col-md-4 pull-left">
@@ -256,24 +256,8 @@ selectDeparture(val,e){
                   </div>
                   </div>  
                 </div>
-
-
-
-                  {/* {(val.addon_description!='')?(  
-                  <div className="col-md-6 pull-left">
-                        <a onClick={this.openModal(val.id)}><b>Description>></b></a>
-                        <div dangerouslySetInnerHTML={{ __html: val.addon_description }}/></div>
-                        ):('')}
-                    {(val.addon_includes!='')?(  
-                    <div className="col-md-6 pull-right">
-                        <a onClick={this.openModal(val.id)}><b>Includes>></b></a>
-                       <div dangerouslySetInnerHTML={{ __html: val.addon_includes }}/></div>
-                        ):('')} */}
               </div>
             </div>
-            
-            
-            
       </div>
     );
    }
@@ -283,7 +267,7 @@ selectDeparture(val,e){
     termsStr = this.state.itinerary_terms.map((val,i) => 
       <div className="card1">
           <div className="card-header" role="tab" id={"headingTwo1"+i}>
-            <h5 className="mb-0" style={{"lineHeight":"0.2","borderBottom":"thin 1 px","textAlign":"left"}}><a  data-toggle="collapse" href={"#collapseTwo1"+i} role="button" aria-expanded="false" aria-controls="collapseTwo1" className="collapsed dayTitle">{val.title}</a> </h5>
+            <h5 className="mb-0" style={{"lineHeight":"0.2","borderBottom":"thin 1 px","textAlign":"left"}}><a  data-toggle="collapse" href={"#collapseTwo1"+i} role="button" aria-expanded="false" aria-controls="collapseTwo1" className="collapsed dayTitle daySmTitle">{val.title}</a> </h5>
           </div>
           <div id={"collapseTwo1"+i} className="collapse" role="tabpanel" aria-labelledby={"headingTwo1"+i} data-parent={"#accordion3"}>
             <div className="cardBody"><div dangerouslySetInnerHTML={{ __html: val.descriptions }}/></div>
@@ -342,7 +326,7 @@ selectDeparture(val,e){
            {this.stripHtml(this.state.destinationDetails.description).substring(0,100)}</h2>
           </div>
         </div>
-        <div className="container">
+        <div className="container containerBox">
              <ImageSlider galleryJson={this.state.destinationDetails.itinerary_gallery} name="hello" />
           <br />
           <br />

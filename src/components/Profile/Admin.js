@@ -24,17 +24,17 @@ class Cart extends React.Component {
        
         this.state={
           ipAdress      : ip.address(),
-          user_id       : sessionStorage.getItem('userid'),
-          first_name    : sessionStorage.getItem('first_name'),
-          last_name     : sessionStorage.getItem('last_name'),
-          email         : sessionStorage.getItem('email'),
-          phone         : sessionStorage.getItem('phone'),
+          user_id       : localStorage.getItem('userid'),
+          first_name    : localStorage.getItem('first_name'),
+          last_name     : localStorage.getItem('last_name'),
+          email         : localStorage.getItem('email'),
+          phone         : localStorage.getItem('phone'),
           isLoggedIn    : false,
-          userDetails   : sessionStorage.getItem('userDetails'),
-          user_id       : sessionStorage.getItem('userid'),
+          userDetails   : localStorage.getItem('userDetails'),
+          user_id       : localStorage.getItem('userid'),
           errorMessage  : '',
           isError       :  false,
-          memberSince   : sessionStorage.getItem('created_at'),
+          memberSince   : localStorage.getItem('created_at'),
           
 
         }
@@ -62,12 +62,17 @@ class Cart extends React.Component {
 
 
   capitalize(str) {
+    //alert(str);
+    /*
     var strVal = '';
-    str = str.split(' ');
-    for (var chr = 0; chr < str.length; chr++) {
-      strVal += str[chr].substring(0, 1).toUpperCase() + str[chr].substring(1, str[chr].length) + ' '
+    if(str.length>0){
+      str = str.split(' ');
+      for (var chr = 0; chr < str.length; chr++) {
+        strVal += str[chr].substring(0, 1).toUpperCase() + str[chr].substring(1, str[chr].length) + ' '
+      }
     }
-    return strVal
+    return strVal*/
+    return str;
 }
 
 
@@ -98,7 +103,38 @@ class Cart extends React.Component {
         <Router>
         <div className="container-fluids" style={{"width":"99.2%"}}>
             <div className="row py-5 p-4 bg-white rounded shadow-sm">
-            <div className="col-lg-2" >
+            <div className="col-lg-12 navBarSm" style={{display:"none"}} >
+            <nav className="navbar navbar-expand-lg navbar-light text-white">
+              <a className="navbar-brand" href="#">Welcome, {this.capitalize(first_name)}</a>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon" />
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul className="list-group list-group-flush">
+                    <li className="list-group-item nav-item" onClick={(e) => this.handleClick(e,'profileview')} id="profileview">
+                    <Link to='/profileview'><i className="fas fa-id-badge" style={{"color":"cadetblue"}}></i> <span className="hidden-sm-down">Profile</span></Link>
+                    </li>
+                    <li className="list-group-item nav-item" onClick={(e) => this.handleClick(e,'myorder')} id="myorder">
+                    <Link to='/myorder'><i style={{"color":"cadetblue"}} className="fas fa-shipping-fast"></i> <span className="hidden-sm-down">My Order</span></Link>
+                    </li>
+                    <li className="list-group-item nav-item" onClick={(e) => this.handleClick(e,'eventbooking')} id="eventbooking">
+                        <Link to="/eventbooking/1"><i style={{"color":"cadetblue"}} className="fas fa-calendar-check"></i>&nbsp;<span className="hidden-sm-down">Event Booking Order</span></Link>
+                    </li>
+                    <li className="list-group-item nav-item" onClick={(e) => this.handleClick(e,'travelbooking')} id="travelbooking">
+                    <Link to="/travelbooking/2"><i style={{"color":"cadetblue"}} className="fas fa-plane-departure"></i>&nbsp;<span className="hidden-sm-down">Travel Booking Order</span></Link>
+                    </li>
+                    <li className="list-group-item nav-item" onClick={(e) => this.handleClick(e,'membership')} id="membership">
+                    <Link to="/mymembership"><i style={{"color":"cadetblue"}} className="fas fa-bookmark"></i>&nbsp;<span className="hidden-sm-down">Membership</span></Link>
+                    </li>
+                    <li className="list-group-item nav-item" onClick={(e) => this.handleClick(e,'profileedit')} id="profileedit"><Link to='/profileedit'><i style={{"color":"cadetblue"}} className="fas fa-user-cog"></i>&nbsp;<span className="hidden-sm-down">Update Profile</span></Link></li>
+                    <li className="list-group-item nav-item" onClick={(e) => this.handleClick(e,'changepassword')} id="changepassword"><Link to='/changepassword'><i style={{"color":"cadetblue"}} className="fas fa-key"></i>&nbsp;<span className="hidden-sm-down">Change Password</span></Link></li>
+                    <li className="list-group-item nav-item"><a href="/logout"><i style={{"color":"cadetblue"}} className="fas fa-sign-out-alt"></i>&nbsp;<span className="hidden-sm-down">Logout</span></a></li>
+                    </ul>
+                
+              </div>
+            </nav>
+            </div>
+            <div className="col-lg-2 navBarLg" >
                     <div className="card  text-white bg-danger" style={{width: '18rem'}}>
                     <div className="card-body  text-white bg-danger mb-3">
                     <h5 className="card-title"><h2>Welcome, {this.capitalize(first_name)}</h2></h5>

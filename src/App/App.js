@@ -84,6 +84,7 @@ render() {
               <Route path="/exp-list" component={EventList} exact/>
               <Route path="/membership" component={Membership} exact/>
               <Route path="/aboutus" component={AboutUs} exact/>
+              <Route path="/about_us" component={AboutUs} exact/>
               <Route path="/socialcommitment" component={SocialCommittment} exact/>
               <Route path="/contactus" component={ContactUs} exact/>
               <Route path="/termsandconditions" component={Termsandconditions} exact/>

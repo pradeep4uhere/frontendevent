@@ -213,15 +213,15 @@ class EventDetails extends React.Component {
           <Header/>
           <div className="container-fluid bg-maroon p-tb50">
           <div className="container">
-            <h1 className="text-center white-text mt-85">{this.state.eventDetails.title}
-            </h1><p className="text-white small text-center">{this.state.cityName}</p>
+            <h1 className="text-center white-text mt-85 eventTitle">{this.state.eventDetails.title}
+            </h1><p className="text-white small text-center placeText">{this.state.cityName}</p>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
             <h2 className="text-center p-b50 white-text">
               <div dangerouslySetInnerHTML={{ __html: this.state.eventDetails.description }}/>
             </h2>
           </div>
         </div>
-        <div className="container">
+        <div className="container SlideContainer">
         <ImageSlider galleryJson={this.state.eventgallery} name="hello" />
        <br/><br/>
        {/* <div className="row">

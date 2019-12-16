@@ -124,7 +124,7 @@ class Membership extends React.Component {
             </div>
          </div>
 
-          <div className="container">
+          <div className="container containerBox">
           <div className="col-lg-12 m-ft66 text-center">
             <div className="row m-b-50">
             {membershipStr}

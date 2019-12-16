@@ -60,11 +60,11 @@ componentDidMount(){
     let yt = (data.length>0) ? data[4].options_value : '';
     let cp = (data.length>0) ? data[10].options_value : '';
     return (
-      <div className="container-fluid clear bg-footer">
+      <div className="container-fluid clear bg-footer ">
         <footer>
             <div className="footer-postion footer-bg">
               <div className="footer-content p-5">
-                <div className="container footer-margin">
+                <div className="container containerBox footer-margin">
                   <div className="row">
                     <div className="p-right-25 col-lg-5 col-xl-5"><h5>Rudra Xp</h5>
                       <p className="footer-content">{title}</p></div>

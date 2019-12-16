@@ -360,7 +360,7 @@ class MembershipCheckout extends React.Component {
             {this.greeting()}
           </div>
         </div>
-        <div className="container">
+        <div className="container containerBox">
         
         
         <form role="form" onSubmit={this.handleSubmit}  id="form-offer">
@@ -373,10 +373,10 @@ class MembershipCheckout extends React.Component {
             <div className="card-body  bg-white">
             <h3 className="card-title"><b>Type::</b>&nbsp;{membershipDetails.name}({title})</h3>
             <p className="card-text">{features}</p>
-            <b>Price::&nbsp;&nbsp;</b>
-            <a href={"/membershipcheckout/"+id+'/1'} className="btn btn-info">{priceType}{membershipDetails.monthly_price}/Month</a>&nbsp;
-            <a href={"/membershipcheckout/"+id+'/2'} className="btn btn-danger">{priceType}{membershipDetails.quarterly_price}/Quater</a>&nbsp;
-            <a href={"/membershipcheckout/"+id+'/3'} className="btn btn-success">{priceType}{membershipDetails.yearly_price}/Year</a>
+            <b className="btnPrice">Price::&nbsp;&nbsp;</b>
+            <a href={"/membershipcheckout/"+id+'/1'} className="btn btn-info btnSmall">{priceType}{membershipDetails.monthly_price}/Month</a>&nbsp;
+            <a href={"/membershipcheckout/"+id+'/2'} className="btn btn-danger btnSmall">{priceType}{membershipDetails.quarterly_price}/Quater</a>&nbsp;
+            <a href={"/membershipcheckout/"+id+'/3'} className="btn btn-success btnSmall">{priceType}{membershipDetails.yearly_price}/Year</a>
             </div>
             </div>
             </div>

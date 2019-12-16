@@ -122,13 +122,13 @@ class PopularEvent extends React.Component {
           <p className="text-center"><a href="exp-list" className="link1">View All</a></p>
         </div>
         <div className="container tkt-grp-margin">
-        <div className="container">
+        <div className="container containerBox">
               <div className="row blog">
                 <div className="col-md-12">
                 <Slider {...settings}>
                   {listItems}
                 </Slider>
-          </div>
+                </div>
         </div>
       </div>
         </div>

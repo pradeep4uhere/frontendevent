@@ -17,11 +17,11 @@ class ProfileView extends React.Component {
           state_name    : "",
           county_name   : "India",
           ipAdress      : ip.address(),
-          user_id       : sessionStorage.getItem('userid'),
-          first_name    : sessionStorage.getItem('first_name'),
+          user_id       : localStorage.getItem('userid'),
+          first_name    : localStorage.getItem('first_name'),
           isLoggedIn    : false,
-          userDetails   : sessionStorage.getItem('userDetails'),
-          user_id       : sessionStorage.getItem('userid'),
+          userDetails   : localStorage.getItem('userDetails'),
+          user_id       : localStorage.getItem('userid'),
           errorMessage  : '',
           isError       :  false
 

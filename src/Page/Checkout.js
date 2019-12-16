@@ -377,13 +377,13 @@ class Cart extends React.Component {
           <Header/>
           <div className="container-fluid bg-maroon p-tb15">
           <div className="container">
-            <h1 className="text-center white-text mt-85">Checkout
+            <h1 className="text-center white-text mt-85 checkoutText">Checkout
             </h1>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
             {this.greeting()}
           </div>
         </div>
-        <div className="container">
+        <div className="container containerBox">
         
         <form role="form" onSubmit={this.handleSubmit}  id="form-offer">
           <div className="row py-5 p-4 bg-white rounded shadow-sm">
@@ -393,7 +393,7 @@ class Cart extends React.Component {
             <div className="alert alert-danger" style={{"font-size":"12px"}}>{errorMessage}</div>):""
             }
               <div className="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Shipping Address</div>
-              <div className="p-4">
+              <div className="p-4 ">
                 {/*<p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>*/}
                   <div className="row">
                     <div className="form-group col-lg-6">
@@ -507,7 +507,7 @@ class Cart extends React.Component {
               </div>
               <div>
                 <div className="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Make Your Payment </div>
-                <div className="p-4">
+                <div className="p-4 paymentBox">
                   <p className="font-italic mb-4">You can choose direct debit, credit card or net banking as your payment method.</p>
                   <div id="accordion1" role="tablist">
                     <div className="card">

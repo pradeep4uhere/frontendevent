@@ -96,20 +96,20 @@ handleSort(e,val){
     let destinationStr ='';
     if(destinationDetails){
       destinationStr = destinationDetails.map((val,i) =>
-        <div className="card">
+        <div className="card" style={{"width":"100%"}}>
         <div className="card-header" role="tab" id={"headingOne"+val.id}>
           <div className="row">
             <div className="circular-landscape" style={{marginLeft: '10px'}}><img src={val.itinerary_gallery[0]} alt="Image" /></div>
-            <div className="col-xl-10"><h3 className="mb-0"><a data-toggle="collapse" href={"#collapseOne"+val.id} role="button" aria-expanded="true" aria-controls={"collapseOne"+val.id}>
+            <div className="col-xl-10 pText"><h3 className="mb-0"><a data-toggle="collapse" href={"#collapseOne"+val.id} role="button" aria-expanded="true" aria-controls={"collapseOne"+val.id}>
                   {val.title}</a> </h3><br /><p style={{marginTop: '-20px'}}>{this.stripHtml(val.description).substring(0,100)}</p></div>
-            <div class="col-xl-1">{val.itinerary_day.length} Days</div>
+            <div class="col-xl-1  pText">{val.itinerary_day.length} Days</div>
           </div>
         </div>
         <div id={"collapseOne"+val.id} className="collapse" role="tabpanel" aria-labelledby={"headingOne"+val.id} data-parent={"#accordion1"}>
           <div className="card-body">
             <div className="row">
               <div className="col-xl-4"><img src={val.itinerary_gallery[0]} alt="" onerror="this.onerror=null;this.src='http://192.168.0.140/project-1/Rudra/API/rudra/storage/app/public/destination/b45424115a3d0fe8ad645a1c5a932829.jpeg'"/></div>
-              <div className="col-xl-8"><div dangerouslySetInnerHTML={{ __html: (val.description).substring(0,250) }}/><br />	 <a href={"/destinationexpdetails/"+val.id} className="btn btn-red-small1">View More</a>
+              <div className="col-xl-8 pText"><div dangerouslySetInnerHTML={{ __html: (val.description).substring(0,250) }}/><br />	 <a href={"/destinationexpdetails/"+val.id} className="btn btn-red-small1">View More</a>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ handleSort(e,val){
       );
     }
     return (
-        <div>
+        <div className="container containerBox">
           <Header/>
           <div className="container-fluid bg-maroon p-tb50">
           <div className="container">
@@ -131,14 +131,23 @@ handleSort(e,val){
         <div className="container">
           <div className="col-xl-12 m-ft66 text-center"><img src="../rudra/images/ticket-combo.png" alt="" className="img-fluid" /></div>
         </div>
-        <div className="container">
-          <div className="row p-tb20">
+        <div className="container ">
+       
+          <div className="row p-tb20 lgBox">
+          
             <div className="col-xl-8 col-md-8 col-sm-12 col-12"><a className=" btn-grey-border">Sort by</a></div>
             <div className="col-xl-2 col-md-2 col-sm-12 col-12"><button type="button" className="btn btn-grey-border" id="short" style={{"backgroundColor":"#36ca2624"}}><Link to="/destination#short" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'short'))}>Short Trips</Link></button></div>
             <div className="col-xl-2 col-md-2 col-sm-12 col-12"><button type="button" className="btn btn-grey-border" id="long"><Link href="/destination#long" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'long'))}>Long Trips</Link></button></div>
           </div>
+
+          <div className="row p-tb20 smButtonBox" style={{display:"none"}}>
+          
+          <div className="buttonBox"><button type="button" className="btn"><a style={{"textDecoration":"none","color":"#333"}} className=" btn-grey-border">Sort by</a></button></div>
+          <div className="buttonBox"><button type="button" className="btn btn-grey-border" id="short" style={{"backgroundColor":"#36ca2624"}}><Link to="/destination#short" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'short'))}>Short Trips</Link></button></div>
+          <div className="buttonBox"><button type="button" className="btn btn-grey-border" id="long"><Link href="/destination#long" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'long'))}>Long Trips</Link></button></div>
         </div>
-        <div className="container">
+        </div>
+        <div className="container containerBox">
           <div id="accordion1" role="tablist">
             {destinationStr}
             

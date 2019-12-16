@@ -109,8 +109,9 @@ handleSort(e,val){
         <div className="card">
         <div className="card-header" role="tab" id={"headingOne"+val.id}>
           <div className="row">
-            <div className="circular-landscape" style={{marginLeft: '10px'}}><img src={(val.destination_gallery!='')?val.destination_gallery[0].icon:val.defaultImg} alt="Image" /></div>
-            <div className="col-xl-10"><h3 className="mb-0"><a data-toggle="collapse" href={"#collapseOne"+val.id} role="button" aria-expanded="true" aria-controls={"collapseOne"+val.id}>
+            <div className="circular-landscape" style={{marginLeft: '10px'}}>
+            <img src={(val.destination_gallery!='')?val.destination_gallery[0].icon:val.defaultImg} alt="Image" /></div>
+            <div className="col-xl-10 pText" ><h3 className="mb-0"><a data-toggle="collapse" href={"#collapseOne"+val.id} role="button" aria-expanded="true" aria-controls={"collapseOne"+val.id}>
                   {val.title}</a> </h3><br /><p style={{marginTop: '-20px'}}>{this.stripHtml(val.descriptions).substring(0,100)}</p></div>
           </div>
         </div>
@@ -118,7 +119,7 @@ handleSort(e,val){
           <div className="card-body">
             <div className="row">
               <div className="col-xl-4"><img src={(val.destination_gallery!='')?val.destination_gallery[0].image:val.defaultImg} alt="Image" onerror={"this.onerror=null;this.src='"+defaultImage+"'"}/></div>
-              <div className="col-xl-8">  
+              <div className="col-xl-8 pText">  
                 <div dangerouslySetInnerHTML={{ __html: val.descriptions.substring(0,180) }}/>
               <br />	 <a href={"/destinationdetails/"+val.id} className="btn btn-red-small1">View More</a>
               </div>
@@ -144,9 +145,9 @@ handleSort(e,val){
         </div>
         <div className="container">
           <div className="row p-tb20">
-            <div className="col-xl-8 col-md-8 col-sm-12 col-12"><a className=" btn-grey-border">Sort By</a></div>
-            <div className="col-xl-2 col-md-2 col-sm-12 col-12"><button type="button" className="btn btn-grey-border" id="short" style={{"backgroundColor":"#36ca2624"}}><Link to="/destination#short" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'short'))}>Short Trips</Link></button></div>
-            <div className="col-xl-2 col-md-2 col-sm-12 col-12"><button type="button" className="btn btn-grey-border" id="long"><Link href="/destination#long" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'long'))}>Long Trips</Link></button></div>
+            <div className="col sortBox"><a className=" btn-grey-border">Sort By</a></div>
+            <div className="col sortBox"><button type="button" className="btn btn-grey-border" id="short" style={{"backgroundColor":"#36ca2624"}}><Link to="/destination#short" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'short'))}>Short Trips</Link></button></div>
+            <div className="col sortBox"><button type="button" className="btn btn-grey-border" id="long"><Link href="/destination#long" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'long'))}>Long Trips</Link></button></div>
           </div>
         </div>
         <div className="container">

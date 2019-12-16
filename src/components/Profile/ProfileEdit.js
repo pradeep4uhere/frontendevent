@@ -34,11 +34,11 @@ class ProfileView extends React.Component {
           city_id       : "",
           county_name   : "India",
           ipAdress      : ip.address(),
-          user_id       : sessionStorage.getItem('userid'),
-          first_name    : sessionStorage.getItem('first_name'),
+          user_id       : localStorage.getItem('userid'),
+          first_name    : localStorage.getItem('first_name'),
           isLoggedIn    : false,
-          userDetails   : sessionStorage.getItem('userDetails'),
-          user_id       : sessionStorage.getItem('userid'),
+          userDetails   : localStorage.getItem('userDetails'),
+          user_id       : localStorage.getItem('userid'),
           errorMessage  : '',
           isError       :  false,
           isMsg   :false,
@@ -161,7 +161,7 @@ class ProfileView extends React.Component {
                               postcode        : postcode,
                               phone           : phone,
                               country_id      : county_name,
-                              id              : sessionStorage.getItem('userid'),
+                              id              : localStorage.getItem('userid'),
                             }
       }
       axios.post(urlStrUpdate, formData)
@@ -348,7 +348,7 @@ class ProfileView extends React.Component {
           </div> 
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Postcode / ZIP</label>
-            <input type="contact" className="form-control" id="postcode" placeholder="Last Name" value={postcode} onChange = { this.handleChange.bind(this)} />
+            <input type="contact" className="form-control" id="postcode" placeholder="Enter zipcode" value={postcode} onChange = { this.handleChange.bind(this)} />
           </div>  
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Phone</label>

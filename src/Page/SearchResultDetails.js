@@ -63,7 +63,7 @@ getSearchResultList(){
       console.log(response.data);
     if(response.data.code==200) {
           this.setState({
-            search_result        : response.data.result,
+            search_result : response.data.result,
           });
     }
     else

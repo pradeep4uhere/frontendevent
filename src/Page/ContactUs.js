@@ -29,7 +29,7 @@ class ContactUs extends React.Component {
         </div>
         <br/>
         <section className="Material-contact-section section-padding section-dark">
-        <div className="container">
+        <div className="container containerBox">
           <div className="row">
             {/* Section Titile */}
             <div className="col-md-6 mt-3 contact-widget-section2 wow animated fadeInLeft" data-wow-delay=".2s">
@@ -37,7 +37,7 @@ class ContactUs extends React.Component {
             <div class="card-header">
             Company Details
             </div>
-            <div class="card-body">
+            <div class="card-body pText">
                         <div className="find-widget">
                         <strong>  Company:</strong>  Rudra Experiences Pvt Ltd
                         </div><br/>
@@ -57,7 +57,7 @@ class ContactUs extends React.Component {
               </div>
             </div>
             {/* contact form */}
-            <div className="col-md-6 wow animated fadeInRight" data-wow-delay=".2s">
+            <div className="col-md-6 wow animated fadeInRight pText" data-wow-delay=".2s">
               <form className="shake" role="form" method="post" id="contactForm" name="contact-form" data-toggle="validator">
                 {/* Name */}
                 <div className="form-group label-floating">
