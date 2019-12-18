@@ -49,6 +49,7 @@
     "react-grid-gallery": "^0.5.5",
     "react-image-gallery": "^0.8.18",
     "react-items-carousel": "^2.8.0",
+    "react-media": "^1.10.0",
     "react-modal": "^3.11.1",
     "react-moment": "^0.9.6",
     "react-number-format": "^4.3.1",

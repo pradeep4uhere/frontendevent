@@ -1,0 +1,421 @@
+/****************Media Query 736X414 ends here****************/
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media only screen and (min-width: 736px) {
+body{
+  font-size: 18px;
+}
+.container {
+    max-width: 736px;
+}
+.smallBox{
+  display: block;
+}
+.lgBox{
+  display: none !important;
+}
+.tabs {
+    padding: 2px 10px !important;
+}
+.searchBar {
+    width: 250px !important;
+    align-items: center;
+    height: 40px !important;
+    float: left;
+    margin-left: -53%;
+    margin: 11px;
+}
+
+.searchText{
+  display: none;
+}
+
+::-webkit-input-placeholder {   
+  color: red;
+  font-size:14px
+}
+
+.sidenav{
+  height: 280% !important;
+}
+.navBarSm{
+  display: block !important;
+}
+
+.search-result {
+    color: #000;
+    font-size: 12px !important;
+    font-family: inherit;
+    border-bottom: solid 1px #dcd6db;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.search-result a {
+    color: #580000;
+    font-size: 14px !important;
+    font-variant: ruby;
+    font-family: inherit;
+    font-weight: bold;
+    text-decoration: none;
+}
+.excerpet h3{
+    font-size: 14px;
+}
+
+.plus a{
+  font-size: 10px !important;
+}
+
+.footerTextMenuBottom{
+  font-size: 12px !important;
+  text-align:"left";
+  color:"#000000";
+  padding-top:"2%";
+  margin-right:"0px";
+}
+.menuSM {
+    background-color: #9a0010 !important;
+    color: #FFF;
+}
+.navBarLg{
+  display: none !important;
+}
+/****Login Form***/
+.form-bg {
+    height: 110vh;
+}
+.list-group-item{
+ text-align: left !important;
+ font-size: 14px;
+}
+.text-left{
+  margin-bottom: 1px;
+  font-size: 15px;
+}
+.smMenu{
+  display: block !important;
+}
+
+.LgMenu{
+  display: none !important;
+}
+
+h1{
+  font-size: 32px !important;
+}
+.p-tb15{
+  margin-top: 56px;
+}
+
+.lgbtn{
+  display: none;
+}
+/****Login Form***/
+
+.container {
+    width: 90%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+#form-offer{
+font-size: 13px;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: red;
+  font-size:11px
+}
+
+.containerBox {
+    width: 99%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.container h1{
+font-size: 21px;
+}
+
+
+.m-ft80 {
+    margin-top: -48px;
+}
+
+.p-4 {
+    padding: 0.5rem !important;
+}
+
+.container .text-center{
+  font-size: 21px;
+}
+
+.container .placeText{
+  font-size: 15px;
+}
+
+.container .eventTitle{
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.container .image-gallery {
+    margin-top: -24px !important;
+}
+
+.SlideContainer{
+  width: 92%;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.image-gallery-thumbnail{
+  width: 85px  !important;
+  height: 60px !important;
+}
+
+.nav-tabs .nav-item {
+    margin-bottom: -1px !important;
+    margin-right: -1px !important;
+    font-size: 13px;
+}
+
+
+.tabs {
+    padding: 2px 14px !important;
+}
+.container h3{
+font-size: 16px;
+}
+
+.container h2{
+font-size: 21px;
+}
+
+
+.mt-85 {
+    margin-top: 27px;
+}
+
+.btn-red-border1 {
+    letter-spacing: 2px;
+    font-weight: 100;
+    color: #FFF;
+    border-color: #fff;
+    padding: 10px 20px;
+    font-size: 13px;
+}
+
+.list-unstyled{
+  font-size: 13px;
+}
+
+.font-italic {
+    font-style: italic !important;
+    font-size: 12px !important;
+}
+
+.checkoutText{
+  margin-top: 65px !important;
+}
+
+.paymentBox{
+  padding: 0px !important;
+}
+
+#form-offer > .input-group > input{
+  width: 100%;
+  margin-bottom: 5px !important;
+}
+.text-uppercase {
+    text-transform: uppercase !important;
+    font-size: 13px !important;
+}
+
+.footer-content{
+  text-align: justify;
+}
+.slick-slide .featureImg{
+    display: block;
+    height: 214px;
+}
+.element img .icon-position{
+  height: 235px;
+}
+.tkt-margin {
+    margin: 0px 30px;
+}
+
+.footer-copyright{
+  font-size: 11px !important;
+}
+.m-ft66 {
+    margin-top: -99px;
+}
+
+
+.link1{
+  font-size: 16px;
+}
+
+.p-b50 {
+    padding-bottom: 0px;
+}
+.p-tb50 {
+    padding-top: 50px;
+    padding-bottom: 18px;
+}
+.slide img{
+height: 325px;
+}
+
+.carousel-slider{
+  width: 736px !important;
+}
+.leftLogo{
+    float: left;
+    width: 114px;
+}
+.logo-width {
+    max-width: 75%;
+}
+.rightFrame{
+  float: right;
+  
+}
+.tab-content{
+  font-size: 14px;
+  text-align: justify;
+  margin-bottom: 10px;
+}
+
+.p-b50 {
+    margin-bottom: 100px !important;
+}
+.headerBox{
+  width: 100% !important;
+}
+#rightSide{
+      height: "250%";
+      width:"75%";
+      float:"right";
+      background-color:"#FFF";
+      color:"#000";
+  }
+
+
+/*******Destination Page Responsive Start*********/
+.sortBox{
+  width:33%;
+  font-size: 12px;  
+}
+
+
+.sortBox a{
+  font-size: 12px;  
+  padding: 5px;
+}
+.sortBox button{
+  font-size: 12px;  
+  padding: 3px;
+  width: 101px;
+}
+
+.pText{
+  font-size: 14px;
+}
+.lgBox{
+display: none;
+}
+
+.smButtonBox{
+  display: block !important;
+}
+
+.buttonBox{
+  display: block !important;
+  width:33%  !important;
+  font-size: 12px !important;
+  padding: 1px !important;
+  float: left;
+}
+.buttonBox button{
+  padding: 3px;
+  font-size: 12px;
+}
+.circular-landscape {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 267px;
+    border-radius: 0% !important;
+    margin-left: 2px !important;
+}
+
+#rightSide{
+    width: 100% !important;
+    float: right;
+    background-color: #FFF !important;
+    height: 250%;
+    color: rgb(0, 0, 0);
+}
+.circular-landscape img{
+  margin-left: 5px !important;
+}
+
+.container .text-center {
+    font-size: 15px;
+}
+
+.daySmTitle {
+    font-size: 11px !important;
+    color: #000;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.sidenavDetails a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 11px !important;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+}
+.dayTitle {
+    font-size: 14px !important;
+    color: #000;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+.closebtn{
+  font-size: 40px !important;
+}
+
+.btn-grey-border:hover {
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #586575;
+    background-color: #fff;
+    border: 2px solid #586575;
+    padding: 3px 12px;
+}
+
+.btnPrice{
+  display: none;
+}
+.btnSmall{
+  font-size: 12px;
+}
+/*******Destination Page Responsive Start*********/
+}
+

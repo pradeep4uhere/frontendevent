@@ -106,10 +106,6 @@ render() {
               <Route path="/destinationdetails/:id" component={Destination} exact/>
               <Route path="/dayexperiences" component={DayExperiences} exact/>
               <Route path="/destinationexpdetails/:id" component={DayExperiencesDetails} exact/>
-              
-
-              
-              
               <Route path="*" component={NotFound} exact/>
          </Switch>
         </Router>

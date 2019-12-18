@@ -413,17 +413,19 @@ GeneralPortRouter.route('/lastorderlist').post(function (req, res) {
 
 GeneralPortRouter.route('/popularlist').post(function (req, res) {
     var sess = {token: '',user: {}};
-    var token        	= req.body.token;
+	var token        	= req.body.token;
+	var itemCount     	= req.body.itemCount;
     var postData 		={
-    	token		 : token
+		token		 : token,
+		itemCount	 : itemCount
     }
     console.log(postData);
     const options = {
-					    method: 'POST',
-					    uri: POPULAR_EVENTLIST_REQUEST,
-					    body: postData,
-						json: true,
-				        headers: {
+					    method	: 'POST',
+					    uri		: POPULAR_EVENTLIST_REQUEST,
+					    body	: postData,
+						json	: true,
+				        headers	: {
 			            'Authorization': 'Bearer ' + token,
 				        },
 				    }
