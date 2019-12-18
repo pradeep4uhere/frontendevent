@@ -20,8 +20,8 @@ class ViedoReview extends React.Component {
     
     if(data.length>0){ 
       optionItems = data.map((val,i) =>
-       <div className="col-xl-4 col-lg-4 col-md-4 text-center">
-            <iframe width="350" height="250" src={val.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       <div className="col-12 col-xl-4 col-lg-4 col-md-6 text-center">
+            <iframe width="100%" height="250" src={val.url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <h3 className="text-center"><a className="link-review">{val.title}</a></h3>
             <p />
         </div>

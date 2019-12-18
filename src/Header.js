@@ -186,7 +186,7 @@ class Header extends React.Component {
                 {bannerStr}
             </Carousel>
             
-          <nav className="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar menu-bg">
+          <nav className="navbar navbar-expand-lg navbar-expand-md bg-inverse fixed-top scrolling-navbar menu-bg">
             <div className="container">
               <div className="leftLogo">
                 <Link to="/" className="navbar-brand brand-pos text-left">

@@ -1,26 +1,58 @@
-/****************Media Query 414X736 ends here****************/
+/****************Media Query 736X414 ends here****************/
 /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media only screen and (min-width: 414px) and (max-width: 414px) {
+@media only screen and (min-width: 1024px) and (max-width: 1024px) {
 body{
   font-size: 18px;
 }
-
-.closebtn{
-  z-index: 99999;
-}
-h1 {
-  font-size: 20px !important;
+h1, .h1 {
+    font-size: 1.8rem;
 }
 
-.link1 {
-  font-size: 14px;
+.carousel-slider{
+    width: 768px !important;
 }
-.smallBox{
-  display: block;
+
+.slick-slide .featureImg{
+    display: block;
+    height: 121px;
 }
-.lgBox{
-  display: none !important;
+
+.carousel .slide img {
+    width: 100%;
+    vertical-align: top;
+    border: 0;
+    height: 404px;
 }
+.p-b50 {
+    margin-bottom: 0px !important; 
+    padding-bottom: 35px !important; 
+}
+
+.p-tb50{
+    padding-bottom: 0px !important; 
+    padding-top: 50px !important; 
+}
+
+.container .text-center {
+    font-size: 22px;
+}
+
+.menu-bg {
+    background-color: #FFFFFF;
+    box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    padding: 3px;
+    opacity: 0.7;
+}
+
+.rounded-pill {
+    border-radius: 0rem !important;
+}
+
+.p-5 {
+  padding: 0rem !important; 
+}
+
 .tabs {
     padding: 2px 10px !important;
 }
@@ -108,9 +140,9 @@ h1 {
   display: none !important;
 }
 
-/* h1{
+h1{
   font-size: 32px !important;
-} */
+}
 .p-tb15{
   margin-top: 56px;
 }
@@ -137,7 +169,7 @@ font-size: 13px;
 }
 
 .containerBox {
-    width: 99%;
+    width: 100%;
     padding-right: 0px;
     padding-left: 0px;
     margin-right: auto;
@@ -158,9 +190,7 @@ font-size: 21px;
     padding: 0.5rem !important;
 }
 
-.container .text-center{
-  font-size: 21px;
-}
+
 
 .container .placeText{
   font-size: 15px;
@@ -249,10 +279,7 @@ font-size: 21px;
 .footer-content{
   text-align: justify;
 }
-.slick-slide .featureImg{
-    display: block;
-    height: 214px;
-}
+
 .element img .icon-position{
   height: 235px;
 }
@@ -268,22 +295,11 @@ font-size: 21px;
 }
 
 
-
-
-.p-b50 {
-    padding-bottom: 0px !important;
-}
-.p-tb50 {
-    padding-top: 50px;
-    padding-bottom: 18px;
-}
-.slide img{
-height: 325px;
+.link1{
+  font-size: 16px;
 }
 
-.carousel-slider{
-  width: 414px !important;
-}
+
 .leftLogo{
     float: left;
     width: 114px;
@@ -301,9 +317,7 @@ height: 325px;
   margin-bottom: 10px;
 }
 
-.p-b50 {
-    margin-bottom: 0px !important;
-}
+
 .headerBox{
   width: 100% !important;
 }
@@ -376,13 +390,7 @@ display: none;
   margin-left: 5px !important;
 }
 
-.container .text-center {
-    font-size: 15px;
-}
 
-.container .text-center {
-  font-size: 15px;
-}
 
 .daySmTitle {
     font-size: 11px !important;
@@ -428,6 +436,4 @@ display: none;
 }
 /*******Destination Page Responsive Start*********/
 }
-/****************Media Query 414X736 ends here****************/
-
 

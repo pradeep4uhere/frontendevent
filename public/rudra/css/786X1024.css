@@ -1,19 +1,11 @@
-/****************Media Query 414X736 ends here****************/
+/****************Media Query 736X414 ends here****************/
 /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media only screen and (min-width: 414px) and (max-width: 414px) {
+@media only screen and (min-width: 786px) and (max-width: 1024px) {
 body{
   font-size: 18px;
 }
-
-.closebtn{
-  z-index: 99999;
-}
-h1 {
-  font-size: 20px !important;
-}
-
-.link1 {
-  font-size: 14px;
+.container {
+    max-width: 736px;
 }
 .smallBox{
   display: block;
@@ -108,9 +100,9 @@ h1 {
   display: none !important;
 }
 
-/* h1{
+h1{
   font-size: 32px !important;
-} */
+}
 .p-tb15{
   margin-top: 56px;
 }
@@ -268,10 +260,12 @@ font-size: 21px;
 }
 
 
-
+.link1{
+  font-size: 16px;
+}
 
 .p-b50 {
-    padding-bottom: 0px !important;
+    padding-bottom: 0px;
 }
 .p-tb50 {
     padding-top: 50px;
@@ -282,7 +276,7 @@ height: 325px;
 }
 
 .carousel-slider{
-  width: 414px !important;
+  width: 736px !important;
 }
 .leftLogo{
     float: left;
@@ -302,7 +296,7 @@ height: 325px;
 }
 
 .p-b50 {
-    margin-bottom: 0px !important;
+    margin-bottom: 100px !important;
 }
 .headerBox{
   width: 100% !important;
@@ -380,10 +374,6 @@ display: none;
     font-size: 15px;
 }
 
-.container .text-center {
-  font-size: 15px;
-}
-
 .daySmTitle {
     font-size: 11px !important;
     color: #000;
@@ -428,6 +418,4 @@ display: none;
 }
 /*******Destination Page Responsive Start*********/
 }
-/****************Media Query 414X736 ends here****************/
-
 
