@@ -316,7 +316,7 @@ class ProfileView extends React.Component {
         </div>
           <div className="form-group col-md-6">
             <label htmlFor="exampleInputEmail1">First Name</label>
-            <input type="name" className="form-control" id="first_name" placeholder="Last Name" value={first_name}  onChange = { this.handleChange.bind(this)} />
+            <input type="name" className="form-control" id="first_name" placeholder="First Name" value={first_name}  onChange = { this.handleChange.bind(this)} />
           </div>
           <div className="form-group col-md-6">
             <label htmlFor="exampleInputEmail1">Last Name</label>
@@ -328,7 +328,7 @@ class ProfileView extends React.Component {
           </div> 
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Address Line 2</label>
-            <input type="name" className="form-control" id="address_2" placeholder="Enter Address Line-1 Name" value={address_2}  onChange = { this.handleChange.bind(this)}/>
+            <input type="name" className="form-control" id="address_2" placeholder="Enter Address Line-2 Name" value={address_2}  onChange = { this.handleChange.bind(this)}/>
           </div>
           <div className="form-group col-lg-6">
           <label htmlFor="exampleInputEmail1">State</label>
@@ -344,7 +344,7 @@ class ProfileView extends React.Component {
           </div>
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Country</label>
-            <input type="select" className="form-control" id="county_name" placeholder="Last Name" value={county_name} onChange = { this.handleChange.bind(this)}/>
+            <input type="select" className="form-control" id="county_name"  value={county_name} onChange = { this.handleChange.bind(this)}/>
           </div> 
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Postcode / ZIP</label>

@@ -103,47 +103,45 @@ class LoginForm extends React.Component{
             }
         }
         return(
-            <div className="form-bg text-white text-center">
-            <div className="container py-5 mt-5 LoginBox">
+            <div className="">
+            <div className="container-fluid bg-maroon-banner p-tb50">
+            <div className="container">
             <div className="row">
-                <div className="col-md-12">
-                <h1 className="text-center text-white mb-4">Login</h1>
-                <div className="row">
-                    <div className="col-md-6 mx-auto">
-                    <h4>Please enter your email address and password below</h4>
-                    {/* form card login */}
-                    <div className=" rounded-0 login-box">
-                        <div className="card-body">
-                        <form className="form" role="form" autoComplete="off" noValidate onSubmit={this.handleSubmit} id="login-form">
-                            <div className="form-group">
-                            <p className="text-left titleText">EMAIL</p>
-                            <input type="text" className="form-control form-control-lg rounded-0" placeholder="Enter your username / email" id="email_address" name="email_address" required />
-                            </div>
-                            <div className="form-group">
-                            <p className="text-left titleText">PASSWORD</p>
-                            
-                            <input type="password" className="form-control form-control-lg rounded-0"  placeholder="Enter your password" name="password" id="password" required autoComplete="new-password" />
-                            <br/>
-                            <small><a href="#" className="pull-right forgotLink">Forgot your password ?</a></small>
-                            </div>
-                            <div className="form-group loginBtn">
-                            <button type="submit" className="btn btn-danger btn-lg col-md-12">LOGIN NOW</button>
-                            </div>
-                            <p className="text-left titleText">NEW TO RUDRAXP?</p>
-                            <a href="register">
-                            <button type="button" className="btn btn-danger  btn-lg col-md-12 joinNow">Join Now</button>
-                            </a>
-                        </form></div>
+                <div className="col-sm-12 col-12 col-md-2 col-xl-3" />
+                <div className="col-sm-12 col-12 col-md-8 col-xl-6">
+                <h1 className="text-center white-text mt-85">Signin here</h1>
+                <p className="text-white small text-center">Please enter your email address and password below:</p>
+                <div className={classstr} style={{marginBottom:0}}>{message}</div>
+                <div className="text-white p-t50">
+                    <form className="form white-text" role="form" autoComplete="off" noValidate onSubmit={this.handleSubmit} id="login-form">
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Email address</label>
+                        <input type="text" className="form-control" placeholder="Enter your username / email" id="email_address" name="email_address" required />
+                        <small id="emailHelp1" className="form-text text-mute">We'll never share your email with anyone else.</small> </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputPassword1">Password</label>
+                        <input type="password" className="form-control"  placeholder="Enter your password" name="password" id="password" required autoComplete="new-password" />
                     </div>
-                    {/*/card-block*/}
+                    {/*<div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Save password</label>
+                    </div>*/}
+                    <button type="submit" className="btn btn-red btn-lg btn-block text-uppercase btn-red">LOGIN NOW</button>
+                    <div className="form-group p-tb20">
+                        <label htmlFor="exampleInputPassword1">NEW TO RUDRAXP?</label>
+                        <a href="register" style={{textDecoration:'none'}}>
+                            <button type="button" className="btn btn-red btn-lg btn-block btn-red-border1">Join Now</button>
+                        </a>
                     </div>
-                    {/* /form card login */}
+                    </form>
                 </div>
                 </div>
-                {/*/row*/}
+                <div className="col-md-4 col-sm-12 col-12 col-xl-3" />
             </div>
-            {/*/col*/}
             </div>
+            </div>
+
+           
             {/*/row*/}
         </div>
       );

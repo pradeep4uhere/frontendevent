@@ -184,15 +184,15 @@ class Header extends React.Component {
    
     return (
         <div className="headerBox">
-        <HeaderMenu/>  
-        <header id="home" className="hero-area-2">    
-          
+        <HeaderMenu/> 
+        <header id="home" className="hero-area-2"  style={{minHeight:72}}>    
+          &nbsp;&nbsp;
           {/* <div className="overlay" style={{ "background": 'url('+this.state.defaultImage+')'}}></div> */}
           
-          <nav className="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar menu-bg">
+          <nav className="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar menu-bg" style={{display:'block'}}>
             <div className="container containerBox">
               <div className="leftLogo">
-               <Link to="/" className="navbar-brand brand-pos text-left"><img className="logo-width " src="../rudra/images/rudra-logo.png" style={{}} alt="" /></Link>  
+               <Link to="/" className="navbar-brand brand-pos text-left"><img className="logo-width " src="../../rudra/images/rudra-logo.png" style={{}} alt="" /></Link>  
               </div>
               <div className="rightFrame">
               <div className id="navbarCollapse">
@@ -201,13 +201,13 @@ class Header extends React.Component {
                           {this.greeting()}
                      </li>
                   <li></li>   
-                  <li className="nav-item"> <Link className="nav-link" to="/cart"><img src="../rudra/images/ico_cart.png" alt="" className="img-fluid" /></Link> </li>
-                  <li className="nav-item"> <Link className="nav-link" to="#" onClick={this.openNavSearch.bind(this)}> <img src="../rudra/images/ico_search.png" alt="" className="img-fluid" /></Link></li>
+                  <li className="nav-item"> <Link className="nav-link" to="/cart"><img src="../../rudra/images/ico_cart.png" alt="" className="img-fluid" /></Link> </li>
+                  <li className="nav-item"> <Link className="nav-link" to="#" onClick={this.openNavSearch.bind(this)}> <img src="../../rudra/images/ico_search.png" alt="" className="img-fluid" style={{cursor:'pointer'}} /></Link></li>
                   <li class="nav-item book-btn"><Link className="nav-link btn btn-red-small" to="/exp-list">BOOK NOW</Link></li>
 
                   <li className="nav-item">
                     <div className="button">
-                      <span onClick={this.openNav.bind(this)}><img src="../rudra/images/icon_nav.png" alt="" width={33} height={21} className="img-fluid" /></span>
+                      <span onClick={this.openNav.bind(this)}><img src="../rudra/images/icon_nav.png" alt="" width={33} height={21} className="img-fluid" style={{cursor:'pointer'}}/></span>
                       
                     </div> 
                   </li>

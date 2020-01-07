@@ -30,7 +30,7 @@ h1 {
     height: 40px !important;
     float: left;
     margin-left: -53%;
-    margin: 11px;
+    margin: 16px 11px 5px 10px;
 }
 
 .searchText{
@@ -402,7 +402,7 @@ display: none;
 }
 .dayTitle {
     font-size: 14px !important;
-    color: #000;
+    color: #007bff;
     font-weight: 800;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, Helvetica, sans-serif;
     text-decoration: none;
@@ -417,7 +417,7 @@ display: none;
     color: #586575;
     background-color: #fff;
     border: 2px solid #586575;
-    padding: 3px 12px;
+    padding: 5px 22px;
 }
 
 .btnPrice{
@@ -425,6 +425,18 @@ display: none;
 }
 .btnSmall{
   font-size: 12px;
+}
+
+.navbar-nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  margin-left: -15px;
+  margin-top: 5px
 }
 /*******Destination Page Responsive Start*********/
 }

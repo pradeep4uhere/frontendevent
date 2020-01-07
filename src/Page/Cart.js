@@ -5,6 +5,7 @@ import Footer from '../Footer';
 import Constants  from '../config/Constants'
 import axios from 'axios'
 import $ from 'jquery'
+import Moment from 'react-moment';  
 var serialize = require('form-serialize');
 var ip = require('ip');
 const getCartList = Constants.GET_CART_LIST;
@@ -67,6 +68,7 @@ class Cart extends React.Component {
             this.setState({classStr : "alert alert-success"});
             this.getCartList();
       }else{
+        window.location.reload();
         console.log("Response Error");
       }
     })
@@ -286,7 +288,7 @@ class Cart extends React.Component {
 
     //let cartListItem = this.state.cartList;
     let cartItemArray = [];
-    console.log("selectedOption",optionValue);
+    console.log("selectedOption",this.state.cartList.cart);
     
     if(this.state.cartList.cart){
        cartItemArray = this.state.cartList.cart.map((val,i) =>   
@@ -295,12 +297,12 @@ class Cart extends React.Component {
               <div className="p-2">
                 <img src={val.attributes.event_image} alt="" width={70} className="img-fluid rounded shadow-sm" />
                 <div className="ml-3 d-inline-block align-middle">
-                  <h5 className="mb-0"> <a href="#" className="text-dark d-inline-block">{val.name}</a></h5>
+                  <h5 className="mb-0"> <a href={"/day-exp-detail/"+val.attributes.event_id+"-"+val.attributes.event_timing_id} className="text-dark d-inline-block">{val.name}</a></h5>
                   <span className="text-muted font-weight-normal font-italic">Sitting Type: {val.attributes.seating_type_name}</span>
                 </div>
               </div>
             </th>
-            <td className="align-middle">{val.attributes.event_booking_date}</td>
+            <td className="align-middle"><Moment format="DD-MMM-YYYY">{val.attributes.event_booking_date}</Moment></td>
             <td className="align-middle">{price}{val.price}</td>
             <td className="align-middle">
             {/* <Select

@@ -205,8 +205,11 @@ class Header extends React.Component {
                   <li class="nav-item book-btn "><Link className="nav-link btn btn-red-small" to="/exp-list">BOOK NOW</Link></li>
                   <li className="nav-item">
                     <div className="button">
-                      <span onClick={this.openNav.bind(this)}><img src="../rudra/images/icon_nav.png" alt="" width={33} height={21} className="img-fluid" /></span>
-                      
+                    <span onClick={this.openNav.bind(this)} >
+                    <a href="#">
+                    <img src="../rudra/images/icon_nav.png" alt="" width={33} height={21} className="img-fluid" style={{curson:'pointer'}} />
+                    </a>
+                    </span>
                     </div> 
                   </li>
                 </ul> 

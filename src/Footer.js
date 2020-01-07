@@ -9,6 +9,7 @@ class Footer extends React.Component {
         super();
         this.state={
           settingDetails:{},
+          place:{}
         }
         this.getSettingList       = this.getSettingList.bind(this);
   }
@@ -26,8 +27,9 @@ class Footer extends React.Component {
             this.setState({
               settingDetails    : response.data.data.setting,
               reviewViedo       : response.data.data.review,
+              place             : response.data.data.place,
             });
-            //console.log(response.data.data);
+            console.log(this.state.place);
       }
       else
       {
@@ -48,6 +50,7 @@ componentDidMount(){
 
 
 
+
   render() {
     const { postList }= this.props;
     let data = this.state.settingDetails;
@@ -59,6 +62,14 @@ componentDidMount(){
     let lin = (data.length>0) ? data[7].options_value : '';
     let yt = (data.length>0) ? data[4].options_value : '';
     let cp = (data.length>0) ? data[10].options_value : '';
+
+    let bannerStr = "";
+    if(this.state.place.length>0){
+      bannerStr = this.state.place.map((val,i) =>
+       <li><a href="#" className="footer-link">{val.title}</a></li>
+      );
+    }
+
     return (
       <div className="container-fluid clear bg-footer ">
         <footer>
@@ -81,6 +92,12 @@ componentDidMount(){
                         <li><Link to="/membership" className="footer-link">Membership</Link> </li>
                         <li><Link to={"/contactus"} className="footer-link">Contact Us</Link> </li> 
                         <li><Link to="/termsandconditions" className="footer-link">Terms of Use</Link> </li>
+                      </ul>
+                    </div>
+                    <div className="col-xl-2 col-lg-2 col-md-4 col-sm-3 col-4"><h5>Place</h5>
+                      <ul className="footer-list">
+                        {bannerStr}
+                       
                       </ul>
                     </div>
                     <div className="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-4">

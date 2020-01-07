@@ -6,15 +6,15 @@
   float: right;
 }
 #rightSide{
-  height: 250%;
-  width:"75%";
+  height: 100%;
+  width:75% !important;
   float:"right";
   background-color:"#FFF" !important;
   color:"#000";
 }
 
 .carousel .carousel-slider{
-width: 1700px !important;
+  width: 1700px !important;
 }
 .footerTextMenuBottom{
   font-size: 14px;
@@ -346,7 +346,7 @@ display: none !important;
 }
 .dayTitle{
   font-size: 19px;
-  color: #000;
+  color: #007bff;
   font-weight: 800;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, Helvetica, sans-serif;
   text-decoration: none;

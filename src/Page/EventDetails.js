@@ -136,6 +136,10 @@ class EventDetails extends React.Component {
     var id              = event.target.hiddenId.value;
     var seat_id         = event.target.seat_id.value;
     var bookingDate     = event.target.bookingDate.value;
+    const startDate = new Date();
+    console.log(startDate);
+    // alert(startDate);
+    // return false;
     const form = event.currentTarget
     const body = serialize(form, {hash: true,empty:true})
     const formData = {

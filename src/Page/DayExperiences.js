@@ -118,7 +118,7 @@ handleSort(e,val){
       );
     }
     return (
-        <div className="container containerBox">
+        <div className="containerBox">
           <Header/>
           <div className="container-fluid bg-maroon p-tb50">
           <div className="container">

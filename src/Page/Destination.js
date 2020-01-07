@@ -96,8 +96,8 @@ this.getDestinationList();
             <div className="col-xl-2 col-md-2 col-sm-4 col-4 pText"><img src="../rudra/images/ico_altitude.png" alt="" className="img-fluid" /><p /><h5>Altitude</h5><p /><p>{this.state.destinationDetails.altitude}</p></div>
             <div className="col-xl-2 col-md-2 col-sm-4 col-4 pText"><img src="../rudra/images/ico_climate.png" alt="" className="img-fluid" /><p /><h5>Climate</h5><p /><p>{this.state.destinationDetails.climate}</p></div>
             <div className="col-xl-2 col-md-2 col-sm-4 col-4 pText"><img src="../rudra/images/ico_population.png" alt="" className="img-fluid" /><p /><h5>Population</h5><p /><p>{this.state.destinationDetails.population}</p></div>
-            <div className="col-xl-2 col-md-2 col-sm-4 col-4 pText"><img src="../rudra/images/ico_shopping.png" alt="" className="img-fluid" /><p /><h5>Shopping</h5><p /><p><div dangerouslySetInnerHTML={{ __html: this.state.destinationDetails.shopping }}/></p></div>
-            <div className="col-xl-2 col-md-2 col-sm-4 col-4 pText"><img src="../rudra/images/ico_cuisine.png" alt="" className="img-fluid" /><p /><h5>Cuisine</h5><p /><p><div dangerouslySetInnerHTML={{ __html: this.state.destinationDetails.cuisine }}/><br />               </p></div>
+            <div className="col-xl-3 col-md-2 col-sm-4 col-4 pText"><img src="../rudra/images/ico_shopping.png" alt="" className="img-fluid" /><p /><h5>Shopping</h5><p /><p><div dangerouslySetInnerHTML={{ __html: this.state.destinationDetails.shopping }}/></p></div>
+            <div className="col-xl-3 col-md-2 col-sm-4 col-4 pText"><img src="../rudra/images/ico_cuisine.png" alt="" className="img-fluid" /><p /><h5>Cuisine</h5><p /><p id="cuisin"><div dangerouslySetInnerHTML={{ __html: this.state.destinationDetails.cuisine }}/><br />               </p></div>
           </div>
           </div>
         </div>

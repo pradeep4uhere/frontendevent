@@ -53,20 +53,20 @@ nav ul li a:hover {
 	text-decoration:none;
 }
 .btn-open:after {
+	display: none;
 	color:#333;
-	content:"\f0c9";
 	font-family:"FontAwesome";
 	transition-property:all .2s linear 0s;
 	-moz-transition:all .2s linear 0s;
 	-webkit-transition:all .2s linear 0s;
 	-o-transition:all .2s linear 0s;
 }
-.btn-open:hover:after {
+/* .btn-open:hover:after {
 	color:#34B484;
-}
+} */
 .btn-close:after {
+	display: none;
 	color:#fff;
-	content:"\f00d";
 	font-family:"FontAwesome";
 	transition-property:all .2s linear 0s;
 	-moz-transition:all .2s linear 0s;

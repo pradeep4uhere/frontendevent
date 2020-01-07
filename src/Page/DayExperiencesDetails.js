@@ -100,7 +100,9 @@ getDestinationList(){
             itinerary_terms       : response.data.data[0].itinerary_terms_and_conditions,
             departure_date        : response.data.data[0].valid_itinerary_departure,
             itinerary_addon       : response.data.data[0].itinerary_addon,
+            priceType               : response.data.setting[14].options_value,
           });
+          // console.log(this.state.priceType);
     }
     else
     {
@@ -215,11 +217,14 @@ selectDeparture(val,e){
             <div id={"collapseOne1"+i} className="collapse pText" role="tabpanel" aria-labelledby={"headingOne1"+i} data-parent={"#accordion1"}>
               <div className="card-body pText">
                   <div dangerouslySetInnerHTML={{ __html: val.descriptions }}/>
-
-                  <div className="col-md-4 pull-left">
                   <a href="#" className="" data-toggle="modal" data-target={"#exampleModalLong"+i}>
-                      Description>>
+                      View Description&nbsp;>>
+                  </a>&nbsp;&nbsp;&nbsp;
+                  <a href="#" className="" data-toggle="modal" data-target={"#exampleModalLong1"+i}>
+                      Includes&nbsp;>>
                   </a>
+                  <div className="col-md-6 pull-left">
+                  
                   <div className="modal fade" id={"exampleModalLong"+i} tabIndex={-1} role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                   <div className="modal-dialog" role="document">
                     <div className="modal-content">
@@ -236,10 +241,8 @@ selectDeparture(val,e){
                   </div>
                   </div>  
                 </div>
-                <div className="col-md-6 pull-left">
-                  <a href="#" className="" data-toggle="modal" data-target={"#exampleModalLong1"+i}>
-                      Includes>>
-                  </a>
+                <div className="col-md-2 pull-left">
+                 
                   <div className="modal fade" id={"exampleModalLong1"+i} tabIndex={-1} role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                   <div className="modal-dialog" role="document">
                     <div className="modal-content">
@@ -287,7 +290,7 @@ selectDeparture(val,e){
 
     departureDate = this.state.departure_date.map((val,i) =>
             <li class="list-group-item d-flex justify-content-between align-items-center departureClass" id={"depId"+val.id}>
-                {val.start_date}
+                <Moment format="DD-MMM-YYYY">{val.start_date}</Moment>
                 <a href="#">
                 <span class="badge badge-success badge-pill"   onClick={(e) => this.selectDeparture(val,e)}>Select</span>
                 </a>
@@ -337,7 +340,7 @@ selectDeparture(val,e){
               <div className="col-xl-12"><h2>{this.state.destinationDetails.title}</h2> 
               <p style={{"fontSize":"14px"}}> <div dangerouslySetInnerHTML={{ __html: this.state.destinationDetails.description }}/></p></div>
               <div className="col-xl-12">
-                {(addonStr!='')?(<h4 className="dayTitle">ADDONS</h4>):('')}
+                {(addonStr!='')?(<h4 className="dayTitles">ADDONS</h4>):('')}
                 <div id="accordion1" role="tablist">
                   {addonStr}
                 </div>
@@ -350,7 +353,7 @@ selectDeparture(val,e){
             
             </div>
             <div className="col-xl-4">
-              <div className="shadow-block text-center"><span className="price-red-large">INR{basePrice}</span><br /><br /><p>
+              <div className="shadow-block text-center"><span className="price-red-large">{this.state.priceType}{basePrice}</span><br /><br /><p>
                   <button type="button" className="btn btn-red btn-lg btn-block text-uppercase btn-red-small1" onClick={this.checkDeparture}>Book This Experience</button>
                   <button type="button" className="btn btn-info btn-lg btn-block  btn-info-small1 detailsBtnText" onClick={this.openNav.bind(this)} >Details</button>
                   <input type="hidden" id="dept_id"/>

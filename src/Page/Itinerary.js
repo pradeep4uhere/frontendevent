@@ -69,6 +69,7 @@ class Itinerary extends React.Component {
 
 componentDidMount(){
   this.getDestinationList();
+  $("#menuBar").removeClass('menu-bg');
 }
 
 handleSort(e,val){
@@ -100,6 +101,7 @@ handleSort(e,val){
   
 
   render() {
+    $("#menuBar").removeClass('menu-bg');
     const { destinationDetails } =  this.state;
     const { defaultImage } = this.state;
     console.log(destinationDetails);
@@ -144,11 +146,20 @@ handleSort(e,val){
           <div className="col-xl-12 m-ft66 text-center"><img src="../rudra/images/ticket-combo.png" alt="" className="img-fluid" /></div>
         </div>
         <div className="container">
-          <div className="row p-tb20">
-            <div className="col sortBox"><a className=" btn-grey-border">Sort By</a></div>
-            <div className="col sortBox"><button type="button" className="btn btn-grey-border" id="short" style={{"backgroundColor":"#36ca2624"}}><Link to="/destination#short" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'short'))}>Short Trips</Link></button></div>
-            <div className="col sortBox"><button type="button" className="btn btn-grey-border" id="long"><Link href="/destination#long" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'long'))}>Long Trips</Link></button></div>
+        <div className="row p-tb20">
+        <nav className="navbar " style={{backgroundColor:'none !important'}} id="menuBar">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            Sort By
           </div>
+          <ul className="nav navbar-nav navbar-right" style={{display:'block'}}>
+            <li><button type="button" className="btn btn-grey-border" id="short" style={{"backgroundColor":"#36ca2624"}}><Link to="/destination#short" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'short'))}>Short Trips</Link></button></li>&nbsp;
+            <li><button type="button" className="btn btn-grey-border" id="long"><Link href="/destination#long" style={{"textDecoration":"none","color":"#333"}} onClick={((e) => this.handleSort(e,'long'))}>Long Trips</Link></button></li>
+          </ul>
+        </div>
+      </nav>
+      </div>
+      
         </div>
         <div className="container">
           <div id="accordion1" role="tablist">

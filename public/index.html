@@ -39,6 +39,19 @@
 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <style>
+#cuisin ul{
+  list-style-type: disc;
+}
+.navbar-header{
+  font-size: 18px;
+  font-family: none;
+  border: solid 1px #CCC;
+  padding: 5px 15px 5px 15px;
+  background-color: #FFF;
+  margin-left: -15px;
+}
+</style>
   </head>
   <body>
   <div id="root"></div>
@@ -70,6 +83,7 @@
       if (windscroll >= 0) {
       
           $('nav').addClass('menu-bg');
+          $("#menuBar").removeClass('menu-bg');
           $('.wrapper section').each(function(i) {
               if ($(this).position().top <= windscroll - 0) {
                  $('nav a').eq(i).addClass('menu-bg');
