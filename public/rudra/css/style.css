@@ -1001,7 +1001,7 @@ a {
 	padding: 0.2rem 0.2rem;
 }
 
-.logo-width{max-width: 30%;}
+.logo-width{max-width: 100%;}
 
 /* Portrait */
 @media only screen 

@@ -15,9 +15,9 @@ class Footer extends React.Component{
     render(){
         return(
       <footer className="FooterRudra">
-        <div className="container-fluid">
+        <div className="container">
           <div className="row">
-            <div className="col-md-5">
+            <div className="col-md-4">
             <p className="title">Rudra XP</p>
               <div className="pr-xl-3">
                 <p>At Rudra Xp, our endeavour is to make the most of the time that you take out for your travel pursuits and embellish them with characteristic, exclusive and rich experiences. We care for the unique perspective, the appreciation of excellence and that which maybe simple but not ordinary.</p>
@@ -26,7 +26,7 @@ class Footer extends React.Component{
               </div>
             </div>
         
-            <div className="col-md-2">
+            <div className="col-md-4">
             <p className="title">About</p>
               <dl className="nav-list">
                 <dd><a href="#">Day Experiences</a></dd>
@@ -41,7 +41,7 @@ class Footer extends React.Component{
                 <dd><a href="#">Reviews</a></dd>
               </dl>
             </div>
-            <div className="col-md-2">
+            <div className="col-md-4">
             <p className="title">Places</p>
               <dl className="contact-list">
                 <dd>Delhi</dd>

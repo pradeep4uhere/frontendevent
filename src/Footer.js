@@ -77,15 +77,15 @@ componentDidMount(){
               <div className="footer-content p-5">
                 <div className="container containerBox footer-margin">
                   <div className="row">
-                    <div className="p-right-25 col-lg-5 col-xl-5 col-4"><h5>Rudra Xp</h5>
-                      <p className="footer-content">{title}</p></div>
-                    <div className="col-xl-2 col-lg-2 col-md-4 col-sm-3 col-4"><h5>About</h5>
+                    <div className="col-md-4"><h5>Rudra Xp</h5>
+                      <p className="footer-content">{title}</p>
+                    </div>
+                    <div className="col-md-3"><h5>About</h5>
                       <ul className="footer-list">
                         <li><a href="/exp-list" className="footer-link">Experiences List</a></li>
                         <li><a href="/destination" className="footer-link">Destinations</a> </li>
                         <li><Link to="/dayexperiences" className="footer-link">Travel Experiences</Link></li>
                         {/* <li><Link to="itinerary_detail" className="footer-link">Itinerary Detail</Link> </li> */}
-                        
                         <li><Link to="/aboutus" className="footer-link">About Us</Link> </li>
                         <li><Link to="/socialcommitment" className="footer-link">Social Commitment</Link> </li>
                         <li><Link to="/review" className="footer-link">Reviews</Link> </li>
@@ -94,13 +94,13 @@ componentDidMount(){
                         <li><Link to="/termsandconditions" className="footer-link">Terms of Use</Link> </li>
                       </ul>
                     </div>
-                    <div className="col-xl-2 col-lg-2 col-md-4 col-sm-3 col-4"><h5>Place</h5>
+                    <div className="col-md-3"><h5>Place</h5>
                       <ul className="footer-list">
                         {bannerStr}
                        
                       </ul>
                     </div>
-                    <div className="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-4">
+                    <div className="col-md-2">
                       <h5>Get In Touch</h5>
                       <ul className="footer-list">
                         <li> <Link to={"/contactus"} className="footer-link1">write to us</Link></li>

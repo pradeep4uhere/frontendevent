@@ -7,6 +7,7 @@ import HeaderMenu from './HeaderMenu';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { link } from 'fs';
+import Media from 'react-media';
 const urlStr = Constants.GET_BANNER_LIST;
 const token     = localStorage.getItem('token');
 class Header extends React.Component {
@@ -24,7 +25,8 @@ class Header extends React.Component {
           defaultImage: '../rudra/images/home-banner.jpg',
           settingDetails: [],
           destinationList: [],
-          eventFinalArr : []
+          eventFinalArr : [],
+          bannerArray   : []
         }
         this.greeting = this.greeting.bind(this);
         this.openNav =  this.openNav.bind(this);
@@ -48,6 +50,7 @@ class Header extends React.Component {
       if(response.data.code==200) {
             this.setState({
               defaultImage    : response.data.data,
+              bannerArray     : response.data.bannerArray,
               settingDetails  : response.data.setting,
               destinationList : response.data.destinationList,
               eventFinalArr   : response.data.eventFinalArr
@@ -163,17 +166,48 @@ class Header extends React.Component {
     }
     
 
-    let bannerStr = "";
+    // let bannerStr = "";
+    // if(this.state.eventFinalArr.length>0){
+    //   bannerStr = this.state.defaultImage.map((val,i) =>
+    //         <div>
+    //           <img src={val} />
+    //       </div>
+    //   );
+    // }
+    
+
+    let bannerStr2000 = "";
     if(this.state.eventFinalArr.length>0){
-      bannerStr = this.state.defaultImage.map((val,i) =>
+      bannerStr2000 = this.state.bannerArray.map((val,i) =>
             <div>
-              
-              <img src={val} />
-              {/* <p className="bannerText">Rudra Experiences is a socially committed</p> */}
-             
+              <img src={val.url2000716} />
           </div>
       );
     }
+
+
+    let url414276 = "";
+    if(this.state.eventFinalArr.length>0){
+      url414276 = this.state.bannerArray.map((val,i) =>
+            <div>
+              <img src={val.url414276} />
+          </div>
+      );
+    }
+
+
+    let url375210 = "";
+    if(this.state.eventFinalArr.length>0){
+      url375210 = this.state.bannerArray.map((val,i) =>
+            <div>
+              <img src={val.url375210} />
+          </div>
+      );
+    }
+
+    
+
+    
     
     
    
@@ -182,9 +216,47 @@ class Header extends React.Component {
        <HeaderMenu className="menuLarge"/> 
         <header id="home" className="hero-area-2">    
           {/* <div className="overlay" style={{ "background": 'url('+this.state.defaultImage+')'}}></div> */}
-            <Carousel dynamicHeight={false} showArrows={false} infiniteLoop={true} width={'1890px'} autoPlay={true} interval={30000}>
-                {bannerStr}
+          
+          <Media query="(min-width: 375px) and (max-width: 410px)" render={() =>
+          (
+            <Carousel dynamicHeight={false} showArrows={false} infiniteLoop={true} width={'375px'} autoPlay={true} interval={30000}>
+                {url375210}
             </Carousel>
+          )}
+          />
+          
+          <Media query="(min-width: 411px) and (max-width: 450px)" render={() =>
+          (
+            <Carousel dynamicHeight={false} showArrows={false} infiniteLoop={true} width={'411px'} autoPlay={true} interval={30000}>
+                {url414276}
+            </Carousel>
+          )}
+        />
+        <Media query="(min-width: 736px) and (max-width: 1023px)" render={() =>
+          (
+            <Carousel dynamicHeight={false} showArrows={false} infiniteLoop={true} width={'1023px'} autoPlay={true} interval={30000}>
+                {bannerStr2000}
+            </Carousel>
+          )}
+        />
+        <Media query="(min-width: 1024px) and (max-width: 1440px)" render={() =>
+          (
+            <Carousel dynamicHeight={false} showArrows={false} infiniteLoop={true} width={'1440px'} autoPlay={true} interval={30000}>
+                {bannerStr2000}
+            </Carousel>
+          )}
+        />
+
+        <Media query="(min-width: 1441px) and (max-width: 2048px)" render={() =>
+          (
+            <Carousel dynamicHeight={false} showArrows={false} infiniteLoop={true}  autoPlay={true} interval={30000}>
+                {bannerStr2000}
+            </Carousel>
+          )}
+        />
+
+        
+            
             
           <nav className="navbar navbar-expand-lg navbar-expand-md bg-inverse fixed-top scrolling-navbar menu-bg">
             <div className="container">

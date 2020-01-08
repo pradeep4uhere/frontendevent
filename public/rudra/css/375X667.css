@@ -1,15 +1,21 @@
 /****************Media Query 414X736 ends here****************/
 /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-@media only screen and (min-width: 411px) and (max-width: 414px) {
+@media only screen and (min-width: 375px) and (max-width: 410px) {
 body{
   font-size: 18px;
 }
-
+h1 {
+    font-size: 20px !important;
+}
 .closebtn{
   z-index: 99999;
 }
-h1 {
-  font-size: 20px !important;
+.titleText{
+    font-size: 20px !important;
+}
+.text-center {
+    text-align: center !important;
+    font-size: 20px;
 }
 
 .link1 {
@@ -121,7 +127,7 @@ h1 {
 /****Login Form***/
 
 .container {
-    width: 90%;
+    width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -268,6 +274,11 @@ font-size: 21px;
 }
 
 
+.img-fluid {
+    width: 79%;
+    margin-left: 13%;
+}
+
 
 
 .p-b50 {
@@ -277,12 +288,12 @@ font-size: 21px;
     padding-top: 50px;
     padding-bottom: 18px;
 }
-.slide img{
-height: 325px;
-}
+
 
 .carousel-slider{
-  width: 414px !important;
+  width: 375px !important;
+  margin-top: 15% !important;
+  
 }
 .leftLogo{
     float: left;
