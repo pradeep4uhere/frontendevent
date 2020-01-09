@@ -339,8 +339,8 @@ class Cart extends React.Component {
             
             </div>
         </div>
-        <br/><br/><br/>
-        <div className="container" style={{"display":this.state.style}}>
+        
+        <div className="container p-tb15" style={{"display":this.state.style}}>
         <div className="row" >
           <div className="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
             <div className="col-lg-12">	  

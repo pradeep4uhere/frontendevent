@@ -217,7 +217,7 @@ class EventDetails extends React.Component {
           <Header/>
           <div className="container-fluid bg-maroon p-tb50">
           <div className="container">
-            <h1 className="text-center white-text mt-85 eventTitle">{this.state.eventDetails.title}
+            <h1 className="text-center white-text eventTitle">{this.state.eventDetails.title}
             </h1><p className="text-white small text-center placeText">{this.state.cityName}</p>
             <div className="bg-whitegrid"><p className="sep-white" /></div>
             <h2 className="text-center p-b50 white-text">
@@ -236,10 +236,43 @@ class EventDetails extends React.Component {
           </div></div>
           <br/><br/> */}
         <div className="row">
+        
           <div className="col-xl-8">
+          <div className="TabBlock">
+          <div className="tabsy">
+            <input type="radio" id="tab1" name="tab" defaultChecked />
+            <label className="tabButton" htmlFor="tab1">Itinerary</label>
+            <div className="tab">
+              <div className="content">
+              <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.itinerary }}/>
+              </div>
+            </div>
+            <input type="radio" id="tab2" name="tab" />
+            <label className="tabButton" htmlFor="tab2">Includes</label>
+            <div className="tab">
+              <div className="content">
+              <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.includes }}/>
+              </div>
+            </div>
+            <input type="radio" id="tab3" name="tab" />
+            <label className="tabButton" htmlFor="tab3">Exclusions</label>
+            <div className="tab">
+              <div className="content">
+              <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.dincludes }}/>
+              </div>
+            </div>
+            <input type="radio" id="tab4" name="tab" />
+            <label className="tabButton" htmlFor="tab4">Other Information</label>
+            <div className="tab">
+              <div className="content">
+                <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.other }}/>
+              </div>
+            </div>
+          </div>
+          </div>
            {/* Nav tabs */}
            
-        <ul className="nav nav-tabs">
+        {/* <ul className="nav nav-tabs">
           <li className="nav-item tabs">
             <a className="nav-link active" data-toggle="tab" href="#menu22">Itinerary</a>
           </li>
@@ -253,10 +286,10 @@ class EventDetails extends React.Component {
             <a className="nav-link" data-toggle="tab" href="#menu21">Other Information</a>
           </li>
           
-        </ul>
+        </ul> */}
         {/* Tab panes */}
         
-        <div className="tab-content">
+        {/* <div className="tab-content">
           <div id="menu22" className="container tab-pane  active"><br />
           
           <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.itinerary }}/>
@@ -270,7 +303,7 @@ class EventDetails extends React.Component {
           <div id="menu21" className="container tab-pane fade"><br />
           <div dangerouslySetInnerHTML={{ __html: this.state.eventTiming.other }}/>
           </div>
-        </div>
+        </div> */}
 
 
 	

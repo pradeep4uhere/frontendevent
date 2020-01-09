@@ -185,8 +185,7 @@ class Header extends React.Component {
     return (
         <div className="headerBox">
         <HeaderMenu/> 
-        <header id="home" className="hero-area-2"  style={{minHeight:72}}>    
-          &nbsp;&nbsp;
+          <header id="home" className="hero-area-2"  style={{minHeight:72}}>    
           {/* <div className="overlay" style={{ "background": 'url('+this.state.defaultImage+')'}}></div> */}
           
           <nav className="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar menu-bg" style={{display:'block'}}>

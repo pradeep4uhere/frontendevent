@@ -153,7 +153,7 @@ h1{
 /****Login Form***/
 
 .container {
-    width: 90%;
+    width: 99%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -189,7 +189,13 @@ font-size: 21px;
 .p-4 {
     padding: 0.5rem !important;
 }
+.p-tb15 {
+  margin-top: 0px;
+}
 
+.hero-area-2{
+  min-height: 59px !important;
+}
 
 
 .container .placeText{

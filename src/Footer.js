@@ -117,13 +117,14 @@ componentDidMount(){
                       </div>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col-xl-12 text-center small footer-copyright p-tb15">{cp}</div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
           </footer>
+          <div className="row">
+              <div className="col-12 text-center small footer-copyright p-tb15 textWhite" style={{color:'#FFFFFF'}}>{cp}</div>
+          </div>
           </div>
     )
   }

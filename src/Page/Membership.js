@@ -115,25 +115,21 @@ class Membership extends React.Component {
     return (
         <div>
           <Header/>
-          <div className="container-fluid bg-maroon p-tb50">
-            <div className="container">
-            <h1 className="text-center white-text mt-85">Membership Plan
-            </h1>
-            <div className="bg-whitegrid"><p className="sep-white" /></div>
-            <h2 className="text-center p-b50 white-text">{membershipTag}</h2>
+              <div className="container-fluid bg-maroon p-tb50">
+                <div className="container">
+                  <h1 className="text-center white-text mt-85">Membership Plan</h1>
+                  <div className="bg-whitegrid"><p className="sep-white" /></div>
+                  <h2 className="text-center p-b50 white-text">{membershipTag}</h2>
+                </div>
             </div>
-         </div>
-
-          <div className="container containerBox">
-          <div className="col-lg-12 m-ft66 text-center">
-            <div className="row m-b-50">
-            {membershipStr}
-              
+            <div className="container containerBox">
+            <div className="col-lg-12 m-ft66 text-center">
+              <div className="row m-b-50">
+                {membershipStr}
+              </div>
+              </div>
             </div>
-          </div>
-        </div>
-        
-      <Footer/>
+          <Footer/>
         </div>
     )
   }

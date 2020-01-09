@@ -112,9 +112,11 @@ h1 {
   font-size: 32px !important;
 } */
 .p-tb15{
-  margin-top: 56px;
+  margin-top: 0px;
 }
-
+.hero-area-2{
+  min-height: 59px !important;
+}
 .lgbtn{
   display: none;
 }
@@ -129,6 +131,9 @@ h1 {
 }
 #form-offer{
 font-size: 13px;
+}
+.p-5 {
+  padding: 5px !important;
 }
 
 ::-webkit-input-placeholder { /* Edge */

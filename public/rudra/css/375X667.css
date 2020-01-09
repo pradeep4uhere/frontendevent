@@ -18,6 +18,19 @@ h1 {
     font-size: 20px;
 }
 
+.tabsy > input:checked + label + .tab > .content {
+    -webkit-animation: showTab 250ms ease-in-out;
+    animation: showTab 250ms ease-in-out;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.TabBlock .tab {
+  width: 100%;
+    padding: 20px;
+    text-align: left;
+}
+
 .link1 {
   font-size: 14px;
 }
@@ -118,9 +131,12 @@ h1 {
   font-size: 32px !important;
 } */
 .p-tb15{
-  margin-top: 56px;
+  margin-top: 0px;
 }
 
+.hero-area-2{
+    min-height: 59px !important;
+}
 .lgbtn{
   display: none;
 }
@@ -203,6 +219,7 @@ font-size: 21px;
 
 .tabs {
     padding: 2px 14px !important;
+    margin: 3px;
 }
 .container h3{
 font-size: 16px;

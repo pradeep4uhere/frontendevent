@@ -68,7 +68,7 @@ class Review extends React.Component {
         </div>
         <div className="container">
           <div className="row p-t50 p-b50">
-          <ViedoReview reviewList={rdata}/>
+            <ViedoReview reviewList={rdata}/>
           </div>
         </div>
       <br/><br/><br/>
