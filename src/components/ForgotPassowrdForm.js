@@ -10,7 +10,7 @@ var cors = require('cors');
 const appName = Constants.APP_NAME
 const appTag = Constants.APP_TAG
 const urlStr = Constants.REGISTER_URL;
-class RegisterForm extends React.Component{
+class ForgotPassowrdForm extends React.Component{
     constructor() {
         super();
         this.state = {
@@ -128,53 +128,26 @@ class RegisterForm extends React.Component{
             <div className="container py-5 mt-5 LoginBox">
             <div className="row">
                 <div className="col-md-12">
-                <h1 className="text-center text-white mb-4">Register</h1>
+                <h1 className="text-center text-white mb-4">Forgot Passowrd</h1>
                 <div className="row">
                     <div className="col-md-9 mx-auto">
-                    <center>
-                        {message ? (<div className={this.state.classstr}>{this.errorPrint()}</div>) : (<div></div>)}
-
-                        </center>
                     <h4>Please enter your below</h4>
                     <div className="card">
                         <div className="cardheader" /></div>
                         <div className="col-md-12 mx-auto">
-                        
+                        <center>
+                        {message ? (<div className={this.state.classstr}>{this.errorPrint()}</div>) : (<div></div>)}
+
+                        </center>
                         </div>
                         <form className="form" role="form" autoComplete="off" onSubmit={this.handleSubmit} id="login-form">
                         <div className="row">
                         <div className="col-md-6 mx-auto">
                             <div className="form-group">
-                            <p className="text-left titleText">First Name</p>
-                            <input type="text" className="form-control form-control-lg rounded-0" placeholder="Enter your first name" id="fname" name="fname" required  tabIndex="1"/>
-                            </div>
-                           
-                            <div className="form-group">
-                            <p className="text-left titleText">Username</p>
-                            <input type="text" className="form-control form-control-lg rounded-0"  placeholder="Enter Username"  id="username" required autoComplete="Enter Username"  tabIndex="3"/>
-                            </div>
-                            
-                            <div className="form-group">
-                            <p className="text-left titleText">Password</p>
-                            <input type="password" className="form-control form-control-lg rounded-0"  placeholder="Password" id="password" tabIndex="5"/>
-                            </div>
-                        </div>
-                        <div className="col-md-6 mx-auto">
-                            <div className="form-group">
-                            <p className="text-left titleText">Last Name</p>
-                            <input type="text" className="form-control form-control-lg rounded-0"  placeholder="Enter your last name" id="lname" required  tabIndex="2"/>
-                            </div>
-
-                            <div className="form-group">
                             <p className="text-left titleText">Email Address</p>
                             <input type="text" className="form-control form-control-lg rounded-0"  placeholder="Enter Email Address"  id="email_address" required autoComplete="Enter Email Address" tabIndex="4"/>
                             </div>
-
-                            <div className="form-group">
-                            <p className="text-left titleText">Confirm Password</p>
-                            <input type="password" className="form-control form-control-lg rounded-0"  placeholder="Retype password" id="cpassword" tabIndex="6" />
-                            </div>
-                        </div>
+                      </div>
                         <div className="col-md-12 mx-auto">
                             <div className="form-group loginBtn">
                                 <button type="submit" className="btn btn-danger btn-lg col-md-12" tabIndex="7" >Register</button>
@@ -192,4 +165,4 @@ class RegisterForm extends React.Component{
       );
     };
 }
-export default RegisterForm;
+export default ForgotPassowrdForm;

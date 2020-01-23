@@ -5,6 +5,8 @@ import ImageSlider from '../Elements/ImageSlider';
 import Constants  from '../config/Constants'
 import axios from 'axios'
 import {Link, RichText, Date} from 'prismic-reactjs';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 var serialize = require('form-serialize');
 var ip = require('ip');
 const urlSettingStr = Constants.GENERAL_SETTING_URL;
@@ -32,8 +34,15 @@ class EventDetails extends React.Component {
         this.handleSubmit         = this.handleSubmit.bind(this);
         this.getSiteSettingList   = this.getSiteSettingList.bind(this);
         this.getCityName          = this.getCityName.bind(this);
+        this.handleChange         = this.handleChange.bind(this);
       }
 
+
+    handleChange = date => {
+        this.setState({
+            startDate: date
+        });
+    };
 
       /******Get all the user list here********/   
       getSiteSettingList(){
@@ -324,7 +333,12 @@ class EventDetails extends React.Component {
 
             <p> <span className="text-black-medium">TIMINGS</span><br />
             <span className="time">{this.state.eventTiming.event_start_time} –{this.state.eventTiming.event_end_time}</span></p>
-              <p /><p><span className="text-black-medium">Select Date:</span><br /><input type="date" id="bookingDate" /></p><p>
+              <p /><p><span className="text-black-medium">Select Date:</span><br />
+                <DatePicker id="bookingDate"
+                    selected={this.state.startDate}
+                    onChange={this.handleChange}
+                /></p>
+                <p>
                 <input type="hidden" id="hiddenId" value={this.state.eventTiming.id}/>
                 <button type="submit" class="btn btn-red  btn-lg btn-block text-uppercase">Book Now</button>
               </p></div>

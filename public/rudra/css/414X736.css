@@ -12,6 +12,39 @@ h1 {
   font-size: 20px !important;
 }
 
+.parent {
+  width: 403PX;
+  height: 295px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.noloadMore{
+  width: 100% !important;
+  padding: 12px;
+  margin: 1px !important;
+}
+.parent1 {
+  width: 403px;
+  height: 616px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.list-small-placeholder1 {
+  padding-top: 322px;
+}
+
+.bg-maroon {
+  background-color: #9a0010;
+  min-height: 298px;
+}
 .link1 {
   font-size: 14px;
 }
@@ -123,11 +156,19 @@ h1 {
 /****Login Form***/
 
 .container {
-    width: 90%;
-    padding-right: 15px;
-    padding-left: 15px;
+    width: 99%;
+    padding-right: 3px;
+    padding-left: 1px;
     margin-right: auto;
     margin-left: auto;
+}
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
 }
 #form-offer{
 font-size: 13px;
@@ -282,6 +323,26 @@ font-size: 21px;
     padding-top: 50px;
     padding-bottom: 18px;
 }
+
+.p-tb26{
+  padding-top: 27px;
+}
+.p-t100 {
+  padding-top: 77px;
+  padding-bottom: 25px !important;
+}
+
+.white-text{
+  font-size: 14px;
+}
+
+
+.list-small-placeholder {
+  padding-top: 35px;
+  padding-bottom: 25px;
+}
+
+
 .slide img{
 height: 325px;
 }

@@ -16,6 +16,8 @@ urlConstant = {
 	PRE_EXP_BOOKING						:	config.API_HOST_URL+'/expressbooking',
 	REGISTER_API_REQUEST	        	: 	config.API_HOST_URL+'/register',
 	LOGIN_API_REQUEST		        	: 	config.API_HOST_URL+'/login',
+	RESET_PASSWORD_API_REQUEST       	: 	config.API_HOST_URL+'/resetpassword',
+	CHANGE_PASSWORD_API_REQUEST			: 	config.API_HOST_URL+'/changepassword',
 	GET_DESTINATION_LIST_URL			:   config.API_HOST_URL+'/getdestinationlist',
 	GET_BANNER_LIST_URL					:   config.API_HOST_URL+'/getbannerlist',
 	GET_ALL_EVENT_LIST_URL				:	config.API_HOST_URL+'/getalleventlist',

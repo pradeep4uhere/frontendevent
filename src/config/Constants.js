@@ -7,6 +7,9 @@ export const Constants = {
 	//All API URL GOES HERE
 	LOGIN_URL					: AppUrl+'/serverport/login',
 	REGISTER_URL				: AppUrl+'/serverport/register',	
+	RESETPASSWORD_URL			: AppUrl+'/serverport/resetpassword',
+	CHANGE_PASSWORD_URL			: AppUrl+'/serverport/changepassword',
+		
 	GENERAL_SETTING_URL			: AppUrl+'/generalport/generalsetting',	
 	POPULAR_EVENT_LIST_URL		: AppUrl+'/generalport/popularlist',	
 	EVENT_DETAILS_URL			: AppUrl+'/generalport/eventdetails',

@@ -5,6 +5,8 @@ import Login, {user} from '../Login/Login';
 import Logout from '../Logout';
 import NotFound from '../components/NotFound';
 import Register from '../Login/Register';
+import ForgotPassowrd from '../Login/ForgotPassowrd';
+import ChnagePasswordPage from '../Login/ChangeYourPassowrd';
 import Index from '../components/Index';
 import EventDetail from '../Page/EventDetails';
 import Destination from '../Page/Destination';
@@ -80,6 +82,10 @@ render() {
               <Route path="/login" component={Login} exact/>
               <Route path="/login/:ref" component={Login} exact/>
               <Route path="/register" component={Register} exact/>
+              <Route path="/changepassword/:ref" component={ChnagePasswordPage}/>
+              <Route path="/forgotpassword" component={ForgotPassowrd} exact/>
+              
+              
               <Route path="/day-exp-detail/:id" component={EventDetail}/>
               <Route path="/exp-list" component={EventList} exact/>
               <Route path="/membership" component={Membership} exact/>

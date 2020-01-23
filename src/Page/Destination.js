@@ -86,7 +86,8 @@ this.getDestinationList();
           <br />
           <br />
           <div className="container">
-          <div className><h2>{this.state.destinationDetails.title}</h2>
+          <div className>
+            {/* <h2>{this.state.destinationDetails.title}</h2> */}
           <p className="pText">
           <div dangerouslySetInnerHTML={{ __html: this.state.destinationDetails.descriptions }}/>
           </p>

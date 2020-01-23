@@ -8,9 +8,75 @@ var fs = require('fs');
 var appRoot = require('app-root-path');
 const request = require('request-promise');
 var urlConstant = require('../module/urlConstant');
-
+const CHANGE_PASSWORD_API_REQUEST =urlConstant.CHANGE_PASSWORD_API_REQUEST; 
+const RESET_PASSWORD_API_REQUEST =urlConstant.RESET_PASSWORD_API_REQUEST; 
 const LOGIN_API_REQUEST 		= urlConstant.LOGIN_API_REQUEST;
 const REGISTER_API_REQUEST 		= urlConstant.REGISTER_API_REQUEST;
+
+
+
+
+
+
+/**************Reset API Start Here**********************************/
+ServerPortRouter.route('/changepassword').post(function (req, res) {
+    var password   = req.body.password;
+	var password_confirmation = req.body.password_confirmation;
+    var token        	= req.body.token;
+    var postData 		={
+		password	 		  : password,
+		password_confirmation : password_confirmation,
+    	token		 		  : token
+    }
+    console.log(postData);
+    const options = {
+					    method: 'POST',
+					    uri: CHANGE_PASSWORD_API_REQUEST,
+					    body: postData,
+					    json: true
+				    }
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
+/**************Reset API Ends Here**********************************/
+
+
+
+/**************Reset API Start Here**********************************/
+ServerPortRouter.route('/resetpassword').post(function (req, res,next) {
+    var sess = {token: '',user: {}};
+    var email_address   = req.body.email;
+    var token        	= req.body.token;
+    var postData 		={
+    	username	 : email_address,
+    	token		 : token
+    }
+    console.log(postData);
+    const options = {
+					    method: 'POST',
+					    uri: RESET_PASSWORD_API_REQUEST,
+					    body: postData,
+					    json: true
+				    }
+    request(options)
+	    .then(function (response) {
+	        console.log(response)
+	        res.end(JSON.stringify(response));
+	    })
+	    .catch(function (err) {
+	        console.log(err)
+	})
+});
+
+/**************Reset API Ends Here**********************************/
+
 
 /**************Login API Start Here**********************************/
 ServerPortRouter.route('/login').post(function (req, res,next) {

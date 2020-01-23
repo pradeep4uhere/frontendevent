@@ -43,6 +43,16 @@ h1 {
 .tabs {
     padding: 2px 10px !important;
 }
+
+.parent {
+  width: 375PX;
+  height: 295px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  display: inline-block;
+  cursor: pointer;
+}
 .searchBar {
     width: 250px !important;
     align-items: center;

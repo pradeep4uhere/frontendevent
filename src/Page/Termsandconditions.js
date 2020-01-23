@@ -75,7 +75,7 @@ class Termsandconditions extends React.Component {
         <div className="container">
         <div className="col-lg-12 m-ft66">
           <div className="row m-t-50">
-            <div className="col-xl-12">
+            <div className="col-xl-12 text-center">
               <div dangerouslySetInnerHTML={{ __html: pageDetails.description }}/>
             </div>
             

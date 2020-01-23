@@ -129,6 +129,8 @@ class LoginForm extends React.Component{
                     <button type="submit" className="btn btn-red btn-lg btn-block text-uppercase btn-red">LOGIN NOW</button>
                     <div className="form-group p-tb20">
                         <label htmlFor="exampleInputPassword1">NEW TO RUDRAXP?</label>
+                        <label htmlFor="exampleInputPassword1" className="pull-right">
+                        <a href="/forgotpassword" style={{textDecoration:'none'}} style={{color:'#FFF'}}>Forgot Password</a></label>
                         <a href="register" style={{textDecoration:'none'}}>
                             <button type="button" className="btn btn-red btn-lg btn-block btn-red-border1">Join Now</button>
                         </a>
