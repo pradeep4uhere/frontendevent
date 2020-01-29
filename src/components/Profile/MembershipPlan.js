@@ -166,7 +166,7 @@ class MembershipPlan extends React.Component{
             {(isMembershipPlan)?(
             <div className="row">
             
-                <div className="col-md-3">
+                <div className="col-md-5">
                     <div className="card text-center card-bg1">
                     <div className="basic-header"><p className="service-type" style={{fontSize:'27px',paddingTop:'0px',letterSpacing:'0px'}}>{membershipPlan.name}</p> <h2 className="white-text">{membershipPlanOrder.paid_amount}/<span className="service-type white-text" style={{letterSpacing:'0px'}}>{membershipPlanOrder.plan_type}</span></h2></div>
                     <div className="basic-triangle" /> 
@@ -178,7 +178,7 @@ class MembershipPlan extends React.Component{
                     <div className="countDownTimer" ><Countdown options={OPTIONS} className="countDownTimer" /></div>
                     </div></div>
                 </div>
-                <div className="col-md-9">
+                <div className="col-md-12">
                 <div class="text-white bg bg-danger  px-4 py-3 text-uppercase font-weight-bold"><i className="fas fa-list"></i>&nbsp;Latest Membership Orders</div>
                 <div className="box box-info">
                 <div className="box-body">

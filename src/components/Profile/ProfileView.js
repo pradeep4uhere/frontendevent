@@ -83,43 +83,43 @@ class ProfileView extends React.Component {
          
         <form>
         <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-12">
         <div className="row">
         <div className="col-md-12">
             <div class="bg bg-danger text-white  px-4 py-3 text-uppercase font-weight-bold">Profile Details</div>
         </div>
           <div className="form-group col-md-6">
             <label htmlFor="exampleInputEmail1">First Name</label>
-            <input type="name" className="form-control" id="lname" placeholder="Last Name" value={userList.first_name} disabled="disabled" />
+            <input type="name" className="form-control" id="lname"  value={userList.first_name} disabled="disabled" />
           </div>
           <div className="form-group col-md-6">
             <label htmlFor="exampleInputEmail1">Last Name</label>
-            <input type="name" className="form-control" id="lname" placeholder="Last Name" value={userList.last_name} disabled="disabled"  />
+            <input type="name" className="form-control" id="lname"  value={userList.last_name} disabled="disabled"  />
           </div>
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Address line 1</label>
-            <input type="name" className="form-control" id="ad1" placeholder="Enter Address Line-1 Name" value={userList.street_address} disabled="disabled" />
+            <input type="name" className="form-control" id="ad1"  value={userList.street_address} disabled="disabled" />
           </div> 
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Address Line 2</label>
-            <input type="name" className="form-control" id="ad2" placeholder="Enter Address Line-1 Name" value={userList.address_2} disabled="disabled" />
+            <input type="name" className="form-control" id="ad2"  value={userList.address_2} disabled="disabled" />
           </div>
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">State</label>
-            <input type="country" className="form-control" id="country" placeholder="Enter State Name" value={userList.state_name} disabled="disabled"/>
+            <input type="country" className="form-control" id="country"  value={userList.state_name} disabled="disabled"/>
           </div>
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">City</label>
-            <input type="contact" className="form-control" id="contact"  value={userList.city_name} disabled="disabled" placeholder="Enter City Name"/>
+            <input type="contact" className="form-control" id="contact"  value={userList.city_name} disabled="disabled"/>
           </div>  
          
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Country</label>
-            <input type="country" className="form-control" id="country" placeholder="Last Name" value={county_name} disabled="disabled"/>
+            <input type="country" className="form-control" id="country"  value={county_name} disabled="disabled"/>
           </div> 
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Postcode / ZIP</label>
-            <input type="contact" className="form-control" id="contact" placeholder="Last Name" value={userList.postcode} disabled="disabled"/>
+            <input type="contact" className="form-control" id="contact"  value={userList.postcode} disabled="disabled"/>
           </div>  
           <div className="form-group col-lg-6">
             <label htmlFor="exampleInputEmail1">Phone</label>

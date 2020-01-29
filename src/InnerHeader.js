@@ -116,7 +116,7 @@ class Header extends React.Component {
               
             </div>
     }
-    return <Link className="nav-link" to="login"><img src="../rudra/images/ico_user.png" alt="" className="img-fluid" /></Link>;
+    return <Link className="nav-link" to="/login"><img src="../rudra/images/ico_user.png" alt="" className="img-fluid" /></Link>;
   }
 
 
@@ -203,11 +203,9 @@ class Header extends React.Component {
                   <li className="nav-item"> <Link className="nav-link" to="/cart"><img src="../../rudra/images/ico_cart.png" alt="" className="img-fluid" /></Link> </li>
                   <li className="nav-item"> <Link className="nav-link" to="#" onClick={this.openNavSearch.bind(this)}> <img src="../../rudra/images/ico_search.png" alt="" className="img-fluid" style={{cursor:'pointer'}} /></Link></li>
                   <li class="nav-item book-btn"><Link className="nav-link btn btn-red-small" to="/exp-list">BOOK NOW</Link></li>
-
                   <li className="nav-item">
                     <div className="button">
                       <span onClick={this.openNav.bind(this)}><img src="../rudra/images/icon_nav.png" alt="" width={33} height={21} className="img-fluid" style={{cursor:'pointer'}}/></span>
-                      
                     </div> 
                   </li>
                 </ul> 

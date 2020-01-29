@@ -144,7 +144,7 @@ class ForgotPassowrdForm extends React.Component{
                         <div className="row">
                         <div className="col-md-6 mx-auto">
                             <div className="form-group">
-                            <p className="text-left titleText">Email Address</p>
+                            {/* <p className="text-left titleText">Email Address</p> */}
                             <input type="text" className="form-control form-control-lg rounded-0"  placeholder="Enter Email Address"  id="email_address" required autoComplete="Enter Email Address" tabIndex="4"/>
                             </div>
                       </div>

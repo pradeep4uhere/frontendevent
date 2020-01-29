@@ -101,7 +101,7 @@ class Cart extends React.Component {
           </div>
         </div>
         <Router>
-        <div className="container-fluids" style={{"width":"99.2%"}}>
+        <div className="container">
             <div className="row py-5 p-4 bg-white rounded shadow-sm">
             <div className="col-lg-12 navBarSm" style={{display:"none"}} >
             <nav className="navbar navbar-expand-lg navbar-light text-white">
@@ -134,8 +134,8 @@ class Cart extends React.Component {
               </div>
             </nav>
             </div>
-            <div className="col-lg-2 navBarLg" >
-                    <div className="card  text-white bg-danger" style={{width: '18rem'}}>
+            <div className="col-md-3 navBarLg" >
+                    <div className="card  text-white bg-danger">
                     <div className="card-body  text-white bg-danger mb-3">
                     <h5 className="card-title"><h2>Welcome, {this.capitalize(first_name)}</h2></h5>
                     <p className="card-text"><small>Member Since, {memberSince}</small><br/><small><b>Email:</b>&nbsp;{email}</small></p>
@@ -164,21 +164,20 @@ class Cart extends React.Component {
                     </div>
                 </div>
         </div>
-        <div className="col-lg-10">
-        
-          <Route path='/profile' exact component={ProfileView} />
-          <Route path='/profileview' component={ProfileView} />
-          <Route path='/profileedit' component={ProfileEdit} />
-          <Route path='/mymembership' component={MembershipPlan} />
-          <Route path='/myorder' component={OrderHistory} />
-          <Route path='/eventbooking/:order_type' component={OrderHistory} />
-          <Route path='/travelbooking/:order_type' component={OrderHistory} />
-          <Route path='/changepassword' component={ChangePassword} />
-          <Route path='/orderdetails/:orderid/:ordertype' component={OrderDetails} />
-          
-         
-        </div>
-
+            <div className="col-md-9">
+            
+              <Route path='/profile' exact component={ProfileView} />
+              <Route path='/profileview' component={ProfileView} />
+              <Route path='/profileedit' component={ProfileEdit} />
+              <Route path='/mymembership' component={MembershipPlan} />
+              <Route path='/myorder' component={OrderHistory} />
+              <Route path='/eventbooking/:order_type' component={OrderHistory} />
+              <Route path='/travelbooking/:order_type' component={OrderHistory} />
+              <Route path='/changepassword' component={ChangePassword} />
+              <Route path='/orderdetails/:orderid/:ordertype' component={OrderDetails} />
+              
+            
+            </div>
         </div>
         </div>
         </Router>

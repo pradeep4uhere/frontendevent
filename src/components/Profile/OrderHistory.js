@@ -129,11 +129,9 @@ class OrderHistory extends React.Component{
         
         return(
             <div className="row">
-                {/* Left col */}
                 <div className="col-md-12">
                 <div class="text-white bg bg-danger  px-4 py-3 text-uppercase font-weight-bold"><i className="fas fa-list"></i>&nbsp;Latest {title} Booking Orders</div>
                 <div className="box box-info">
-                {/* /.box-header */}
                 <div className="box-body">
                 <div className="table-responsive">
                 <table id="example1" class="table table-bordered table-striped" style={{"fontSize":"14px"}}>
@@ -156,21 +154,9 @@ class OrderHistory extends React.Component{
                     </tbody>
                 </table>
                 </div>
-                {/* /.table-responsive */}
                 </div>
-                {/* /.box-body */}
-                {/* <div className="box-footer clearfix">
-                <a href="javascript:void(0)" className="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-                <a href="javascript:void(0)" className="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
-                </div> */}
-                {/* /.box-footer */}
                 </div>
-                {/* /.box */}
-
-
                 </div>
-                {/* /.col */}
-
                 </div>
           );
     };

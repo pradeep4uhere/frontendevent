@@ -308,7 +308,7 @@ class ProfileView extends React.Component {
          
         <form className="form-horizontal" onSubmit={this.handleSubmit} id="login-form" >
         <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-12">
         {(isMsg)?(<div className={classstr}>{message}</div>):(<div></div>)}
         <div className="row">
         <div className="col-md-12">

@@ -26,19 +26,20 @@ class MembershipCheckout extends React.Component {
           id : this.props.match.params.id,
           isShow: false,
 
-          user_id     : sessionStorage.getItem('userid'),
-          first_name  : sessionStorage.getItem('first_name'),
-          last_name   : sessionStorage.getItem('last_name'),
-          email       : sessionStorage.getItem('email'),
-          phone       : sessionStorage.getItem('phone'),
+          user_id     : localStorage.getItem('userid'),
+          first_name  : localStorage.getItem('first_name'),
+          last_name   : localStorage.getItem('last_name'),
+          email       : localStorage.getItem('email'),
+          phone       : localStorage.getItem('phone'),
           isLoggedIn  : false,
-          userDetails : sessionStorage.getItem('userDetails'),
-          user_id: sessionStorage.getItem('userid'),
+          userDetails : localStorage.getItem('userDetails'),
+          user_id: localStorage.getItem('userid'),
           errorMessage : '',
           isError :  false,
           type: 1
 
         }
+        //alert(this.state.user_id)
         this.getMembershipPlan         =  this.getMembershipPlan.bind(this);
         this.handleChange        =  this.handleChange.bind(this);
         this.handleChangeForm    =  this.handleChangeForm.bind(this);
@@ -52,7 +53,8 @@ class MembershipCheckout extends React.Component {
   handleSubmit(event){
     event.preventDefault();
     var uid      = ip.toLong(this.state.ipAdress);
-    if(sessionStorage.getItem('userid')){
+    
+    if(localStorage.getItem('userid')){
         var uid      = this.state.user_id;
     }
     var type     = this.state.type;
@@ -239,7 +241,7 @@ class MembershipCheckout extends React.Component {
    /******Get all the user list here********/   
    getMembershipPlan(){
     var uid      = ip.toLong(this.state.ipAdress);
-    if(sessionStorage.getItem('userid')){
+    if(localStorage.getItem('userid')){
       var uid      = this.state.user_id;
     }
     var offerId  = this.state.offerId;
@@ -280,7 +282,7 @@ class MembershipCheckout extends React.Component {
   }
 
   greeting() {
-    const isLoggedIn = sessionStorage.getItem('userid');
+    const isLoggedIn = localStorage.getItem('userid');
     if (!isLoggedIn) {
       return <h2 className="text-center  white-text">Review your membership plan details</h2>;
     }
@@ -390,7 +392,7 @@ class MembershipCheckout extends React.Component {
                   <div className="row">
                     <div className="form-group col-lg-6">
                       <label htmlFor="exampleInputEmail1">First Name</label>
-                      <input type="text" className="form-control" id="fname" name='fname' placeholder="First Name" onChange={((e) => this.handleChangeForm(e))} value={first_name} readOnly/>
+                      <input type="text" className="form-control" id="fname" name='fname' placeholder="First Name" onChange={((e) => this.handleChangeForm(e))} value={first_name}/>
                     </div>
                     <div className="form-group col-lg-6">
                       <label htmlFor="exampleInputEmail1">Last Name</label>
@@ -422,7 +424,7 @@ class MembershipCheckout extends React.Component {
                     </div>
                     <div className="form-group col-lg-12">
                       <label htmlFor="exampleInputEmail1">Email Address</label>
-                      <input type="email" className="form-control" id="email" placeholder="Enter Your Email Address"  onChange={((e) => this.handleChangeForm(e))} value={email} readOnly/>
+                      <input type="email" className="form-control" id="email" placeholder="Enter Your Email Address"  onChange={((e) => this.handleChangeForm(e))} value={email}/>
                       <small id="Help2" className="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div className="input-group form-group">
